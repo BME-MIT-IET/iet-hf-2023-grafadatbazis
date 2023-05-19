@@ -1,8 +1,5 @@
 # Gráfadatbázis
 
-## Választott project
-A választott project a 2021/22/2 félévben a Szoftver projekt laboratórium tárgy keretében elkészült feladat lett.
-
 ## Technológia fókusz
 
 ### 1. feladat: Build keretrendszer beüzemelése, Github Actions
