@@ -1,5 +1,5 @@
 # Választott projekt  
-A választott project a 2021/22/2 félévben a Szoftver projekt laboratórium tárgy keretében elkészült feladat lett.
+A választott projekt a 2021/22/2 félévben a Szoftver projekt laboratórium tárgy keretében elkészült feladat lett.
 
 ### Rövid leírás:  
 A játéktér egy eltérő oldalszámú sokszögekből álló rács, melynek mezőin mozog a játékos és
@@ -22,7 +22,7 @@ ekkor véget ér a játék.
 ### [Dokumentáció](Random_Csapatnev-Dokumentacio.pdf)  
 
 ### Projekt célja:
-A projekt célja egy meglévő program kódjának átvizsgálása, tesztelése, valamint a kód minőségének javítása különböző eszközök segítségével, illetve egy build keretrendszer beüzemelése, mely automatizálja a build folyamatot, alapot adva további CI/CD folyamatok bevezetéséhez.
+A projekt célja a korábban ismertetett program kódjának átvizsgálása, tesztelése, valamint a kód minőségének javítása különböző eszközök segítségével, illetve egy build keretrendszer beüzemelése, mely automatizálja a build folyamatot, alapot adva további CI/CD folyamatok bevezetéséhez.
 
 ---
 
