@@ -18,7 +18,7 @@ public class Material implements Serializable
 	 * Konstruktorok.
 	 */
 	public Material() { container = new HashMap<MatEnum, Integer>(); }
-    public Material(int a, int b) {
+    public Material(final int a, final int b) {
     	container = new HashMap<MatEnum, Integer>(){{
     		put(MatEnum.AMINOACID, a);
     		put(MatEnum.NUCLEOTIDE, b);
