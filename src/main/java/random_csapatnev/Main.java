@@ -96,7 +96,7 @@ public class Main implements Serializable
 				}
 			}
 		});
-		JTextField jtf3 = new JTextField(10);
+		final JTextField jtf3 = new JTextField(10);
 		jtf3.setFont(new Font("Arial", Font.BOLD, 15));
 		JButton jbt3 = new JButton(new AbstractAction("Save") {
 			public void actionPerformed(ActionEvent ae) {
@@ -143,8 +143,8 @@ public class Main implements Serializable
 	}
 	
 	private static void NewGameFrame() {
-		JFrame jf = new JFrame("random_csapatnev new_game_frame");
-		JTextField jtf2 = new JTextField(40);
+		final JFrame jf = new JFrame("random_csapatnev new_game_frame");
+		final JTextField jtf2 = new JTextField(40);
 		jf.setSize(750, 500);
 		jf.setLayout(new GridLayout(5, 1));
 		
@@ -161,7 +161,7 @@ public class Main implements Serializable
 		
 		JLabel jl1 = new JLabel("Ellenfelek száma: ");
 		jl1.setFont(new Font("Arial", Font.BOLD, 15));
-		JTextField jtf1 = new JTextField(5);
+		final JTextField jtf1 = new JTextField(5);
 		jtf1.setFont(new Font("Arial", Font.BOLD, 15));
 		jtf1.setText("2");
 		jp1.add(jl1);
@@ -169,7 +169,7 @@ public class Main implements Serializable
 		
 		JLabel jl2 = new JLabel("Random generált játéktér?");
 		jl2.setFont(new Font("Arial", Font.BOLD, 15));
-		JCheckBox jc1 = new JCheckBox();
+		final JCheckBox jc1 = new JCheckBox();
         jc1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

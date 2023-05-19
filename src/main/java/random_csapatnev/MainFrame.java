@@ -145,7 +145,7 @@ public class MainFrame extends JFrame implements Serializable {
 				if(y-1 >= 0 && model.fields[x][y-1] != null) {
 					left = true;
 				}
-				if(x+1 <= model.M-1 && model.fields[x+1][y] != null) {;
+				if(x+1 <= model.M-1 && model.fields[x+1][y] != null) {
 					bot = true;
 				}
 				if(y+1 <= model.N-1 && model.fields[x][y+1] != null) {
@@ -503,8 +503,8 @@ public class MainFrame extends JFrame implements Serializable {
 		this.repaint();
 	}
 	
-    public void VirologistFrame(ArrayList<Character> virList, String action) throws InterruptedException {
-        JFrame jf = new JFrame("random_csapatnev virologist_frame");
+    public void VirologistFrame(final ArrayList<Character> virList, final String action) throws InterruptedException {
+        final JFrame jf = new JFrame("random_csapatnev virologist_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
         
@@ -560,8 +560,8 @@ public class MainFrame extends JFrame implements Serializable {
         jf.setVisible(true); 
     }
     
-    public void AgentPickerFrame(Character c) {
-        JFrame jf = new JFrame("random_csapatnev agent_picker_frame");
+    public void AgentPickerFrame(final Character c) {
+        final JFrame jf = new JFrame("random_csapatnev agent_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
         
@@ -597,7 +597,7 @@ public class MainFrame extends JFrame implements Serializable {
     }
     
     public void AgentCraftPickerFrame() {
-        JFrame jf = new JFrame("random_csapatnev agent_craft_picker_frame");
+        final JFrame jf = new JFrame("random_csapatnev agent_craft_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
         
@@ -633,7 +633,7 @@ public class MainFrame extends JFrame implements Serializable {
     }
     
     public void GearPickerFrame() {
-        JFrame jf = new JFrame("random_csapatnev gear_picker_frame");
+        final JFrame jf = new JFrame("random_csapatnev gear_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
         
@@ -708,7 +708,7 @@ public class MainFrame extends JFrame implements Serializable {
     }
     
 	public void MerreFrame(boolean fel, boolean jobb, boolean le, boolean bal) {
-        JFrame jf = new JFrame("random_csapatnev merre_frame");
+        final JFrame jf = new JFrame("random_csapatnev merre_frame");
         jf.setSize(200, 250);
         jf.setLayout(new BorderLayout());
         
