@@ -7,14 +7,14 @@ Feature: Can Virologist craft Agent?
     Given Virologist knows Agent
     Given Virologist has 0 AminoAcid and 0 Nucleotid
     When I ask whether he could craft Agent
-    Then He should answer "No"
-  Scenario:
+    Then He should answer "No I couldn't" craft
+  Scenario: Virologist can craft Agent
     Given Virologist knows Agent
     Given Virologist has 100 AminoAcid and 100 Nucleotid
     When I ask whether he could craft Agent
-    Then He should answer "Yes"
-  Scenario:
+    Then He should answer "Yes I could" craft
+  Scenario: Virologist cannot craft Agent as he does not know the recipe
     Given Virologist does not know Agent
     Given Virologist has 100 AminoAcid and 100 Nucleotid
     When I ask whether he could craft Agent
-    Then He should answer "No"
+    Then He should answer "No I couldn't" craft
