@@ -1,7 +1,6 @@
 package random_csapatnev;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Character osztályból származik, felülírja ennek a némelyik metódusát. Felelőssége, hogy reprezentálja és működésében ellássa, a medve vírussal megfertőződött virológusok szerepét.
@@ -10,7 +9,7 @@ public class Bear extends Character
 {
 	public Bear(String _name) { 
 		super(_name);
-	};
+	}
 	public Bear(Character c, String _name){
 		super(c, _name);
 		c.isParalyzed = true;
@@ -60,9 +59,6 @@ public class Bear extends Character
 	@Override
 	public void Round()
 	{
-		/*Field f = currField.GetNeighbours().get(new Random().nextInt(currField.GetNeighbours().size()));
-		Move(f);
-		FieldInteract();*/
 	}
 	/**
 	 * Ez a függvény hívódik meg amikor a jelenlegi medve meghal.

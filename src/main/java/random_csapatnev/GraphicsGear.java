@@ -1,14 +1,11 @@
 package random_csapatnev;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public abstract class GraphicsGear extends JPanel implements Serializable {
+public abstract class GraphicsGear extends JPanel {
 	JPanel parent;
 	Safehouse position;
 	transient BufferedImage img;

@@ -1,17 +1,13 @@
 package random_csapatnev;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.io.Serializable;
-
-import javax.swing.JPanel;
 
 /**
  * 
  * Virologistot kirajzoló osztály
  *
  */
-public class GraphicsVirologist extends GraphicsCharacter implements Serializable 
+public class GraphicsVirologist extends GraphicsCharacter 
 {
 	public GraphicsVirologist(Virologist c) 
 	{

@@ -1,12 +1,10 @@
 package random_csapatnev;
 import java.awt.Color;
-import java.awt.Graphics;
-import java.io.Serializable;
 
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
-public class GraphicsFieldBase extends JPanel implements Serializable
+public class GraphicsFieldBase extends JPanel
 {
 	int x;
 	int y;
@@ -18,10 +16,5 @@ public class GraphicsFieldBase extends JPanel implements Serializable
 		
 		x = _x;
 		y = _y;
-	}
-	@Override
-	public void paint(Graphics g) 
-	{
-		super.paint(g);
 	}
 }

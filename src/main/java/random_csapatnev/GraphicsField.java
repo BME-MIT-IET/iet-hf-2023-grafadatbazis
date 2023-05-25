@@ -1,11 +1,6 @@
 package random_csapatnev;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.io.Serializable;
-
-import javax.swing.JPanel;
-import javax.swing.border.MatteBorder;
 
 public class GraphicsField extends GraphicsFieldBase {
 

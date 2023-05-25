@@ -1,15 +1,12 @@
 package random_csapatnev;
 
-import java.awt.Graphics;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class GraphicsSack extends GraphicsGear implements Serializable {
+public class GraphicsSack extends GraphicsGear {
 
 	public GraphicsSack(Safehouse input, JPanel parent) 
 	{

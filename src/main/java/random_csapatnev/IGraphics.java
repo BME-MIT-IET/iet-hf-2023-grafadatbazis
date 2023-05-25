@@ -1,7 +1,5 @@
 package random_csapatnev;
 
-import java.awt.Graphics;
-
 import javax.swing.JPanel;
 
 /**

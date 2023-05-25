@@ -1,11 +1,10 @@
 package random_csapatnev;
 
 import java.awt.Graphics;
-import java.io.Serializable;
 
 import javax.swing.JPanel;
 
-public class GraphicsMaterial extends JPanel implements Serializable {
+public class GraphicsMaterial extends JPanel {
 	JPanel parent = null;
 	Material mat;
 	public GraphicsMaterial(Material m, JPanel parent)

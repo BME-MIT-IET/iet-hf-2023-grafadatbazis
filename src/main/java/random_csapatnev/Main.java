@@ -1,15 +1,10 @@
 package random_csapatnev;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -31,12 +26,9 @@ public class Main implements Serializable
 	 */
 	public static void main(String[] args) 
 	{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String input = "";
 		StartFrame();
 	}
 	
-	@SuppressWarnings("unchecked")
 	private static void load(String[] split) {
 		if(split.length >= 2) {
 			try {
@@ -73,7 +65,6 @@ public class Main implements Serializable
 		
 		JButton jbt1 = new JButton(new AbstractAction("New Game") {
 			public void actionPerformed(ActionEvent ae) {
-				//jf.setVisible(false);
 				NewGameFrame();
 			}
 		});
@@ -89,7 +80,6 @@ public class Main implements Serializable
 				
 				if(result == JFileChooser.APPROVE_OPTION) {
 					try {
-						FileInputStream file_is = new FileInputStream(jfc.getSelectedFile());
 						load(new String[] {"", jfc.getSelectedFile().getPath()});
 						StartFrame.setVisible(false);
 					} catch (Exception e1) {}

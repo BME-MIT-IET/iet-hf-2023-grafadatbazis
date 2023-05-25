@@ -1,5 +1,4 @@
 package random_csapatnev;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,7 +13,7 @@ import java.awt.event.ActionListener;
  * Swing Main Ablak
  *
  */
-public class MainFrame extends JFrame implements Serializable {
+public class MainFrame extends JFrame {
 	/**
 	 * 
 	 */
@@ -72,7 +71,6 @@ public class MainFrame extends JFrame implements Serializable {
 		model = _mf.model;
 		v = _mf.v;
 		increment = _mf.increment;
-		Instance = _mf.Instance;
 		addPanels();
 		refreshView();
 		StartRounds();
@@ -80,7 +78,6 @@ public class MainFrame extends JFrame implements Serializable {
 	
 	public MainFrame() 
 	{	
-		Instance = this;
 		frame = new JFrame("random_csapatnev main_frame");
 		frame.setSize(1500, 1030);
 		GridLayout layout = new GridLayout(1, 2);
@@ -268,7 +265,6 @@ public class MainFrame extends JFrame implements Serializable {
 		jobbJpTop.add(jbtAdminRound);
 		jobbJpTop.add(jbtAdminAddVirologist);
 		jobbJpTop.add(jbtAdminToggleThread);
-		//jobbJpTop.add(jbtSave);
 		
 		jobbJpBot.add(actualField);
 		jobbJpBot.add(actualMaterial);
@@ -310,7 +306,6 @@ public class MainFrame extends JFrame implements Serializable {
 		v.currField = model.fields[0][0];
 		model.fields[0][0].characters.add(v);
 		GraphicsVirologist vG = new GraphicsVirologist(v);
-	    int pLen = 750 / model.graphicsFields.length;
 		model.graphicsCharacter.add(vG);
 		
 		for(int i = 0; i < enemyCount; i++) {
