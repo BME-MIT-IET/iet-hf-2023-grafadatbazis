@@ -1,9 +1,8 @@
 package random_csapatnev;
 
 import java.awt.Color;
-import java.io.Serializable;
 
-public class GraphicsDeadCharacter extends GraphicsCharacter implements Serializable {
+public class GraphicsDeadCharacter extends GraphicsCharacter {
 	GraphicsDeadCharacter(Character c) 
 	{
 		super(c);

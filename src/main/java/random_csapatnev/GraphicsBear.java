@@ -1,14 +1,13 @@
 package random_csapatnev;
 
 import java.awt.Color;
-import java.io.Serializable;
 
 /**
  * 
  * Beart kirajzoló osztály
  *
  */
-public class GraphicsBear extends GraphicsCharacter implements Serializable {
+public class GraphicsBear extends GraphicsCharacter {
 	public GraphicsBear(Bear c) 
 	{
 		super(c);

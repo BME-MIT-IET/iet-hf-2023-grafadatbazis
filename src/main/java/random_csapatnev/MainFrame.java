@@ -1,5 +1,4 @@
 package random_csapatnev;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,7 +13,7 @@ import java.awt.event.ActionListener;
  * Swing Main Ablak
  *
  */
-public class MainFrame extends JFrame implements Serializable {
+public class MainFrame extends JFrame {
 	/**
 	 * 
 	 */

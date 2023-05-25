@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
-import java.io.Serializable;
 
 import javax.swing.JPanel;
 
@@ -14,7 +13,7 @@ import javax.swing.JPanel;
  * Karakterek grafikus megjelenítéséért felelős abstract osztály.
  *
  */
-public abstract class GraphicsCharacter extends JPanel implements IGraphics, Serializable 
+public abstract class GraphicsCharacter extends JPanel implements IGraphics 
 {
 	int x=0,y=0,width=0,height=0;
 	JPanel parent = null;
