@@ -71,7 +71,6 @@ public class MainFrame extends JFrame {
 		model = _mf.model;
 		v = _mf.v;
 		increment = _mf.increment;
-		Instance = _mf.Instance;
 		addPanels();
 		refreshView();
 		StartRounds();
@@ -79,7 +78,6 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() 
 	{	
-		Instance = this;
 		frame = new JFrame("random_csapatnev main_frame");
 		frame.setSize(1500, 1030);
 		GridLayout layout = new GridLayout(1, 2);
