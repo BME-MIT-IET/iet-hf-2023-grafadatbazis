@@ -33,7 +33,6 @@ public class Main implements Serializable
 		StartFrame();
 	}
 	
-	@SuppressWarnings("unchecked")
 	private static void load(String[] split) {
 		if(split.length >= 2) {
 			try {
