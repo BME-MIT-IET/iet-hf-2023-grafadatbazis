@@ -32,7 +32,7 @@ public class Gloves extends Gear
 			c.activeGears.remove(this);
 			c.isGloved = false;
 		}
-	};
+	}
 
 	/**
 	 * Felülírja a Gear PickUp függvényét, 

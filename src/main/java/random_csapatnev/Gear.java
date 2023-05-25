@@ -22,7 +22,7 @@ public abstract class Gear implements Serializable
 	 */
 	Boolean canUse = true;
 	
-	public void Deteriorate(Character c) {};
+	public void Deteriorate(Character c) {}
 	/**
 	 * Absztrakt függvény, akkor hívódik meg, 
 	 * amikor az adott c karakter felveszi a tárgyat, 

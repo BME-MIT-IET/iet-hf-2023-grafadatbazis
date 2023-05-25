@@ -9,7 +9,7 @@ public class Bear extends Character
 {
 	public Bear(String _name) { 
 		super(_name);
-	};
+	}
 	public Bear(Character c, String _name){
 		super(c, _name);
 		c.isParalyzed = true;
