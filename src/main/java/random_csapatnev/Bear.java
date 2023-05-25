@@ -59,9 +59,6 @@ public class Bear extends Character
 	@Override
 	public void Round()
 	{
-		/*Field f = currField.GetNeighbours().get(new Random().nextInt(currField.GetNeighbours().size()));
-		Move(f);
-		FieldInteract();*/
 	}
 	/**
 	 * Ez a függvény hívódik meg amikor a jelenlegi medve meghal.

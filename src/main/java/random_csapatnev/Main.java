@@ -65,7 +65,6 @@ public class Main implements Serializable
 		
 		JButton jbt1 = new JButton(new AbstractAction("New Game") {
 			public void actionPerformed(ActionEvent ae) {
-				//jf.setVisible(false);
 				NewGameFrame();
 			}
 		});

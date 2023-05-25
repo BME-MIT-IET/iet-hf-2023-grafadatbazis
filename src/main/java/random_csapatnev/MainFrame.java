@@ -267,7 +267,6 @@ public class MainFrame extends JFrame {
 		jobbJpTop.add(jbtAdminRound);
 		jobbJpTop.add(jbtAdminAddVirologist);
 		jobbJpTop.add(jbtAdminToggleThread);
-		//jobbJpTop.add(jbtSave);
 		
 		jobbJpBot.add(actualField);
 		jobbJpBot.add(actualMaterial);
