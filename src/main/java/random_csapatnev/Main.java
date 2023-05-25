@@ -28,8 +28,6 @@ public class Main implements Serializable
 	 */
 	public static void main(String[] args) 
 	{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String input = "";
 		StartFrame();
 	}
 	
@@ -85,7 +83,6 @@ public class Main implements Serializable
 				
 				if(result == JFileChooser.APPROVE_OPTION) {
 					try {
-						FileInputStream file_is = new FileInputStream(jfc.getSelectedFile());
 						load(new String[] {"", jfc.getSelectedFile().getPath()});
 						StartFrame.setVisible(false);
 					} catch (Exception e1) {}

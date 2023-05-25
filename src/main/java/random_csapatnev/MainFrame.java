@@ -309,7 +309,6 @@ public class MainFrame extends JFrame {
 		v.currField = model.fields[0][0];
 		model.fields[0][0].characters.add(v);
 		GraphicsVirologist vG = new GraphicsVirologist(v);
-	    int pLen = 750 / model.graphicsFields.length;
 		model.graphicsCharacter.add(vG);
 		
 		for(int i = 0; i < enemyCount; i++) {
