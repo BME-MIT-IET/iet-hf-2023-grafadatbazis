@@ -1,7 +1,6 @@
 package random_csapatnev;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Character osztályból származik, felülírja ennek a némelyik metódusát. Felelőssége, hogy reprezentálja és működésében ellássa, a medve vírussal megfertőződött virológusok szerepét.

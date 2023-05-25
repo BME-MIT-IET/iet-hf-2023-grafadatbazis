@@ -3,8 +3,6 @@ package random_csapatnev;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
-
 /**
  * 
  * MVC modellből a Model-t kezelő rész.
