@@ -13,9 +13,9 @@ public class Laboratory extends Field
 	/**
 	 * Konstruktor.
 	 */
-	public Laboratory(int _x, int _y) 
+	public Laboratory(int inputX, int inputY) 
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		Random r = new Random();
 		Agent a1;
 		Agent a2;
