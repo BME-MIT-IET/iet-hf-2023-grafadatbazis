@@ -18,8 +18,6 @@ import java.util.Random;
  */
 public class Virologist extends Character
 {
-	Random rand = new Random();
-
 	public Virologist(String _name) {
 		super(_name);
 	}

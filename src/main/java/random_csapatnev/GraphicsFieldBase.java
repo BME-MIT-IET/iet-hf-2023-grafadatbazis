@@ -6,15 +6,15 @@ import javax.swing.border.MatteBorder;
 
 public class GraphicsFieldBase extends JPanel
 {
-	int x;
-	int y;
+	int graphicsx;
+	int graphicsy;
 	public GraphicsFieldBase(int _x, int _y)
 	{
 		super();
 		this.setBorder(new MatteBorder(1,1,1,1, Color.BLACK));
 		this.setLayout(null);
 		
-		x = _x;
-		y = _y;
+		graphicsx = _x;
+		graphicsy = _y;
 	}
 }
