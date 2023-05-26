@@ -79,7 +79,7 @@ public class Bear extends Character
 		}
 		for(GraphicsCharacter e : tempList) {
 			if(e.c == this) {
-				e.Remove();
+				e.remove();
 				MainFrame.Instance.model.graphicsCharacter.remove(e);
 				MainFrame.Instance.refreshView();
 			}

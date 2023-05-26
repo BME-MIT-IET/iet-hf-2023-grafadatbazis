@@ -62,7 +62,7 @@ public abstract class GraphicsCharacter extends JPanel implements IGraphics
         g.drawChars(c.name.toCharArray(), 0, c.name.length(), graphicswidth/2-3, graphicsheight/2+3);
 	}
 	
-	public void Remove() {
+	public void remove() {
 		if (graphicsparent != null) {
 			graphicsparent.remove(this);
 		}

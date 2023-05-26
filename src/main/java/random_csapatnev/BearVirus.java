@@ -38,7 +38,7 @@ public class BearVirus extends Agent
 			}
 			for(GraphicsCharacter e : tempList) {
 				if(e.c == c) {
-					e.Remove();
+					e.remove();
 					MainFrame.Instance.model.graphicsCharacter.remove(e);
 					MainFrame.Instance.refreshView();
 				}
