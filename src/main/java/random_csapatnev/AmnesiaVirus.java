@@ -6,6 +6,9 @@ package random_csapatnev;
  */
 public class AmnesiaVirus extends Agent
 {
+	private static final String AMN_VACCINE = "AmnesiaVaccine";
+	private static final String PROT_VACCINE = "ProtectiveVaccine";
+
 	public AmnesiaVirus() {
 		name = "AmnesiaVirus";
 	}
@@ -31,7 +34,7 @@ public class AmnesiaVirus extends Agent
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if("AmnesiaVaccine".equals(a.name) || "ProtectiveVaccine".equals(a.name)) {
+			if(AMN_VACCINE.equals(a.name) || PROT_VACCINE.equals(a.name)) {
 				hasProtection = true;
 			}
 		}

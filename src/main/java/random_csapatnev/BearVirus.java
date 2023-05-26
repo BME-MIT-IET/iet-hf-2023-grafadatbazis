@@ -9,6 +9,7 @@ import java.util.Random;
  */
 public class BearVirus extends Agent 
 {
+	private static final String PROT_VACCINE = "ProtectiveVaccine";
 	private Random rand = new Random();
 
 	public  BearVirus(){
@@ -25,7 +26,7 @@ public class BearVirus extends Agent
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if("ProtectiveVaccine".equals(a.name) || (c.isCloaked && rand.nextInt(1000) <= 823)) {
+			if(PROT_VACCINE.equals(a.name) || (c.isCloaked && rand.nextInt(1000) <= 823)) {
 				hasProtection = true;
 			}
 		}
