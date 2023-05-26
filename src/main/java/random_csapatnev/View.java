@@ -32,7 +32,7 @@ public class View implements Serializable
 		for(int i = 0; i < model.graphicsMaterial.size(); ++i)
 		{
 			GraphicsMaterial m = model.graphicsMaterial.get(i);
-			m.Draw();
+			m.draw();
 		}
 		for(int i = 0; i < model.graphicsGear.size(); ++i)
 		{
