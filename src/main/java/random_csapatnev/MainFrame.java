@@ -524,10 +524,10 @@ public class MainFrame extends JFrame {
                 	}
                 	else if ("stealMaterial".equals(action)) {
                 		System.out.println(c);
-                		v.StealMaterialInteract(c);
+                		v.stealMaterialInteract(c);
                 	}
                 	else if ("stealGear".equals(action)) {
-                		v.StealGearInteract(c);
+                		v.stealGearInteract(c);
                 	}
                 	else if ("benit".equals(action)) {
                 		c.setIsParalyzed(true);
@@ -613,7 +613,7 @@ public class MainFrame extends JFrame {
                 		}
                 	}
                 	if(a != null) {
-                		v.CraftAgent(a);
+                		v.craftAgent(a);
                 	}
                 	refreshView();
                 	jf.dispose();
@@ -649,7 +649,7 @@ public class MainFrame extends JFrame {
                 		}
                 	}
                 	if(g != null) {
-                		v.EquipGear(g.name);
+                		v.equipGear(g.name);
                 	}
                 	refreshView();
                 	jf.dispose();
@@ -672,7 +672,7 @@ public class MainFrame extends JFrame {
                 		}
                 	}
                 	if(g != null) {
-                		v.UnequipGear(g.name);
+                		v.unequipGear(g.name);
                 	}
                 	refreshView();
                 	jf.dispose();

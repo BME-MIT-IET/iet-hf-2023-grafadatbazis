@@ -29,7 +29,7 @@ public class VirologistStepDefs {
     @When("I ask whether he could craft Agent")
     public void ask_whether_he_could_craft(){
         if(virologist.knownAgents.size()>0)
-            virologist.CraftAgent(virologist.knownAgents.get(0));
+            virologist.craftAgent(virologist.knownAgents.get(0));
         actualAnswer = couldHeCraft(virologist.craftedAgents.size()>0);
     }
     @Then("He should answer {string}")

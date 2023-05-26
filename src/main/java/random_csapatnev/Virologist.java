@@ -18,8 +18,8 @@ import java.util.Random;
  */
 public class Virologist extends Character
 {
-	public Virologist(String _name) {
-		super(_name);
+	public Virologist(String inputName) {
+		super(inputName);
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class Virologist extends Character
 	 * A virológus leveszi a megadott felszerelést.
 	 * @param g Annak a felszerelésnek az enum-ja amit le szeretne venni.
 	 */
-	public void UnequipGear(GearEnum g)
+	public void unequipGear(GearEnum g)
 	{
 		for(int i = activeGears.size() - 1; i >= 0; --i)
 		{
@@ -67,7 +67,7 @@ public class Virologist extends Character
 	 * Elkészíti a megadott ágenst.
 	 * @param a Az elkészítendő ágens.
 	 */
-	public void CraftAgent(Agent a)
+	public void craftAgent(Agent a)
 	{
 		Agent curAgent = null;
 		for(Agent curKnown: knownAgents)
@@ -140,7 +140,7 @@ public class Virologist extends Character
 	 * A virológus felszereli a megadott Enum-ú felszerelést.
 	 * @param g
 	 */
-	public void EquipGear(GearEnum g)
+	public void equipGear(GearEnum g)
 	{
 		for(int i = gears.size() - 1; i >= 0; --i)
 		{
@@ -180,7 +180,7 @@ public class Virologist extends Character
 	 * Az az interakció amikor a jelenlegi virológus el akar lopni anyagot egy másik virológustól.
 	 * @param c A karakter akitől az anyagot szertné ellopni a jelenlegi virológus
 	 */
-	public void StealMaterialInteract(Character c)
+	public void stealMaterialInteract(Character c)
 	{
 		if(currField.containsCharacter(c) && c.isParalyzed)
 		{
@@ -203,7 +203,7 @@ public class Virologist extends Character
 	 * Az az interakció amikor a jelenlegi virológus el akar lopni felszerelést egy másik virológustól.
 	 * @param v A virológus akitől a felszerelést szeretné ellopni a jelenlegi virológus.
 	 */
-	public void StealGearInteract(Character c)
+	public void stealGearInteract(Character c)
 	{
 		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
 		{
