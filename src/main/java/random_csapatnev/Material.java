@@ -30,7 +30,7 @@ public class Material implements Serializable
 	 * A paraméterül kapott c karakter felveszi a jelenlegi anyagmennyiség.
 	 * @param c Aki felveszi a jelenlegi anyagmennyiséget.
 	 */
-	public void PickUp(Character c)
+	public void pickUp(Character c)
 	{
 		
 		MatEnum[] matArray = MatEnum.values();
@@ -43,9 +43,9 @@ public class Material implements Serializable
 		}
 		
 		for(int i = 0; i < matArray.length; i++) {
-			if(cMaxMat.GetContainer().get(matArray[i]) <= valArray[i] + cMat.GetContainer().get(matArray[i])) {
-				int deltaVal = (cMaxMat.GetContainer().get(matArray[i]) - cMat.GetContainer().get(matArray[i]));
-				cMat.container.put(matArray[i], cMaxMat.GetContainer().get(matArray[i]));
+			if(cMaxMat.getContainer().get(matArray[i]) <= valArray[i] + cMat.getContainer().get(matArray[i])) {
+				int deltaVal = (cMaxMat.getContainer().get(matArray[i]) - cMat.getContainer().get(matArray[i]));
+				cMat.container.put(matArray[i], cMaxMat.getContainer().get(matArray[i]));
 				this.container.put(matArray[i], valArray[i]- deltaVal);
 			}
 			else {
@@ -59,7 +59,7 @@ public class Material implements Serializable
 	 * Visszatér a letárolt container-el, ebben van tárolva, hogy milyen anyagból mennyi van.
 	 * @return Letárolt container.
 	 */
-	public HashMap<MatEnum, Integer> GetContainer()
+	public HashMap<MatEnum, Integer> getContainer()
 	{
 		return container;
 	}
@@ -68,12 +68,12 @@ public class Material implements Serializable
 	 * @param m Az eltávolítandó anyagmennyiség.
 	 * @return Visszatér az új anyagmennyiséggel.
 	 */
-	public Material Remove(Material m)
+	public Material remove(Material m)
 	{
 		MatEnum[] matArray = MatEnum.values();
 		
 		for(int i = 0; i < matArray.length; i++) {
-			int newVal = container.get(matArray[i]) - m.GetContainer().get(matArray[i]);
+			int newVal = container.get(matArray[i]) - m.getContainer().get(matArray[i]);
 			
 			if(newVal > 0) {
 				container.put(matArray[i], newVal);
@@ -88,12 +88,12 @@ public class Material implements Serializable
 	 * A jelenlegi anyaghoz hozzáadásra kerül a paraméterként megkapott anyagmennyiség
 	 * @param m A hozzáadandó anyagmennyiség.
 	 */
-	public void AddMaterial(Material m)
+	public void addMaterial(Material m)
 	{
 		MatEnum[] matArray = MatEnum.values();
 		
 		for(int i = 0; i < matArray.length; i++) {
-			int newVal = container.get(matArray[i]) + m.GetContainer().get(matArray[i]);
+			int newVal = container.get(matArray[i]) + m.getContainer().get(matArray[i]);
 			
 			container.put(matArray[i], newVal);
 		}

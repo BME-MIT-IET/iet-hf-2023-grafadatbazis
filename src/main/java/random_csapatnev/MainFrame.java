@@ -239,7 +239,7 @@ public class MainFrame extends JFrame {
 		jbtAdminAddVirologist = new JButton(new AbstractAction("Admin: Virológus lerakása") {
 			public void actionPerformed(ActionEvent ae) {
 				Virologist vEnemy = new Virologist("v" + increment++);
-				vEnemy.currMaterial.AddMaterial(new Material(50, 50));
+				vEnemy.currMaterial.addMaterial(new Material(50, 50));
 				model.characters.add(vEnemy);
 				vEnemy.currField = v.currField;
 				vEnemy.currField.characters.add(vEnemy);
@@ -314,7 +314,7 @@ public class MainFrame extends JFrame {
 		
 		for(int i = 0; i < enemyCount; i++) {
 			Virologist vEnemy = new Virologist("v" + increment++);
-			vEnemy.currMaterial.AddMaterial(new Material(50, 50));
+			vEnemy.currMaterial.addMaterial(new Material(50, 50));
 			model.characters.add(vEnemy);
 			int randN = new Random().nextInt(model.N);
 			int randM = new Random().nextInt(model.M);

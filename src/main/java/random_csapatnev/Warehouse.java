@@ -24,7 +24,7 @@ public class Warehouse extends Field
 	@Override
 	public void interact(Character c)
 	{
-		material.PickUp(c);
+		material.pickUp(c);
 	}
 	/**
 	 * Az a függvény, amikor a medve interaktál a jelenlegi mezővel, ezzel elpusztítva az itt lévő anyagokat.
@@ -33,6 +33,6 @@ public class Warehouse extends Field
 	public void bearInteract(Bear b)
 	{
 		super.bearInteract(b);
-		material = material.Remove(material);
+		material = material.remove(material);
 	}
 }

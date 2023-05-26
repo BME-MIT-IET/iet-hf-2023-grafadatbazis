@@ -83,7 +83,7 @@ public class Virologist extends Character
 			Boolean canCraft = true;
 			for(MatEnum curEnum: MatEnum.values())
 			{
-				if(a.cost.GetContainer().get(curEnum) > currMaterial.GetContainer().get(curEnum))
+				if(a.cost.getContainer().get(curEnum) > currMaterial.getContainer().get(curEnum))
 				{
 					canCraft = false;
 					break;
@@ -93,7 +93,7 @@ public class Virologist extends Character
 			{
 				for(MatEnum curEnum: MatEnum.values())
 				{
-					currMaterial.GetContainer().put(curEnum, currMaterial.GetContainer().get(curEnum) - a.cost.GetContainer().get(curEnum));  
+					currMaterial.getContainer().put(curEnum, currMaterial.getContainer().get(curEnum) - a.cost.getContainer().get(curEnum));  
 				}
 				craftedAgents.add(curAgent.CreateNew());
 			}
@@ -187,15 +187,15 @@ public class Virologist extends Character
 			Material maxSteal = new Material(0,0);
 			for(MatEnum curEnum: MatEnum.values())
 			{
-				if(currMaterial.GetContainer().get(curEnum) < maxMaterial.GetContainer().get(curEnum))
+				if(currMaterial.getContainer().get(curEnum) < maxMaterial.getContainer().get(curEnum))
 				{
-					maxSteal.container.put(curEnum, maxMaterial.GetContainer().get(curEnum) - currMaterial.GetContainer().get(curEnum));
+					maxSteal.container.put(curEnum, maxMaterial.getContainer().get(curEnum) - currMaterial.getContainer().get(curEnum));
 				}
 			}
 			Material stolenMat = c.stealMaterial(maxSteal);
 			for(MatEnum curEnum: MatEnum.values())
 			{
-				currMaterial.GetContainer().put(curEnum, stolenMat.GetContainer().get(curEnum) + currMaterial.GetContainer().get(curEnum));
+				currMaterial.getContainer().put(curEnum, stolenMat.getContainer().get(curEnum) + currMaterial.getContainer().get(curEnum));
 			}	
 		}
 	}

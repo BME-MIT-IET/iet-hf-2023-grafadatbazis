@@ -125,15 +125,15 @@ public class Character implements Serializable
 		Material stolenMat = new Material(0,0);
 		for(MatEnum curEnum: MatEnum.values())
 		{
-			if(currMaterial.GetContainer().get(curEnum) > m.GetContainer().get(curEnum))
+			if(currMaterial.getContainer().get(curEnum) > m.getContainer().get(curEnum))
 			{
-				stolenMat.GetContainer().put(curEnum, m.GetContainer().get(curEnum));
-				currMaterial.GetContainer().put(curEnum, currMaterial.GetContainer().get(curEnum) - m.GetContainer().get(curEnum));
+				stolenMat.getContainer().put(curEnum, m.getContainer().get(curEnum));
+				currMaterial.getContainer().put(curEnum, currMaterial.getContainer().get(curEnum) - m.getContainer().get(curEnum));
 			}
 			else
 			{
-				stolenMat.GetContainer().put(curEnum, currMaterial.GetContainer().get(curEnum));
-				currMaterial.GetContainer().put(curEnum, 0);
+				stolenMat.getContainer().put(curEnum, currMaterial.getContainer().get(curEnum));
+				currMaterial.getContainer().put(curEnum, 0);
 			}
 		}
 		return stolenMat;

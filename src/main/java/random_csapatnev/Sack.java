@@ -20,7 +20,7 @@ public class Sack extends Gear
 	@Override
 	public void Effect(Character c) 
 	{
-		c.maxMaterial.AddMaterial(plusCapacity);
+		c.maxMaterial.addMaterial(plusCapacity);
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class Sack extends Gear
 	public void Remove(Character c)
 	{
 		if(c.activeGears.remove(this)) {
-			c.maxMaterial.Remove(plusCapacity);
+			c.maxMaterial.remove(plusCapacity);
 			c.gears.add(this);
 		}
 	}
