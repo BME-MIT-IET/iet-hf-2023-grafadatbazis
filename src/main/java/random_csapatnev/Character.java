@@ -162,15 +162,15 @@ public class Character implements Serializable
 	 * Eldobja a megadott Geart arra a Fieldre amin jelenleg áll.
 	 * @param gE Az eldobandó felszerelés.
 	 */
-	public void dropGear(GearEnum gE) {
+	public void dropGear(GearEnum gearEnum) {
 		Gear droppedGear = null;
 		for(Gear g : gears) {
-			if(g.name == gE) {
+			if(g.name == gearEnum) {
 				droppedGear = g;
 			}
 		}
 		for(Gear g : activeGears) {
-			if(g.name == gE) {
+			if(g.name == gearEnum) {
 				droppedGear = g;
 			}
 		}
