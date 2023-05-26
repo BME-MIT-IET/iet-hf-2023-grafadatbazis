@@ -68,15 +68,15 @@ public class MainFrame extends JFrame {
 	
 	ArrayList<String> winCon = new ArrayList<>();
 	
-	public MainFrame(MainFrame _mf) {
+	public MainFrame(MainFrame inputMF) {
 		this();
-		view = _mf.view;
-		model = _mf.model;
-		v = _mf.v;
-		increment = _mf.increment;
+		view = inputMF.view;
+		model = inputMF.model;
+		v = inputMF.v;
+		increment = inputMF.increment;
 		addPanels();
 		refreshView();
-		StartRounds();
+		startRounds();
 	}
 	
 	public MainFrame() 
@@ -152,7 +152,7 @@ public class MainFrame extends JFrame {
 				if(y+1 <= model.N-1 && model.fields[x][y+1] != null) {
 					right = true;
 				}
-				MerreFrame(top, right, bot, left);
+				merreFrame(top, right, bot, left);
 			}
 		});
 		
@@ -160,7 +160,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "stealMaterial");
+						virologistFrame(v.currField.characters, "stealMaterial");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -172,7 +172,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "stealGear");
+						virologistFrame(v.currField.characters, "stealGear");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -183,21 +183,21 @@ public class MainFrame extends JFrame {
 		jbtGearInteraction = new JButton(new AbstractAction("Felszerelés Interakciók") {
 			public void actionPerformed(ActionEvent ae) {
 				if(!v.gears.isEmpty() || !v.activeGears.isEmpty()) {
-					GearPickerFrame();
+					gearPickerFrame();
 				}
 			}
 		});
 		
 		jbtCraftAgent = new JButton(new AbstractAction("Craft ágens") {
 			public void actionPerformed(ActionEvent ae) {
-				AgentCraftPickerFrame();
+				agentCraftPickerFrame();
 			}
 		});
 		
 		jbtUseAgent = new JButton(new AbstractAction("Ágens használata") {
 			public void actionPerformed(ActionEvent ae) {
 				try {
-					VirologistFrame(v.currField.characters, "useAgent");
+					virologistFrame(v.currField.characters, "useAgent");
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -208,7 +208,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "useAxe");
+						virologistFrame(v.currField.characters, "useAxe");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -220,7 +220,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "benit");
+						virologistFrame(v.currField.characters, "benit");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -230,8 +230,8 @@ public class MainFrame extends JFrame {
 		
 		jbtAdminRound = new JButton(new AbstractAction("Admin: Kör léptetése") {
 			public void actionPerformed(ActionEvent ae) {
-				Round();
-				AI_Round();
+				round();
+				aiRound();
 				refreshView();
 			}
 		});
@@ -324,10 +324,10 @@ public class MainFrame extends JFrame {
 			model.graphicsCharacter.add(vGEnemy);
 		}
 		refreshView();
-		StartRounds();
+		startRounds();
 	}
 	
-	public void StartRounds() {
+	public void startRounds() {
 		Thread t1 = null;
 		t1 = new Thread(new Runnable() {
 			@Override
@@ -336,7 +336,7 @@ public class MainFrame extends JFrame {
 					while(true) {
 						Thread.sleep(3000);
 						if(aiToggle) {
-							OverallRound();
+							overallRound();
 							refreshView();
 						}
 					}
@@ -495,13 +495,13 @@ public class MainFrame extends JFrame {
 	{
 		view.repaintAll();
 		if(v != null) {
-			UpdateLabels();
+			updateLabels();
 		}
 		this.invalidate();
 		this.repaint();
 	}
 	
-    public void VirologistFrame(final ArrayList<Character> virList, final String action) throws InterruptedException {
+    public void virologistFrame(final ArrayList<Character> virList, final String action) throws InterruptedException {
         final JFrame jf = new JFrame("random_csapatnev virologist_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -520,7 +520,7 @@ public class MainFrame extends JFrame {
                 		}
                 	}
                 	if("useAgent".equals(action)) {
-                		AgentPickerFrame(c);
+                		agentPickerFrame(c);
                 	}
                 	else if ("stealMaterial".equals(action)) {
                 		System.out.println(c);
@@ -558,7 +558,7 @@ public class MainFrame extends JFrame {
         jf.setVisible(true); 
     }
     
-    public void AgentPickerFrame(final Character c) {
+    public void agentPickerFrame(final Character c) {
         final JFrame jf = new JFrame("random_csapatnev agent_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -594,7 +594,7 @@ public class MainFrame extends JFrame {
         jf.setVisible(true); 
     }
     
-    public void AgentCraftPickerFrame() {
+    public void agentCraftPickerFrame() {
         final JFrame jf = new JFrame("random_csapatnev agent_craft_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -630,7 +630,7 @@ public class MainFrame extends JFrame {
         jf.setVisible(true); 
     }
     
-    public void GearPickerFrame() {
+    public void gearPickerFrame() {
         final JFrame jf = new JFrame("random_csapatnev gear_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -644,7 +644,7 @@ public class MainFrame extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                 	Gear g = null;
                 	for(Gear ge : v.gears) {
-                		if(ge.name.equals(StringToGearEnum(e.getActionCommand()))) {
+                		if(ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
                 			g = ge;
                 		}
                 	}
@@ -667,7 +667,7 @@ public class MainFrame extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                 	Gear g = null;
                 	for(Gear ge : v.activeGears) {
-                		if(ge.name.equals(StringToGearEnum(e.getActionCommand()))) {
+                		if(ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
                 			g = ge;
                 		}
                 	}
@@ -690,7 +690,7 @@ public class MainFrame extends JFrame {
         jf.setVisible(true); 
     }
 	
-    public GearEnum StringToGearEnum(String s) {
+    public GearEnum stringToGearEnum(String s) {
     	switch(s) {
     	case "AXE":
     		return GearEnum.AXE;
@@ -705,12 +705,12 @@ public class MainFrame extends JFrame {
     	}
     }
     
-	public void MerreFrame(boolean fel, boolean jobb, boolean le, boolean bal) {
+	public void merreFrame(boolean fel, boolean jobb, boolean le, boolean bal) {
         final JFrame jf = new JFrame("random_csapatnev merre_frame");
         jf.setSize(200, 250);
         jf.setLayout(new BorderLayout());
         
-        JButton jbt_fel = new JButton(new AbstractAction("↑") {
+        JButton jbtFel = new JButton(new AbstractAction("↑") {
             public void actionPerformed(ActionEvent ae) {
             	v.move(model.fields[v.currField.x - 1][v.currField.y]);
             	refreshView();
@@ -718,7 +718,7 @@ public class MainFrame extends JFrame {
             }
         });
         
-        JButton jbt_jobb = new JButton(new AbstractAction("→") {
+        JButton jbtJobb = new JButton(new AbstractAction("→") {
             public void actionPerformed(ActionEvent ae) {
             	v.move(model.fields[v.currField.x][v.currField.y + 1]);            	
             	refreshView();
@@ -726,7 +726,7 @@ public class MainFrame extends JFrame {
             }
         });
         
-        JButton jbt_le = new JButton(new AbstractAction("↓") {
+        JButton jbtLe = new JButton(new AbstractAction("↓") {
 
             public void actionPerformed(ActionEvent ae) {
             	v.move(model.fields[v.currField.x + 1][v.currField.y]);
@@ -735,7 +735,7 @@ public class MainFrame extends JFrame {
             }
         });
         
-        JButton jbt_bal = new JButton(new AbstractAction("←") {
+        JButton jbtBal = new JButton(new AbstractAction("←") {
             public void actionPerformed(ActionEvent ae) 
             {
                 v.move(model.fields[v.currField.x][v.currField.y - 1]);
@@ -745,20 +745,20 @@ public class MainFrame extends JFrame {
             }
         });
         
-        jbt_fel.setFont(new Font(fontstr, Font.BOLD, 25));
-        jbt_jobb.setFont(new Font(fontstr, Font.BOLD, 25));
-        jbt_le.setFont(new Font(fontstr, Font.BOLD, 25));
-        jbt_bal.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbtFel.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbtJobb.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbtLe.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbtBal.setFont(new Font(fontstr, Font.BOLD, 25));
         
-        jbt_fel.setEnabled(fel);
-        jbt_jobb.setEnabled(jobb);
-        jbt_le.setEnabled(le);
-        jbt_bal.setEnabled(bal);
+        jbtFel.setEnabled(fel);
+        jbtJobb.setEnabled(jobb);
+        jbtLe.setEnabled(le);
+        jbtBal.setEnabled(bal);
         
-        jf.add(jbt_fel, BorderLayout.PAGE_START);
-        jf.add(jbt_jobb, BorderLayout.LINE_END);
-        jf.add(jbt_le, BorderLayout.PAGE_END);
-        jf.add(jbt_bal, BorderLayout.LINE_START);
+        jf.add(jbtFel, BorderLayout.PAGE_START);
+        jf.add(jbtJobb, BorderLayout.LINE_END);
+        jf.add(jbtLe, BorderLayout.PAGE_END);
+        jf.add(jbtBal, BorderLayout.LINE_START);
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(jbtMove);
@@ -766,7 +766,7 @@ public class MainFrame extends JFrame {
         jf.setVisible(true); 
     }
 	
-	public void UpdateLabels() {
+	public void updateLabels() {
 		actualField.setText(String.format("Aktuális Mező: (%s;%s)", v.currField.x, v.currField.y));
 		
 		actualMaterial.setText("Aktuális Anyagok:");
@@ -826,12 +826,12 @@ public class MainFrame extends JFrame {
 		paralyzedEffect.setText(String.format("Bénult hatás?: %s", v.isParalyzed));
 	}
 	
-	public void OverallRound() {
-		Round();
-		AI_Round();
+	public void overallRound() {
+		round();
+		aiRound();
 	}
 
-	public void Round()
+	public void round()
 	{
 		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
 		for(Character c : model.characters) {
@@ -842,7 +842,7 @@ public class MainFrame extends JFrame {
 		}
 	}
 	
-	public void AI_Round() {
+	public void aiRound() {
 		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
 		for(Character c : model.characters) {
 			tempList.add(c);
@@ -857,7 +857,7 @@ public class MainFrame extends JFrame {
 		}
 	}
 	
-	public void EndCheck()
+	public void endCheck()
 	{
 		for(Character c : model.characters) {
 			if(c.knownAgents.size() == winCon.size()) {

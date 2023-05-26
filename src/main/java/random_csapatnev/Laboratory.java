@@ -95,6 +95,6 @@ public class Laboratory extends Field
 				a.Effect(c);
 			}
 		}
-		MainFrame.Instance.EndCheck();
+		MainFrame.Instance.endCheck();
 	}
 }
