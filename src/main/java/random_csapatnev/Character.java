@@ -175,7 +175,7 @@ public class Character implements Serializable
 			}
 		}
 		if(droppedGear != null) {
-			droppedGear.Remove(this);
+			droppedGear.remove(this);
 			gears.remove(droppedGear);
 		}
 	}

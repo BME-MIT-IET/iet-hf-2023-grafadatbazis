@@ -537,7 +537,7 @@ public class MainFrame extends JFrame {
                 			for(Gear g : v.activeGears) {
                     			if (g.name == GearEnum.AXE) {
                     				if(Boolean.TRUE.equals(g.canUse)) {
-                    					g.Effect(c);
+                    					g.effect(c);
                     				}
                     			}
                     		}

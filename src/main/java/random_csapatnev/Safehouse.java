@@ -45,7 +45,7 @@ public class Safehouse extends Field
 	public void interact(Character c)
 	{
 		if(gear != null) {
-			gear.PickUp(c);
+			gear.pickUp(c);
 			gear = null;
 		}
 	}

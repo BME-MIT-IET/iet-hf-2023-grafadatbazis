@@ -20,13 +20,13 @@ public class Gloves extends Gear
 	 * ami azt teszi lehetővé, hogy vírusokat/vakcinákat visszaadjuk az adónak.
 	 */
 	@Override
-	public void Effect(Character c) 
+	public void effect(Character c) 
 	{
 		c.isGloved = true;
 	}
 	
 	@Override
-	public void Deteriorate(Character c) {
+	public void deteriorate(Character c) {
 		durability -= 1;
 		if(durability == 0) {
 			c.activeGears.remove(this);
@@ -41,7 +41,7 @@ public class Gloves extends Gear
 	 * ilyenkor változik a c karakter isGloved tagváltozója.
 	 */
 	@Override
-	public void PickUp(Character c) 
+	public void pickUp(Character c) 
 	{
 		c.gears.add(this);
 	}
@@ -53,7 +53,7 @@ public class Gloves extends Gear
 	 * ilyenkor változik a c karakter isGloved tagváltozója.
 	 */
 	@Override
-	public void Remove(Character c)
+	public void remove(Character c)
 	{
 		if(c.activeGears.remove(this)) {
 			c.gears.add(this);

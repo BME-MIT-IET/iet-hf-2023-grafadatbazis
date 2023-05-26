@@ -57,7 +57,7 @@ public class Virologist extends Character
 		{
 			if(activeGears.get(i).getName() == g)
 			{
-				activeGears.get(i).Remove(this);
+				activeGears.get(i).remove(this);
 				break;
 			}
 		}
@@ -114,7 +114,7 @@ public class Virologist extends Character
 			{
 				if(curGear.name == GearEnum.GLOVES)
 				{
-					curGear.Deteriorate(this);
+					curGear.deteriorate(this);
 				}
 			}
 			return;
@@ -149,7 +149,7 @@ public class Virologist extends Character
 				if(activeGears.size() < 3)
 				{
 					Gear curGear = gears.remove(i);
-					curGear.Effect(this);
+					curGear.effect(this);
 					activeGears.add(curGear);
 					break;
 				}
@@ -169,7 +169,7 @@ public class Virologist extends Character
 			{
 				if(activeGears.get(i).getName() == GearEnum.AXE)
 				{
-					activeGears.get(i).Effect(c);
+					activeGears.get(i).effect(c);
 					activeGears.remove(i);
 					return;
 				}
