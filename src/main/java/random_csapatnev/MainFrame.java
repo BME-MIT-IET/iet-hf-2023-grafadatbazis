@@ -150,7 +150,7 @@ public class MainFrame extends JFrame {
 				if(y+1 <= model.sizeN-1 && model.fields[x][y+1] != null) {
 					right = true;
 				}
-				merreFrame(top, right, bot, left);
+				movePickerFrame(top, right, bot, left);
 			}
 		});
 		
@@ -703,8 +703,8 @@ public class MainFrame extends JFrame {
     	}
     }
     
-	public void merreFrame(boolean fel, boolean jobb, boolean le, boolean bal) {
-        final JFrame jf = new JFrame("random_csapatnev merre_frame");
+	public void movePickerFrame(boolean fel, boolean jobb, boolean le, boolean bal) {
+        final JFrame jf = new JFrame("random_csapatnev movePickerFrame");
         jf.setSize(200, 250);
         jf.setLayout(new BorderLayout());
         
