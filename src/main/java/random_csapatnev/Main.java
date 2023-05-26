@@ -20,14 +20,14 @@ public class Main implements Serializable
 {
 	private static String fontstr = "Arial";
 	static MainFrame mf;
-	static JFrame StartFrame;
+	static JFrame startFrame;
 	/**
 	 * Program belépési pontja
 	 * @param args Program paraméterei.
 	 */
 	public static void main(String[] args) 
 	{
-		StartFrame();
+		startFrame();
 	}
 	
 	private static void load(String[] split) {
@@ -48,9 +48,9 @@ public class Main implements Serializable
 	}
 	
 	// Alap Frame
-	private static void StartFrame() {
+	private static void startFrame() {
 		JFrame jf = new JFrame("random_csapatnev base_frame");
-		StartFrame = jf;
+		startFrame = jf;
 		jf.setSize(400, 500);
 		jf.setLayout(new GridLayout(4, 1));
 		
@@ -66,7 +66,7 @@ public class Main implements Serializable
 		
 		JButton jbt1 = new JButton(new AbstractAction("New Game") {
 			public void actionPerformed(ActionEvent ae) {
-				NewGameFrame();
+				newGameFrame();
 			}
 		});
 		JButton jbt2 = new JButton(new AbstractAction("Load Game") {
@@ -77,12 +77,12 @@ public class Main implements Serializable
 		        jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				jfc.addChoosableFileFilter(new FileNameExtensionFilter("Vak Virológus Játék Fájl", "vak"));
 				jfc.setAcceptAllFileFilterUsed(false);
-				int result = jfc.showOpenDialog(StartFrame);
+				int result = jfc.showOpenDialog(startFrame);
 				
 				if(result == JFileChooser.APPROVE_OPTION) {
 					try {
 						load(new String[] {"", jfc.getSelectedFile().getPath()});
-						StartFrame.setVisible(false);
+						startFrame.setVisible(false);
 					} catch (Exception e1) {}
 				}
 			}
@@ -133,7 +133,7 @@ public class Main implements Serializable
 		System.exit(0);
 	}
 	
-	private static void NewGameFrame() {
+	private static void newGameFrame() {
 		final JFrame jf = new JFrame("random_csapatnev new_game_frame");
 		final JTextField jtf2 = new JTextField(40);
 		jf.setSize(750, 500);
@@ -206,8 +206,8 @@ public class Main implements Serializable
 	public static void saveGameFrame(String fname) {
 			try {
 				if(!fname.endsWith(".vak")) { fname += ".vak"; }
-				FileOutputStream file_os = new FileOutputStream(fname);
-				ObjectOutputStream oos = new ObjectOutputStream(file_os);
+				FileOutputStream fileos = new FileOutputStream(fname);
+				ObjectOutputStream oos = new ObjectOutputStream(fileos);
 				oos.writeObject(mf);
 				oos.close();
 			} catch (Exception ex) { System.out.println(ex); }
