@@ -92,7 +92,7 @@ public class Laboratory extends Field
 			}
 			a.learn(c);
 			if("BearVirus".equals(a.name)) {
-				a.effect(c);
+				a.affect(c);
 			}
 		}
 		MainFrame.Instance.endCheck();

@@ -38,7 +38,7 @@ public class ParalyzingVaccine extends Agent
 	 * ez a függvény hívódik meg amikor kifejti a hatását karakterre
 	 */
 	@Override
-	public void effect(Character c) 
+	public void affect(Character c) 
 	{
 		c.activeAgents.add(this);
 		this.currCharacter = c;

@@ -40,7 +40,7 @@ public class ParalyzingVirus extends Agent
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását karakterre
 	 */
 	@Override
-	public void effect(Character c) 
+	public void affect(Character c) 
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {

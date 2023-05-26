@@ -36,7 +36,7 @@ public class ProtectiveVaccine extends Agent
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását a karakterre.
 	 */
 	@Override
-	public void effect(Character c) 
+	public void affect(Character c) 
 	{
 		c.activeAgents.add(this);
 		this.currCharacter = c;

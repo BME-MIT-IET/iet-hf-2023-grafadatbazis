@@ -42,7 +42,7 @@ public abstract class Agent implements Serializable
 	 * Absztrakt metódus, ez hívódik meg amikor az adott ágens kifejti a hatását a megadott karakterre.
 	 * @param c Karakter akire hatással van.
 	 */
-	public abstract void effect(Character c);
+	public abstract void affect(Character c);
 	/**
 	 * Ez hívódik meg amikor az adott ágenst megtanulja egy karakter. 
 	 * @param c Karakter aki megtanulja.

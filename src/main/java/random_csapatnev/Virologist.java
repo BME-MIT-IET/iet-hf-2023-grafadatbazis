@@ -133,7 +133,7 @@ public class Virologist extends Character
 				return;
 			}
 		}
-		a.effect(c);
+		a.affect(c);
 	}
 
 	/**
