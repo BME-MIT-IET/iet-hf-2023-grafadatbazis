@@ -7,20 +7,20 @@ import java.util.ArrayList;
  */
 public class Bear extends Character
 {
-	public Bear(String _name) { 
-		super(_name);
+	public Bear(String inputName) { 
+		super(inputName);
 	}
-	public Bear(Character c, String _name){
-		super(c, _name);
+	public Bear(Character c, String inputName){
+		super(c, inputName);
 		c.isParalyzed = true;
 		isParalyzed = false;
-		name = _name;
+		name = inputName;
 	}
 	/**
 	 * A jelenlegi medve átmozog a paraméterként megkapott mezőre.
 	 */
 	@Override
-	public void Move(Field f)
+	public void move(Field f)
 	{
 		if(Boolean.TRUE.equals(currField.IsNeighbour(f))) {
 			f.MoveFrom(currField, this);
@@ -31,7 +31,7 @@ public class Bear extends Character
 	 *A jelenlegi medve interaktál azzal a mezővel amin jelenleg áll.
 	 */
 	@Override
-	public void FieldInteract()
+	public void fieldInteract()
 	{
 		currField.BearInteract(this);
 	}
@@ -39,7 +39,7 @@ public class Bear extends Character
 	 * A jelenlegi medve interaktál a paraméterül kapott karakterrel.
 	 */
 	@Override
-	public void CharacterInteract(Character c)
+	public void characterInteract(Character c)
 	{
 		Use(c, new BearVirus());
 	}
