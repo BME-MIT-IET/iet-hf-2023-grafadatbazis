@@ -146,10 +146,10 @@ public class MainFrame extends JFrame {
 				if(y-1 >= 0 && model.fields[x][y-1] != null) {
 					left = true;
 				}
-				if(x+1 <= model.M-1 && model.fields[x+1][y] != null) {
+				if(x+1 <= model.sizeM-1 && model.fields[x+1][y] != null) {
 					bot = true;
 				}
-				if(y+1 <= model.N-1 && model.fields[x][y+1] != null) {
+				if(y+1 <= model.sizeN-1 && model.fields[x][y+1] != null) {
 					right = true;
 				}
 				merreFrame(top, right, bot, left);
@@ -316,8 +316,8 @@ public class MainFrame extends JFrame {
 			Virologist vEnemy = new Virologist("v" + increment++);
 			vEnemy.currMaterial.addMaterial(new Material(50, 50));
 			model.characters.add(vEnemy);
-			int randN = new Random().nextInt(model.N);
-			int randM = new Random().nextInt(model.M);
+			int randN = new Random().nextInt(model.sizeN);
+			int randM = new Random().nextInt(model.sizeM);
 			vEnemy.currField = model.fields[randN][randM];
 			model.fields[randN][randM].characters.add(vEnemy);
 			GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
@@ -351,8 +351,8 @@ public class MainFrame extends JFrame {
 	private void generateFieldsFromMapMatrix(String inputString)
 	{		
 		String[] rows = inputString.split(";");
-		model.N = rows.length;
-		model.M = rows[0].length();
+		model.sizeN = rows.length;
+		model.sizeM = rows[0].length();
 	    model.graphicsFields = new GraphicsFieldBase[rows[0].length()][rows.length];
 	    model.fields = new Field[rows[0].length()][rows.length];
 	    for(int i = 0; i < model.graphicsFields.length; ++i)
