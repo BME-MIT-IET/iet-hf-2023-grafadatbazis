@@ -9,9 +9,9 @@ import java.util.Random;
  */
 public class Warehouse extends Field
 {
-	public Warehouse(int _x, int _y) 
+	public Warehouse(int inputX, int inputY) 
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		material = new Material(new Random().nextInt(100) + 1, new Random().nextInt(100) + 1);
 	}
 	/**
