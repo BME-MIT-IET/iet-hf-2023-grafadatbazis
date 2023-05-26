@@ -47,7 +47,7 @@ public abstract class Agent implements Serializable
 	 * Ez hívódik meg amikor az adott ágenst megtanulja egy karakter. 
 	 * @param c Karakter aki megtanulja.
 	 */
-	public void learn (Character c)
+	public void learn(Character c)
 	{
 		c.knownAgents.add(this);
 	}
