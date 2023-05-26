@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame {
 	Random rand = new Random();
+	private static String fontstr = "Arial";
 
 	/**
 	 * 
@@ -104,17 +105,17 @@ public class MainFrame extends JFrame {
 		vitusEffect = new JLabel("label10");
 		paralyzedEffect = new JLabel("label11");
 		
-		actualField.setFont(new Font("Arial", Font.BOLD, 15));
-		actualMaterial.setFont(new Font("Arial", Font.BOLD, 15));
-		aminoacid.setFont(new Font("Arial", Font.BOLD, 15));
-		nucleotide.setFont(new Font("Arial", Font.BOLD, 15));
-		activeGears.setFont(new Font("Arial", Font.BOLD, 15));
-		passiveGears.setFont(new Font("Arial", Font.BOLD, 15));
-		activeAgents.setFont(new Font("Arial", Font.BOLD, 15));
-		knownAgents.setFont(new Font("Arial", Font.BOLD, 15));
-		craftedAgents.setFont(new Font("Arial", Font.BOLD, 15));
-		vitusEffect.setFont(new Font("Arial", Font.BOLD, 15));
-		paralyzedEffect.setFont(new Font("Arial", Font.BOLD, 15));
+		actualField.setFont(new Font(fontstr, Font.BOLD, 15));
+		actualMaterial.setFont(new Font(fontstr, Font.BOLD, 15));
+		aminoacid.setFont(new Font(fontstr, Font.BOLD, 15));
+		nucleotide.setFont(new Font(fontstr, Font.BOLD, 15));
+		activeGears.setFont(new Font(fontstr, Font.BOLD, 15));
+		passiveGears.setFont(new Font(fontstr, Font.BOLD, 15));
+		activeAgents.setFont(new Font(fontstr, Font.BOLD, 15));
+		knownAgents.setFont(new Font(fontstr, Font.BOLD, 15));
+		craftedAgents.setFont(new Font(fontstr, Font.BOLD, 15));
+		vitusEffect.setFont(new Font(fontstr, Font.BOLD, 15));
+		paralyzedEffect.setFont(new Font(fontstr, Font.BOLD, 15));
 
 		model = new Model();
 		view = new View(model, frame);
@@ -545,7 +546,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(fontstr, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -581,7 +582,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(fontstr, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -617,7 +618,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(fontstr, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -653,7 +654,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(fontstr, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -676,7 +677,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(fontstr, Font.BOLD, 25));
             item.setForeground(Color.RED);
             jf.add(item);
             buttList.add(item);
@@ -743,10 +744,10 @@ public class MainFrame extends JFrame {
             }
         });
         
-        jbt_fel.setFont(new Font("Arial", Font.BOLD, 25));
-        jbt_jobb.setFont(new Font("Arial", Font.BOLD, 25));
-        jbt_le.setFont(new Font("Arial", Font.BOLD, 25));
-        jbt_bal.setFont(new Font("Arial", Font.BOLD, 25));
+        jbt_fel.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbt_jobb.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbt_le.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbt_bal.setFont(new Font(fontstr, Font.BOLD, 25));
         
         jbt_fel.setEnabled(fel);
         jbt_jobb.setEnabled(jobb);

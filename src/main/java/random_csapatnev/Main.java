@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
  */
 public class Main implements Serializable
 {
+	private static String fontstr = "Arial";
 	static MainFrame mf;
 	static JFrame StartFrame;
 	/**
@@ -87,7 +88,7 @@ public class Main implements Serializable
 			}
 		});
 		final JTextField jtf3 = new JTextField(10);
-		jtf3.setFont(new Font("Arial", Font.BOLD, 15));
+		jtf3.setFont(new Font(fontstr, Font.BOLD, 15));
 		JButton jbt3 = new JButton(new AbstractAction("Save") {
 			public void actionPerformed(ActionEvent ae) {
 				saveGameFrame(jtf3.getText());
@@ -99,10 +100,10 @@ public class Main implements Serializable
 			}
 		});
 		
-		jbt1.setFont(new Font("Arial", Font.BOLD, 25));
-		jbt2.setFont(new Font("Arial", Font.BOLD, 25));
-		jbt3.setFont(new Font("Arial", Font.BOLD, 25));
-		jbt4.setFont(new Font("Arial", Font.BOLD, 25));
+		jbt1.setFont(new Font(fontstr, Font.BOLD, 25));
+		jbt2.setFont(new Font(fontstr, Font.BOLD, 25));
+		jbt3.setFont(new Font(fontstr, Font.BOLD, 25));
+		jbt4.setFont(new Font(fontstr, Font.BOLD, 25));
 		
 		jp1.add(jbt1);
 		jp2.add(jbt2);
@@ -150,15 +151,15 @@ public class Main implements Serializable
 		jp5.setBorder(BorderFactory.createEmptyBorder(0, 150, 10, 150));
 		
 		JLabel jl1 = new JLabel("Ellenfelek száma: ");
-		jl1.setFont(new Font("Arial", Font.BOLD, 15));
+		jl1.setFont(new Font(fontstr, Font.BOLD, 15));
 		final JTextField jtf1 = new JTextField(5);
-		jtf1.setFont(new Font("Arial", Font.BOLD, 15));
+		jtf1.setFont(new Font(fontstr, Font.BOLD, 15));
 		jtf1.setText("2");
 		jp1.add(jl1);
 		jp1.add(jtf1);
 		
 		JLabel jl2 = new JLabel("Random generált játéktér?");
-		jl2.setFont(new Font("Arial", Font.BOLD, 15));
+		jl2.setFont(new Font(fontstr, Font.BOLD, 15));
 		final JCheckBox jc1 = new JCheckBox();
         jc1.addActionListener(new ActionListener() {
             @Override
@@ -171,13 +172,13 @@ public class Main implements Serializable
 		jp2.add(jc1);
 		
 		JLabel jl3 = new JLabel("(vagy)");
-		jl3.setFont(new Font("Arial", Font.BOLD, 15));
+		jl3.setFont(new Font(fontstr, Font.BOLD, 15));
 		jp3.add(jl3);
 		
 		JLabel jl4 = new JLabel("Játéktér String: ");
-		jl4.setFont(new Font("Arial", Font.BOLD, 15));
+		jl4.setFont(new Font(fontstr, Font.BOLD, 15));
 		jtf2.setEnabled(false);
-		jtf2.setFont(new Font("Arial", Font.BOLD, 13));
+		jtf2.setFont(new Font(fontstr, Font.BOLD, 13));
 		jp4.add(jl4);
 		jp4.add(jtf2);
 		
