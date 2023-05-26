@@ -554,7 +554,7 @@ public class MainFrame extends JFrame {
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
     
@@ -590,7 +590,7 @@ public class MainFrame extends JFrame {
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
     
@@ -626,7 +626,7 @@ public class MainFrame extends JFrame {
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
     
@@ -686,7 +686,7 @@ public class MainFrame extends JFrame {
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
 	
@@ -762,7 +762,7 @@ public class MainFrame extends JFrame {
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(jbtMove);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
 	
