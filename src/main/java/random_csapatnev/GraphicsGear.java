@@ -17,7 +17,7 @@ public abstract class GraphicsGear extends JPanel {
 		position = input;
 		parent.add(this);
 	}
-	public void Draw()
+	public void draw()
 	{
 		this.setSize(graphicsparent.getWidth(), graphicsparent.getHeight());
 		this.setVisible(true);

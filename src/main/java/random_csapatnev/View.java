@@ -37,7 +37,7 @@ public class View implements Serializable
 		for(int i = 0; i < model.graphicsGear.size(); ++i)
 		{
 			GraphicsGear m = model.graphicsGear.get(i);
-			m.Draw();
+			m.draw();
 		}
 		frame.invalidate();
 		frame.repaint();
