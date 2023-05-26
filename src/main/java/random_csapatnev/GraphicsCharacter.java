@@ -15,8 +15,11 @@ import javax.swing.JPanel;
  */
 public abstract class GraphicsCharacter extends JPanel implements IGraphics 
 {
-	int x=0,y=0,width=0,height=0;
-	JPanel parent = null;
+	int graphicsx = 0;
+	int graphicsy = 0;
+	int graphicswidth = 0;
+	int graphicsheight = 0;
+	JPanel graphicsparent = null;
 	Character c;
 	Color color = Color.LIGHT_GRAY;
 	GraphicsCharacter(Character c)
@@ -27,15 +30,15 @@ public abstract class GraphicsCharacter extends JPanel implements IGraphics
 	@Override
 	public void Draw(JPanel p, int x, int y, int width, int height)
 	{
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		if(parent != null)
+		graphicsx = x;
+		graphicsy = y;
+		graphicswidth = width;
+		graphicsheight = height;
+		if(graphicsparent != null)
 		{
-			parent.remove(this);
+			graphicsparent.remove(this);
 		}
-		parent = p;
+		graphicsparent = p;
 		p.add(this);
 		this.setSize(width, height);
 		this.setVisible(true);
@@ -48,21 +51,21 @@ public abstract class GraphicsCharacter extends JPanel implements IGraphics
 	{
 		super.paint(g);
 		g.setColor(color);
-		g.fillOval(width/4, height/4, width/2, height/2);
+		g.fillOval(graphicswidth/4, graphicsheight/4, graphicswidth/2, graphicsheight/2);
 		g.setColor(Color.BLACK);
 		if(c.name.equals("v0"))
 		{
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setStroke(new BasicStroke(4));
-			g2.draw(new Ellipse2D.Double(width/4, height/4, width/2, height/2));
+			g2.draw(new Ellipse2D.Double(graphicswidth/4, graphicsheight/4, graphicswidth/2, graphicsheight/2));
 		}
-        g.drawChars(c.name.toCharArray(), 0, c.name.length(), width/2-3, height/2+3);
+        g.drawChars(c.name.toCharArray(), 0, c.name.length(), graphicswidth/2-3, graphicsheight/2+3);
 	}
 	
 	public void Remove() {
-		if (parent != null) {
-			parent.remove(this);
+		if (graphicsparent != null) {
+			graphicsparent.remove(this);
 		}
-		parent = null;
+		graphicsparent = null;
 	}
 }
