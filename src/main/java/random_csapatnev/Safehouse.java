@@ -17,8 +17,8 @@ public class Safehouse extends Field
 	 * Konstruktor.
 	 * @param g Az adott Safehouse-ban található Gear.
 	 */
-	public Safehouse(int _x, int _y){
-		super(_x, _y);
+	public Safehouse(int inputX, int inputY){
+		super(inputX, inputY);
 		Random r = new Random();
 		switch(r.nextInt(4)) {
 		case 0:
