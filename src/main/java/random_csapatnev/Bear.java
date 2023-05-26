@@ -41,30 +41,30 @@ public class Bear extends Character
 	@Override
 	public void characterInteract(Character c)
 	{
-		Use(c, new BearVirus());
+		use(c, new BearVirus());
 	}
 	/**
 	 *Felülírja a Character Use függvényét, a megadott karakteren használja a megadott ágenst. (Ez a medve esetében a medve vírus.)
 	 */
 	@Override
-	public void Use(Character c, Agent a)
+	public void use(Character c, Agent a)
 	{
 		if(Boolean.TRUE.equals(currField.ContainsCharacter(c))) {
-			c.AgentUsedOnHim(a, c);
+			c.agentUsedOnHim(a, c);
 		}
 	}
 	/**
 	 *  Ez hívódik meg amikor a GameManager a köröket lépteti.
 	 */
 	@Override
-	public void Round()
+	public void round()
 	{
 	}
 	/**
 	 * Ez a függvény hívódik meg amikor a jelenlegi medve meghal.
 	 */
 	@Override
-	public void Die()
+	public void die()
 	{
 		Character c = new Character(this, "c" + this.name.substring(1));
 		MainFrame.Instance.model.characters.add(c);

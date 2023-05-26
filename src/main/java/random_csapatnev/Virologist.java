@@ -26,7 +26,7 @@ public class Virologist extends Character
 	 *A jelenlegi virológus átmozog a paraméterként megkapott mezőre.
 	 */
 	@Override
-	public void Move(Field f)
+	public void move(Field f)
 	{
 		Field fTemp = f;
 		if(Boolean.TRUE.equals(isParalyzed)) { return; }
@@ -40,7 +40,7 @@ public class Virologist extends Character
 	}
 	
 	@Override
-	public void FieldInteract() 
+	public void fieldInteract() 
 	{
 		if(currField != null) {
 			currField.Interact(this);
@@ -105,11 +105,11 @@ public class Virologist extends Character
 	 * @param c Az a virológus aki a jelenlegi virológuson használja az ágenst..
 	 */
 	@Override
-	public void AgentUsedOnHim(Agent a, Character c)
+	public void agentUsedOnHim(Agent a, Character c)
 	{
 		if(Boolean.TRUE.equals(isGloved))
 		{
-			c.AgentUsedOnHim(a, c);
+			c.agentUsedOnHim(a, c);
 			for(Gear curGear: activeGears)
 			{
 				if(curGear.name == GearEnum.GLOVES)
@@ -161,7 +161,7 @@ public class Virologist extends Character
 	 * @param c Karakter akivel interaktol
 	 */
 	@Override
-	public void BearInteract(Character c)
+	public void bearInteract(Character c)
 	{
 		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
 		{
@@ -192,7 +192,7 @@ public class Virologist extends Character
 					maxSteal.container.put(curEnum, maxMaterial.GetContainer().get(curEnum) - currMaterial.GetContainer().get(curEnum));
 				}
 			}
-			Material stolenMat = c.StealMaterial(maxSteal);
+			Material stolenMat = c.stealMaterial(maxSteal);
 			for(MatEnum curEnum: MatEnum.values())
 			{
 				currMaterial.GetContainer().put(curEnum, stolenMat.GetContainer().get(curEnum) + currMaterial.GetContainer().get(curEnum));
@@ -209,7 +209,7 @@ public class Virologist extends Character
 		{
 			if(Boolean.TRUE.equals(c.isParalyzed))
 			{
-				Gear stolenGear = c.StealGear();
+				Gear stolenGear = c.stealGear();
 				if(stolenGear != null)
 				{
 					gears.add(stolenGear);
@@ -221,13 +221,13 @@ public class Virologist extends Character
 	 *Felülírja a Character Use függvényét, a megadott karakteren használja a megadott ágenst.
 	 */
 	@Override
-	public void Use(Character c, Agent a)
+	public void use(Character c, Agent a)
 	{
 		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
 		{
 			if(craftedAgents.contains(a))
 			{
-				c.AgentUsedOnHim(a, c);
+				c.agentUsedOnHim(a, c);
 				craftedAgents.remove(a);
 			}
 		}
@@ -236,7 +236,7 @@ public class Virologist extends Character
 	 * Ez hívódik meg amikor a GameManager a kört lépteti.
 	 */
 	@Override
-	public void Round()
+	public void round()
 	{
 		ArrayList<Agent> tempList = new ArrayList<Agent>(activeAgents.size());
 		for(Agent curActive: activeAgents) {
@@ -251,8 +251,8 @@ public class Virologist extends Character
 		if(Boolean.TRUE.equals(isVitus)) {
 			ArrayList<Field> neighFields = currField.GetNeighbours();
 			int randomint = rand.nextInt(neighFields.size());
-			Move(neighFields.get(randomint));
-			FieldInteract();
+			move(neighFields.get(randomint));
+			fieldInteract();
 		}
 	}
 }

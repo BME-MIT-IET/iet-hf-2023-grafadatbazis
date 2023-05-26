@@ -60,7 +60,7 @@ public class Field implements Serializable
 	public void BearInteract(Bear b){
 		for(Character c : characters) {
 			if(!c.name.startsWith("b")) {
-				b.CharacterInteract(c);
+				b.characterInteract(c);
 			}		
 		}
 	}

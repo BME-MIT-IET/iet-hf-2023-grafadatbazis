@@ -15,7 +15,7 @@ public class Axe extends Gear
 	@Override
 	public void Effect(Character c) 
 	{
-		c.Die();
+		c.die();
 		canUse = false;
 	}
 

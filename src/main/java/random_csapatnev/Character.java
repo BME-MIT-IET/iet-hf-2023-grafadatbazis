@@ -62,26 +62,26 @@ public class Character implements Serializable
 	 */
 	ArrayList<Agent> craftedAgents = new ArrayList<>();
 	
-	public Character(String _name) {
-		name = _name;
+	public Character(String inputName) {
+		name = inputName;
 	}
-	public Character(Character c, String _name) {
+	public Character(Character c, String inputName) {
 		currMaterial = c.currMaterial;
 		gears = c.gears;
 		activeGears = c.activeGears;
 		craftedAgents = c.craftedAgents;
 		currField = c.currField;
 		isParalyzed = true;
-		name = _name;
+		name = inputName;
 	}
 	
-	public void SetCurrField(Field f) {
+	public void setCurrField(Field f) {
 		currField = f;
 	}
-	public void SetIsParalyzed(Boolean b) {
+	public void setIsParalyzed(Boolean b) {
 		isParalyzed = b;
 	}
-	public void SetIsVitus(Boolean b) {
+	public void setIsVitus(Boolean b) {
 		isVitus = b;
 	}
 	
@@ -89,38 +89,38 @@ public class Character implements Serializable
 	 * A karaktert átlépteti a megadott mezőre.
 	 * @param f A mező ahova a karakter lépni szeretne.
 	 */
-	public void Move(Field f){}
+	public void move(Field f){}
 	/**
 	 * A karakter interaktál azzal a mezővel amin éppen áll(currField)
 	 */
-	public void FieldInteract(){}
+	public void fieldInteract(){}
 	/** A karakter interaktál egy másik karakterrel
 	 * @param c Karakter akivel interaktál.
 	 */
-	public void CharacterInteract(Character c){}
-	public void BearInteract(Character c) {}
+	public void characterInteract(Character c){}
+	public void bearInteract(Character c) {}
 	
 	/**
 	 * A karakter használja a paraméterként megadott ágenst a paraméterként megkapott karakteren
 	 * @param c Character, akin az ágenst kívánjuk használni
 	 * @param a Az ágens amit használni kívánunk.
 	 */
-	public void Use(Character c, Agent a){}
+	public void use(Character c, Agent a){}
 	/**
 	 *  Ez hívódik meg amikor a GameManager a kört lépteti.
 	 */
-	public void AgentUsedOnHim(Agent a, Character v){}
-	public void Round(){}
+	public void agentUsedOnHim(Agent a, Character v){}
+	public void round(){}
 	/**
 	 * Ez hívódik meg amikor a jelenlegi karakteren használják a baltát, ilyenkor a jelenlegi karakter meghal.
 	 */
-	public void Die(){}
+	public void die(){}
 	/**
 	 * A jelenlegi virológustól ellopják az anyagait(currMaterial)
 	 * @param m A max anyagmennyiség amennyit el tudnak lopni.
 	 * @return A ténylegesen ellopott anyagmennyiség.
 	 */
-	public Material StealMaterial(Material m)
+	public Material stealMaterial(Material m)
 	{
 		Material stolenMat = new Material(0,0);
 		for(MatEnum curEnum: MatEnum.values())
@@ -142,7 +142,7 @@ public class Character implements Serializable
 	 * A jelenlegi virológusnak ellopják a felszerelését.
 	 * @return Az ellopott felszerelés.
 	 */
-	public Gear StealGear()
+	public Gear stealGear()
 	{
 		if(!gears.isEmpty())
 		{
@@ -162,7 +162,7 @@ public class Character implements Serializable
 	 * Eldobja a megadott Geart arra a Fieldre amin jelenleg áll.
 	 * @param gE Az eldobandó felszerelés.
 	 */
-	public void DropGear(GearEnum gE) {
+	public void dropGear(GearEnum gE) {
 		Gear droppedGear = null;
 		for(Gear g : gears) {
 			if(g.name == gE) {

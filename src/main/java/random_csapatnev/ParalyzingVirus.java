@@ -19,7 +19,7 @@ public class ParalyzingVirus extends Agent
 	public void Round() 
 	{
 		if(currCharacter != null) {
-			currCharacter.SetIsParalyzed(true);
+			currCharacter.setIsParalyzed(true);
 			activeTime++;
 			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
@@ -48,7 +48,7 @@ public class ParalyzingVirus extends Agent
 		if(!hasProtection) {
 			this.currCharacter = c;
 			currCharacter.activeAgents.add(this);
-			currCharacter.SetIsParalyzed(true);
+			currCharacter.setIsParalyzed(true);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class ParalyzingVirus extends Agent
 	@Override
 	public void Expire() 
 	{
-		currCharacter.SetIsParalyzed(false);
+		currCharacter.setIsParalyzed(false);
 		currCharacter.activeAgents.remove(this);
 	}
 

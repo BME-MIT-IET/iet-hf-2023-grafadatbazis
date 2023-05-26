@@ -18,7 +18,7 @@ public class VitusVaccine extends Agent
 	public void Round() 
 	{
 		if(currCharacter != null) {
-			currCharacter.SetIsVitus(false);
+			currCharacter.setIsVitus(false);
 			activeTime++;
 			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
@@ -40,7 +40,7 @@ public class VitusVaccine extends Agent
 	{
 		c.activeAgents.add(this);
 		this.currCharacter = c;
-		currCharacter.SetIsVitus(false);
+		currCharacter.setIsVitus(false);
 	}
 
 	/**

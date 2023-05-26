@@ -129,7 +129,7 @@ public class MainFrame extends JFrame {
 		
 		jbtFieldInteraction = new JButton(new AbstractAction("FieldInteract") {
 			public void actionPerformed(ActionEvent ae) {
-				v.FieldInteract();
+				v.fieldInteract();
 				refreshView();
 			}
 		});
@@ -530,7 +530,7 @@ public class MainFrame extends JFrame {
                 		v.StealGearInteract(c);
                 	}
                 	else if ("benit".equals(action)) {
-                		c.SetIsParalyzed(true);
+                		c.setIsParalyzed(true);
                 	}
                 	else if ("useAxe".equals(action)) {
                 		if(c.name.startsWith("b")) {
@@ -577,7 +577,7 @@ public class MainFrame extends JFrame {
                 		}
                 	}
                 	if(a != null) {
-                		v.Use(c, a);
+                		v.use(c, a);
                 	}
                 	refreshView();
                 	jf.dispose();
@@ -712,7 +712,7 @@ public class MainFrame extends JFrame {
         
         JButton jbt_fel = new JButton(new AbstractAction("↑") {
             public void actionPerformed(ActionEvent ae) {
-            	v.Move(model.fields[v.currField.x - 1][v.currField.y]);
+            	v.move(model.fields[v.currField.x - 1][v.currField.y]);
             	refreshView();
             	jf.dispose();
             }
@@ -720,7 +720,7 @@ public class MainFrame extends JFrame {
         
         JButton jbt_jobb = new JButton(new AbstractAction("→") {
             public void actionPerformed(ActionEvent ae) {
-            	v.Move(model.fields[v.currField.x][v.currField.y + 1]);            	
+            	v.move(model.fields[v.currField.x][v.currField.y + 1]);            	
             	refreshView();
             	jf.dispose();
             }
@@ -729,7 +729,7 @@ public class MainFrame extends JFrame {
         JButton jbt_le = new JButton(new AbstractAction("↓") {
 
             public void actionPerformed(ActionEvent ae) {
-            	v.Move(model.fields[v.currField.x + 1][v.currField.y]);
+            	v.move(model.fields[v.currField.x + 1][v.currField.y]);
             	refreshView();
             	jf.dispose();
             }
@@ -738,7 +738,7 @@ public class MainFrame extends JFrame {
         JButton jbt_bal = new JButton(new AbstractAction("←") {
             public void actionPerformed(ActionEvent ae) 
             {
-                v.Move(model.fields[v.currField.x][v.currField.y - 1]);
+                v.move(model.fields[v.currField.x][v.currField.y - 1]);
                 
                 refreshView();
                 jf.dispose();
@@ -838,7 +838,7 @@ public class MainFrame extends JFrame {
 			tempList.add(c);
 		}
 		for(Character c : tempList) {
-			c.Round();
+			c.round();
 		}
 	}
 	
@@ -851,8 +851,8 @@ public class MainFrame extends JFrame {
 			if(!c.name.equals("v0")) {
 				ArrayList<Field> neighFields = c.currField.GetNeighbours();
 				int randomint = rand.nextInt(neighFields.size());
-				c.Move(neighFields.get(randomint));
-				c.FieldInteract();
+				c.move(neighFields.get(randomint));
+				c.fieldInteract();
 			}
 		}
 	}

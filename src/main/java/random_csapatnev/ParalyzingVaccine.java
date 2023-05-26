@@ -19,7 +19,7 @@ public class ParalyzingVaccine extends Agent
 	public void Round() 
 	{
 		if(currCharacter != null) {
-			currCharacter.SetIsParalyzed(false);
+			currCharacter.setIsParalyzed(false);
 			activeTime++;
 			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
@@ -42,7 +42,7 @@ public class ParalyzingVaccine extends Agent
 	{
 		c.activeAgents.add(this);
 		this.currCharacter = c;
-		currCharacter.SetIsParalyzed(false);
+		currCharacter.setIsParalyzed(false);
 	}
 
 	/**

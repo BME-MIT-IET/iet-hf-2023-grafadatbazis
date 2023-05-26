@@ -19,7 +19,7 @@ public class VitusVirus extends Agent
 	public void Round() 
 	{
 		if(currCharacter != null) {
-			currCharacter.SetIsVitus(true);
+			currCharacter.setIsVitus(true);
 			activeTime++;
 			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
@@ -48,7 +48,7 @@ public class VitusVirus extends Agent
 		if(!hasProtection) {
 			this.currCharacter = c;
 			currCharacter.activeAgents.add(this);
-			currCharacter.SetIsVitus(true);
+			currCharacter.setIsVitus(true);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class VitusVirus extends Agent
 	@Override
 	public void Expire() 
 	{
-		currCharacter.SetIsVitus(false);
+		currCharacter.setIsVitus(false);
 		currCharacter.activeAgents.remove(this);
 	}
 
