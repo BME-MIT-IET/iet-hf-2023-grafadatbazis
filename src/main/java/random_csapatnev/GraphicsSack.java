@@ -13,7 +13,7 @@ public class GraphicsSack extends GraphicsGear {
 		super(input, parent);
 		try 
 		{
-		    img = ImageIO.read(new File(".\\src\\images\\sack.png"));
+		    img = ImageIO.read(new File(StringLiterals.SACK_PATH));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

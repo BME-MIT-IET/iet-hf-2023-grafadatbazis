@@ -19,7 +19,7 @@ public class Cloak extends Gear
 	 * hogy vírusokat/vakcinák hatását távol tartsa.
 	 */
 	@Override
-	public void Effect(Character c) 
+	public void effect(Character c) 
 	{
 		c.isCloaked = true;
 	}
@@ -31,7 +31,7 @@ public class Cloak extends Gear
 	 * ilyenkor változik a c karakter isCloaked tagváltozója.
 	 */
 	@Override
-	public void PickUp(Character c) 
+	public void pickUp(Character c) 
 	{
 		c.gears.add(this);
 	}
@@ -43,7 +43,7 @@ public class Cloak extends Gear
 	 * ilyenkor változik a c karakter isCloaked tagváltozója.
 	 */
 	@Override
-	public void Remove(Character c)
+	public void remove(Character c)
 	{
 		if(c.activeGears.remove(this)) {
 			c.gears.add(this);

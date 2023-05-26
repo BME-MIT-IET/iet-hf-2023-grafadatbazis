@@ -19,14 +19,14 @@ import java.awt.event.ActionListener;
 public class Main implements Serializable
 {
 	static MainFrame mf;
-	static JFrame StartFrame;
+	static JFrame startFrame;
 	/**
 	 * Program belépési pontja
 	 * @param args Program paraméterei.
 	 */
 	public static void main(String[] args) 
 	{
-		StartFrame();
+		startFrame();
 	}
 	
 	private static void load(String[] split) {
@@ -47,9 +47,9 @@ public class Main implements Serializable
 	}
 	
 	// Alap Frame
-	private static void StartFrame() {
+	private static void startFrame() {
 		JFrame jf = new JFrame("random_csapatnev base_frame");
-		StartFrame = jf;
+		startFrame = jf;
 		jf.setSize(400, 500);
 		jf.setLayout(new GridLayout(4, 1));
 		
@@ -65,7 +65,7 @@ public class Main implements Serializable
 		
 		JButton jbt1 = new JButton(new AbstractAction("New Game") {
 			public void actionPerformed(ActionEvent ae) {
-				NewGameFrame();
+				newGameFrame();
 			}
 		});
 		JButton jbt2 = new JButton(new AbstractAction("Load Game") {
@@ -76,18 +76,18 @@ public class Main implements Serializable
 		        jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				jfc.addChoosableFileFilter(new FileNameExtensionFilter("Vak Virológus Játék Fájl", "vak"));
 				jfc.setAcceptAllFileFilterUsed(false);
-				int result = jfc.showOpenDialog(StartFrame);
+				int result = jfc.showOpenDialog(startFrame);
 				
 				if(result == JFileChooser.APPROVE_OPTION) {
 					try {
 						load(new String[] {"", jfc.getSelectedFile().getPath()});
-						StartFrame.setVisible(false);
+						startFrame.setVisible(false);
 					} catch (Exception e1) {}
 				}
 			}
 		});
 		final JTextField jtf3 = new JTextField(10);
-		jtf3.setFont(new Font("Arial", Font.BOLD, 15));
+		jtf3.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 		JButton jbt3 = new JButton(new AbstractAction("Save") {
 			public void actionPerformed(ActionEvent ae) {
 				saveGameFrame(jtf3.getText());
@@ -99,10 +99,10 @@ public class Main implements Serializable
 			}
 		});
 		
-		jbt1.setFont(new Font("Arial", Font.BOLD, 25));
-		jbt2.setFont(new Font("Arial", Font.BOLD, 25));
-		jbt3.setFont(new Font("Arial", Font.BOLD, 25));
-		jbt4.setFont(new Font("Arial", Font.BOLD, 25));
+		jbt1.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+		jbt2.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+		jbt3.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+		jbt4.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
 		
 		jp1.add(jbt1);
 		jp2.add(jbt2);
@@ -132,7 +132,7 @@ public class Main implements Serializable
 		System.exit(0);
 	}
 	
-	private static void NewGameFrame() {
+	private static void newGameFrame() {
 		final JFrame jf = new JFrame("random_csapatnev new_game_frame");
 		final JTextField jtf2 = new JTextField(40);
 		jf.setSize(750, 500);
@@ -150,15 +150,15 @@ public class Main implements Serializable
 		jp5.setBorder(BorderFactory.createEmptyBorder(0, 150, 10, 150));
 		
 		JLabel jl1 = new JLabel("Ellenfelek száma: ");
-		jl1.setFont(new Font("Arial", Font.BOLD, 15));
+		jl1.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 		final JTextField jtf1 = new JTextField(5);
-		jtf1.setFont(new Font("Arial", Font.BOLD, 15));
+		jtf1.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 		jtf1.setText("2");
 		jp1.add(jl1);
 		jp1.add(jtf1);
 		
 		JLabel jl2 = new JLabel("Random generált játéktér?");
-		jl2.setFont(new Font("Arial", Font.BOLD, 15));
+		jl2.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 		final JCheckBox jc1 = new JCheckBox();
         jc1.addActionListener(new ActionListener() {
             @Override
@@ -171,13 +171,13 @@ public class Main implements Serializable
 		jp2.add(jc1);
 		
 		JLabel jl3 = new JLabel("(vagy)");
-		jl3.setFont(new Font("Arial", Font.BOLD, 15));
+		jl3.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 		jp3.add(jl3);
 		
 		JLabel jl4 = new JLabel("Játéktér String: ");
-		jl4.setFont(new Font("Arial", Font.BOLD, 15));
+		jl4.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 		jtf2.setEnabled(false);
-		jtf2.setFont(new Font("Arial", Font.BOLD, 13));
+		jtf2.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 13));
 		jp4.add(jl4);
 		jp4.add(jtf2);
 		
@@ -205,8 +205,8 @@ public class Main implements Serializable
 	public static void saveGameFrame(String fname) {
 			try {
 				if(!fname.endsWith(".vak")) { fname += ".vak"; }
-				FileOutputStream file_os = new FileOutputStream(fname);
-				ObjectOutputStream oos = new ObjectOutputStream(file_os);
+				FileOutputStream fileos = new FileOutputStream(fname);
+				ObjectOutputStream oos = new ObjectOutputStream(fileos);
 				oos.writeObject(mf);
 				oos.close();
 			} catch (Exception ex) { System.out.println(ex); }

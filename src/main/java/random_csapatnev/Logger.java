@@ -3,7 +3,7 @@ package random_csapatnev;
 public class Logger {
 	static int tabCount = 0;
 	
-	public static String Tabber(int count) {
+	public static String tabber(int count) {
 		StringBuilder sb = new StringBuilder(); 
 	    for (int i = 0; i < count; i++) {
 	        sb.append("\t");
@@ -11,7 +11,7 @@ public class Logger {
 	    return sb.toString();
 	}
 	
-	public static void Out(String inp) {
-		System.out.println(Tabber(tabCount) + inp);
+	public static void out(String inp) {
+		System.out.println(tabber(tabCount) + inp);
 	}
 }

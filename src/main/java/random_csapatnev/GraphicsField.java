@@ -4,9 +4,9 @@ import java.awt.Color;
 
 public class GraphicsField extends GraphicsFieldBase {
 
-	public GraphicsField(int _x, int _y)
+	public GraphicsField(int inputX, int inputY)
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		this.setBackground(new Color(217,217,217));
 	}
 }

@@ -7,23 +7,23 @@ import java.util.ArrayList;
  */
 public class Bear extends Character
 {
-	public Bear(String _name) { 
-		super(_name);
+	public Bear(String inputName) { 
+		super(inputName);
 	}
-	public Bear(Character c, String _name){
-		super(c, _name);
+	public Bear(Character c, String inputName){
+		super(c, inputName);
 		c.isParalyzed = true;
 		isParalyzed = false;
-		name = _name;
+		name = inputName;
 	}
 	/**
 	 * A jelenlegi medve átmozog a paraméterként megkapott mezőre.
 	 */
 	@Override
-	public void Move(Field f)
+	public void move(Field f)
 	{
-		if(currField.IsNeighbour(f)) {
-			f.MoveFrom(currField, this);
+		if(Boolean.TRUE.equals(currField.isNeighbour(f))) {
+			f.moveFrom(currField, this);
 			currField = f;
 		}
 	}
@@ -31,40 +31,40 @@ public class Bear extends Character
 	 *A jelenlegi medve interaktál azzal a mezővel amin jelenleg áll.
 	 */
 	@Override
-	public void FieldInteract()
+	public void fieldInteract()
 	{
-		currField.BearInteract(this);
+		currField.bearInteract(this);
 	}
 	/**
 	 * A jelenlegi medve interaktál a paraméterül kapott karakterrel.
 	 */
 	@Override
-	public void CharacterInteract(Character c)
+	public void characterInteract(Character c)
 	{
-		Use(c, new BearVirus());
+		use(c, new BearVirus());
 	}
 	/**
 	 *Felülírja a Character Use függvényét, a megadott karakteren használja a megadott ágenst. (Ez a medve esetében a medve vírus.)
 	 */
 	@Override
-	public void Use(Character c, Agent a)
+	public void use(Character c, Agent a)
 	{
-		if(currField.ContainsCharacter(c)) {
-			c.AgentUsedOnHim(a, c);
+		if(Boolean.TRUE.equals(currField.containsCharacter(c))) {
+			c.agentUsedOnHim(a, c);
 		}
 	}
 	/**
 	 *  Ez hívódik meg amikor a GameManager a köröket lépteti.
 	 */
 	@Override
-	public void Round()
+	public void round()
 	{
 	}
 	/**
 	 * Ez a függvény hívódik meg amikor a jelenlegi medve meghal.
 	 */
 	@Override
-	public void Die()
+	public void die()
 	{
 		Character c = new Character(this, "c" + this.name.substring(1));
 		MainFrame.Instance.model.characters.add(c);
@@ -79,7 +79,7 @@ public class Bear extends Character
 		}
 		for(GraphicsCharacter e : tempList) {
 			if(e.c == this) {
-				e.Remove();
+				e.remove();
 				MainFrame.Instance.model.graphicsCharacter.remove(e);
 				MainFrame.Instance.refreshView();
 			}

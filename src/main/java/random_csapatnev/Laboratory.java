@@ -13,9 +13,9 @@ public class Laboratory extends Field
 	/**
 	 * Konstruktor.
 	 */
-	public Laboratory(int _x, int _y) 
+	public Laboratory(int inputX, int inputY) 
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		Random r = new Random();
 		Agent a1;
 		Agent a2;
@@ -82,7 +82,7 @@ public class Laboratory extends Field
 	 * Felülírja a Field Interact függvényét, az átadott c karakternek megtanítja az itt tárolt genetikai kódokat.
 	 */
 	@Override
-	public void Interact(Character c)
+	public void interact(Character c)
 	{
 		for(Agent a : agents) {
 			for(Agent ak : c.knownAgents) {
@@ -90,11 +90,11 @@ public class Laboratory extends Field
 					return;
 				}
 			}
-			a.Learn(c);
-			if(a.name == "BearVirus") {
-				a.Effect(c);
+			a.learn(c);
+			if("BearVirus".equals(a.name)) {
+				a.affect(c);
 			}
 		}
-		MainFrame.Instance.EndCheck();
+		MainFrame.Instance.endCheck();
 	}
 }

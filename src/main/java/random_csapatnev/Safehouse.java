@@ -17,8 +17,8 @@ public class Safehouse extends Field
 	 * Konstruktor.
 	 * @param g Az adott Safehouse-ban található Gear.
 	 */
-	public Safehouse(int _x, int _y){
-		super(_x, _y);
+	public Safehouse(int inputX, int inputY){
+		super(inputX, inputY);
 		Random r = new Random();
 		switch(r.nextInt(4)) {
 		case 0:
@@ -42,10 +42,10 @@ public class Safehouse extends Field
 	 * ezzel a mezővel, akkor átadja neki a védőfelszereléseket.
 	 */
 	@Override
-	public void Interact(Character c)
+	public void interact(Character c)
 	{
 		if(gear != null) {
-			gear.PickUp(c);
+			gear.pickUp(c);
 			gear = null;
 		}
 	}

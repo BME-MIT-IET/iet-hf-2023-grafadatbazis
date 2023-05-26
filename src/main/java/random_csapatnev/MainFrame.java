@@ -14,13 +14,14 @@ import java.awt.event.ActionListener;
  *
  */
 public class MainFrame extends JFrame {
+	Random rand = new Random();
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	// Singleton
-	static MainFrame Instance; 
+	static MainFrame Instance = null;
 	
 	Virologist v;
 	int increment = 0;
@@ -65,19 +66,20 @@ public class MainFrame extends JFrame {
 	
 	ArrayList<String> winCon = new ArrayList<>();
 	
-	public MainFrame(MainFrame _mf) {
+	public MainFrame(MainFrame inputMF) {
 		this();
-		view = _mf.view;
-		model = _mf.model;
-		v = _mf.v;
-		increment = _mf.increment;
+		view = inputMF.view;
+		model = inputMF.model;
+		v = inputMF.v;
+		increment = inputMF.increment;
 		addPanels();
 		refreshView();
-		StartRounds();
+		startRounds();
 	}
 	
 	public MainFrame() 
 	{	
+		MainFrame.Instance = this;
 		frame = new JFrame("random_csapatnev main_frame");
 		frame.setSize(1500, 1030);
 		GridLayout layout = new GridLayout(1, 2);
@@ -102,17 +104,17 @@ public class MainFrame extends JFrame {
 		vitusEffect = new JLabel("label10");
 		paralyzedEffect = new JLabel("label11");
 		
-		actualField.setFont(new Font("Arial", Font.BOLD, 15));
-		actualMaterial.setFont(new Font("Arial", Font.BOLD, 15));
-		aminoacid.setFont(new Font("Arial", Font.BOLD, 15));
-		nucleotide.setFont(new Font("Arial", Font.BOLD, 15));
-		activeGears.setFont(new Font("Arial", Font.BOLD, 15));
-		passiveGears.setFont(new Font("Arial", Font.BOLD, 15));
-		activeAgents.setFont(new Font("Arial", Font.BOLD, 15));
-		knownAgents.setFont(new Font("Arial", Font.BOLD, 15));
-		craftedAgents.setFont(new Font("Arial", Font.BOLD, 15));
-		vitusEffect.setFont(new Font("Arial", Font.BOLD, 15));
-		paralyzedEffect.setFont(new Font("Arial", Font.BOLD, 15));
+		actualField.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		actualMaterial.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		aminoacid.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		nucleotide.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		activeGears.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		passiveGears.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		activeAgents.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		knownAgents.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		craftedAgents.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		vitusEffect.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		paralyzedEffect.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 
 		model = new Model();
 		view = new View(model, frame);
@@ -125,7 +127,7 @@ public class MainFrame extends JFrame {
 		
 		jbtFieldInteraction = new JButton(new AbstractAction("FieldInteract") {
 			public void actionPerformed(ActionEvent ae) {
-				v.FieldInteract();
+				v.fieldInteract();
 				refreshView();
 			}
 		});
@@ -142,13 +144,13 @@ public class MainFrame extends JFrame {
 				if(y-1 >= 0 && model.fields[x][y-1] != null) {
 					left = true;
 				}
-				if(x+1 <= model.M-1 && model.fields[x+1][y] != null) {
+				if(x+1 <= model.sizeM-1 && model.fields[x+1][y] != null) {
 					bot = true;
 				}
-				if(y+1 <= model.N-1 && model.fields[x][y+1] != null) {
+				if(y+1 <= model.sizeN-1 && model.fields[x][y+1] != null) {
 					right = true;
 				}
-				MerreFrame(top, right, bot, left);
+				movePickerFrame(top, right, bot, left);
 			}
 		});
 		
@@ -156,7 +158,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "stealMaterial");
+						virologistFrame(v.currField.characters, "stealMaterial");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -168,7 +170,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "stealGear");
+						virologistFrame(v.currField.characters, "stealGear");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -178,22 +180,22 @@ public class MainFrame extends JFrame {
 		
 		jbtGearInteraction = new JButton(new AbstractAction("Felszerelés Interakciók") {
 			public void actionPerformed(ActionEvent ae) {
-				if(v.gears.size() > 0 || v.activeGears.size() > 0) {
-					GearPickerFrame();
+				if(!v.gears.isEmpty() || !v.activeGears.isEmpty()) {
+					gearPickerFrame();
 				}
 			}
 		});
 		
 		jbtCraftAgent = new JButton(new AbstractAction("Craft ágens") {
 			public void actionPerformed(ActionEvent ae) {
-				AgentCraftPickerFrame();
+				agentCraftPickerFrame();
 			}
 		});
 		
 		jbtUseAgent = new JButton(new AbstractAction("Ágens használata") {
 			public void actionPerformed(ActionEvent ae) {
 				try {
-					VirologistFrame(v.currField.characters, "useAgent");
+					virologistFrame(v.currField.characters, "useAgent");
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -204,7 +206,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "useAxe");
+						virologistFrame(v.currField.characters, "useAxe");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -216,7 +218,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
 					if(v.currField.characters.size() > 1) {
-						VirologistFrame(v.currField.characters, "benit");
+						virologistFrame(v.currField.characters, "benit");
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -226,8 +228,8 @@ public class MainFrame extends JFrame {
 		
 		jbtAdminRound = new JButton(new AbstractAction("Admin: Kör léptetése") {
 			public void actionPerformed(ActionEvent ae) {
-				Round();
-				AI_Round();
+				round();
+				aiRound();
 				refreshView();
 			}
 		});
@@ -235,7 +237,7 @@ public class MainFrame extends JFrame {
 		jbtAdminAddVirologist = new JButton(new AbstractAction("Admin: Virológus lerakása") {
 			public void actionPerformed(ActionEvent ae) {
 				Virologist vEnemy = new Virologist("v" + increment++);
-				vEnemy.currMaterial.AddMaterial(new Material(50, 50));
+				vEnemy.currMaterial.addMaterial(new Material(50, 50));
 				model.characters.add(vEnemy);
 				vEnemy.currField = v.currField;
 				vEnemy.currField.characters.add(vEnemy);
@@ -310,20 +312,20 @@ public class MainFrame extends JFrame {
 		
 		for(int i = 0; i < enemyCount; i++) {
 			Virologist vEnemy = new Virologist("v" + increment++);
-			vEnemy.currMaterial.AddMaterial(new Material(50, 50));
+			vEnemy.currMaterial.addMaterial(new Material(50, 50));
 			model.characters.add(vEnemy);
-			int randN = new Random().nextInt(model.N);
-			int randM = new Random().nextInt(model.M);
+			int randN = new Random().nextInt(model.sizeN);
+			int randM = new Random().nextInt(model.sizeM);
 			vEnemy.currField = model.fields[randN][randM];
 			model.fields[randN][randM].characters.add(vEnemy);
 			GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
 			model.graphicsCharacter.add(vGEnemy);
 		}
 		refreshView();
-		StartRounds();
+		startRounds();
 	}
 	
-	public void StartRounds() {
+	public void startRounds() {
 		Thread t1 = null;
 		t1 = new Thread(new Runnable() {
 			@Override
@@ -332,7 +334,7 @@ public class MainFrame extends JFrame {
 					while(true) {
 						Thread.sleep(3000);
 						if(aiToggle) {
-							OverallRound();
+							overallRound();
 							refreshView();
 						}
 					}
@@ -347,8 +349,8 @@ public class MainFrame extends JFrame {
 	private void generateFieldsFromMapMatrix(String inputString)
 	{		
 		String[] rows = inputString.split(";");
-		model.N = rows.length;
-		model.M = rows[0].length();
+		model.sizeN = rows.length;
+		model.sizeM = rows[0].length();
 	    model.graphicsFields = new GraphicsFieldBase[rows[0].length()][rows.length];
 	    model.fields = new Field[rows[0].length()][rows.length];
 	    for(int i = 0; i < model.graphicsFields.length; ++i)
@@ -442,9 +444,8 @@ public class MainFrame extends JFrame {
 	}
 	private void generateRandomFields()
 	{
-		Random rand = new Random();
 		int length = rand.nextInt(15 - 10) + 10;
-	    String inputStr = "";
+		StringBuilder sb = new StringBuilder();
 	    for(int i = 0; i < length; ++i)
 	    {
 	    	for(int j = 0; j < length; ++j)
@@ -452,24 +453,24 @@ public class MainFrame extends JFrame {
 	    		int random = rand.nextInt(100);
 	    		if(random < 3)
 	    		{
-    				inputStr += "S";
+					sb.append("S");
 	    		}
 	    		else if(random >= 3 && random < 6)
 	    		{
-    				inputStr += "W";
+					sb.append("W");
 	    		}
 	    		else if(random >= 6 && random < 11)
 	    		{
-    				inputStr += "L";	
+					sb.append("L");	
 	    		}
 	    		else
 	    		{
-    				inputStr += "F";
+					sb.append("F");
 	    		}
 	    	}
-	    	inputStr += ";";
+			sb.append(";");
 	    }
-	    generateFieldsFromMapMatrix(inputStr);
+	    generateFieldsFromMapMatrix(sb.toString());
 	}
 	private void addPanels()
 	{
@@ -492,13 +493,13 @@ public class MainFrame extends JFrame {
 	{
 		view.repaintAll();
 		if(v != null) {
-			UpdateLabels();
+			updateLabels();
 		}
 		this.invalidate();
 		this.repaint();
 	}
 	
-    public void VirologistFrame(final ArrayList<Character> virList, final String action) throws InterruptedException {
+    public void virologistFrame(final ArrayList<Character> virList, final String action) throws InterruptedException {
         final JFrame jf = new JFrame("random_csapatnev virologist_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -516,25 +517,25 @@ public class MainFrame extends JFrame {
                 			c = ve;
                 		}
                 	}
-                	if(action == "useAgent") {
-                		AgentPickerFrame(c);
+                	if("useAgent".equals(action)) {
+                		agentPickerFrame(c);
                 	}
-                	else if (action == "stealMaterial") {
+                	else if ("stealMaterial".equals(action)) {
                 		System.out.println(c);
-                		v.StealMaterialInteract(c);
+                		v.stealMaterialInteract(c);
                 	}
-                	else if (action == "stealGear") {
-                		v.StealGearInteract(c);
+                	else if ("stealGear".equals(action)) {
+                		v.stealGearInteract(c);
                 	}
-                	else if (action == "benit") {
-                		c.SetIsParalyzed(true);
+                	else if ("benit".equals(action)) {
+                		c.setIsParalyzed(true);
                 	}
-                	else if (action == "useAxe") {
+                	else if ("useAxe".equals(action)) {
                 		if(c.name.startsWith("b")) {
                 			for(Gear g : v.activeGears) {
                     			if (g.name == GearEnum.AXE) {
-                    				if(g.canUse) {
-                    					g.Effect(c);
+                    				if(Boolean.TRUE.equals(g.canUse)) {
+                    					g.effect(c);
                     				}
                     			}
                     		}
@@ -544,18 +545,18 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
     
-    public void AgentPickerFrame(final Character c) {
+    public void agentPickerFrame(final Character c) {
         final JFrame jf = new JFrame("random_csapatnev agent_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -574,24 +575,24 @@ public class MainFrame extends JFrame {
                 		}
                 	}
                 	if(a != null) {
-                		v.Use(c, a);
+                		v.use(c, a);
                 	}
                 	refreshView();
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
     
-    public void AgentCraftPickerFrame() {
+    public void agentCraftPickerFrame() {
         final JFrame jf = new JFrame("random_csapatnev agent_craft_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -610,24 +611,24 @@ public class MainFrame extends JFrame {
                 		}
                 	}
                 	if(a != null) {
-                		v.CraftAgent(a);
+                		v.craftAgent(a);
                 	}
                 	refreshView();
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
     
-    public void GearPickerFrame() {
+    public void gearPickerFrame() {
         final JFrame jf = new JFrame("random_csapatnev gear_picker_frame");
         jf.setSize(250, 350);
         jf.setLayout(new FlowLayout());
@@ -641,18 +642,18 @@ public class MainFrame extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                 	Gear g = null;
                 	for(Gear ge : v.gears) {
-                		if(ge.name.equals(StringToGearEnum(e.getActionCommand()))) {
+                		if(ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
                 			g = ge;
                 		}
                 	}
                 	if(g != null) {
-                		v.EquipGear(g.name);
+                		v.equipGear(g.name);
                 	}
                 	refreshView();
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -664,18 +665,18 @@ public class MainFrame extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                 	Gear g = null;
                 	for(Gear ge : v.activeGears) {
-                		if(ge.name.equals(StringToGearEnum(e.getActionCommand()))) {
+                		if(ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
                 			g = ge;
                 		}
                 	}
                 	if(g != null) {
-                		v.UnequipGear(g.name);
+                		v.unequipGear(g.name);
                 	}
                 	refreshView();
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font("Arial", Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             item.setForeground(Color.RED);
             jf.add(item);
             buttList.add(item);
@@ -683,11 +684,11 @@ public class MainFrame extends JFrame {
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(frame);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
 	
-    public GearEnum StringToGearEnum(String s) {
+    public GearEnum stringToGearEnum(String s) {
     	switch(s) {
     	case "AXE":
     		return GearEnum.AXE;
@@ -702,154 +703,159 @@ public class MainFrame extends JFrame {
     	}
     }
     
-	public void MerreFrame(boolean fel, boolean jobb, boolean le, boolean bal) {
-        final JFrame jf = new JFrame("random_csapatnev merre_frame");
+	public void movePickerFrame(boolean fel, boolean jobb, boolean le, boolean bal) {
+        final JFrame jf = new JFrame("random_csapatnev movePickerFrame");
         jf.setSize(200, 250);
         jf.setLayout(new BorderLayout());
         
-        JButton jbt_fel = new JButton(new AbstractAction("↑") {
+        JButton jbtFel = new JButton(new AbstractAction("↑") {
             public void actionPerformed(ActionEvent ae) {
-            	v.Move(model.fields[v.currField.x - 1][v.currField.y]);
+            	v.move(model.fields[v.currField.x - 1][v.currField.y]);
             	refreshView();
             	jf.dispose();
             }
         });
         
-        JButton jbt_jobb = new JButton(new AbstractAction("→") {
+        JButton jbtJobb = new JButton(new AbstractAction("→") {
             public void actionPerformed(ActionEvent ae) {
-            	v.Move(model.fields[v.currField.x][v.currField.y + 1]);            	
+            	v.move(model.fields[v.currField.x][v.currField.y + 1]);            	
             	refreshView();
             	jf.dispose();
             }
         });
         
-        JButton jbt_le = new JButton(new AbstractAction("↓") {
+        JButton jbtLe = new JButton(new AbstractAction("↓") {
 
             public void actionPerformed(ActionEvent ae) {
-            	v.Move(model.fields[v.currField.x + 1][v.currField.y]);
+            	v.move(model.fields[v.currField.x + 1][v.currField.y]);
             	refreshView();
             	jf.dispose();
             }
         });
         
-        JButton jbt_bal = new JButton(new AbstractAction("←") {
+        JButton jbtBal = new JButton(new AbstractAction("←") {
             public void actionPerformed(ActionEvent ae) 
             {
-                v.Move(model.fields[v.currField.x][v.currField.y - 1]);
+                v.move(model.fields[v.currField.x][v.currField.y - 1]);
                 
                 refreshView();
                 jf.dispose();
             }
         });
         
-        jbt_fel.setFont(new Font("Arial", Font.BOLD, 25));
-        jbt_jobb.setFont(new Font("Arial", Font.BOLD, 25));
-        jbt_le.setFont(new Font("Arial", Font.BOLD, 25));
-        jbt_bal.setFont(new Font("Arial", Font.BOLD, 25));
+        jbtFel.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+        jbtJobb.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+        jbtLe.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+        jbtBal.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
         
-        jbt_fel.setEnabled(fel);
-        jbt_jobb.setEnabled(jobb);
-        jbt_le.setEnabled(le);
-        jbt_bal.setEnabled(bal);
+        jbtFel.setEnabled(fel);
+        jbtJobb.setEnabled(jobb);
+        jbtLe.setEnabled(le);
+        jbtBal.setEnabled(bal);
         
-        jf.add(jbt_fel, BorderLayout.PAGE_START);
-        jf.add(jbt_jobb, BorderLayout.LINE_END);
-        jf.add(jbt_le, BorderLayout.PAGE_END);
-        jf.add(jbt_bal, BorderLayout.LINE_START);
+        jf.add(jbtFel, BorderLayout.PAGE_START);
+        jf.add(jbtJobb, BorderLayout.LINE_END);
+        jf.add(jbtLe, BorderLayout.PAGE_END);
+        jf.add(jbtBal, BorderLayout.LINE_START);
         
         jf.setResizable(false);
         jf.setLocationRelativeTo(jbtMove);
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jf.setVisible(true); 
     }
 	
-	public void UpdateLabels() {
+	public void updateLabels() {
 		actualField.setText(String.format("Aktuális Mező: (%s;%s)", v.currField.x, v.currField.y));
 		
 		actualMaterial.setText("Aktuális Anyagok:");
 		aminoacid.setText(String.format("    -Aminosav: %s/%s", v.currMaterial.container.get(MatEnum.AMINOACID), v.maxMaterial.container.get(MatEnum.AMINOACID)));
 		nucleotide.setText(String.format("    -Nukleotid: %s/%s", v.currMaterial.container.get(MatEnum.NUCLEOTIDE), v.maxMaterial.container.get(MatEnum.NUCLEOTIDE)));
 
-		String activeGearsS = "Aktív felszerelések: ";
+		StringBuilder sb = new StringBuilder();
+		sb.append("Aktív felszerelések: ");
 		for(Gear a : v.activeGears) {
 			if(a.name == GearEnum.AXE) 
 			{
-				if(a.canUse) {
-					activeGearsS += a.name + ", ";
+				if(Boolean.TRUE.equals(a.canUse)) {
+					sb.append(a.name + ", ");
 				}
 				else {
-					activeGearsS += a.name + "(B), ";
+					sb.append(a.name + "(B), ");
 				}
 			}
 			else 
 			{
-				activeGearsS += a.name + ", ";
+				sb.append(a.name + ", ");
 			}
 			
 		}
-		activeGears.setText(activeGearsS.substring(0, activeGearsS.length()-2));
+		activeGears.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String passiveGearsS = "Inaktív felszerelések: ";
+		sb.setLength(0);
+		sb.append("Inaktív felszerelések: ");
+
 		for(Gear a : v.gears) {
-			passiveGearsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		passiveGears.setText(passiveGearsS.substring(0, passiveGearsS.length()-2));
+		passiveGears.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String activeAgentsS = "Aktív ágensek: ";
+		sb.setLength(0);
+		sb.append("Aktív ágensek: ");
 		for(Agent a : v.activeAgents) {
-			activeAgentsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		activeAgents.setText(activeAgentsS.substring(0, activeAgentsS.length()-2));
+		activeAgents.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String knownAgentsS = "Megtanult ágensek: ";
+		sb.setLength(0);
+		sb.append("Megtanult ágensek: ");
 		for(Agent a : v.knownAgents) {
-			knownAgentsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		knownAgents.setText(knownAgentsS.substring(0, knownAgentsS.length()-2));
+		knownAgents.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String craftedAgentsS = "Craftolt ágensek: ";
+		sb.setLength(0);
+		sb.append("Craftolt ágensek: ");
 		for(Agent a : v.craftedAgents) {
-			craftedAgentsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		craftedAgents.setText(craftedAgentsS.substring(0, craftedAgentsS.length()-2));
+		craftedAgents.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
 		vitusEffect.setText(String.format("Vitustánc hatás?: %s", v.isVitus));
 		paralyzedEffect.setText(String.format("Bénult hatás?: %s", v.isParalyzed));
 	}
 	
-	public void OverallRound() {
-		Round();
-		AI_Round();
+	public void overallRound() {
+		round();
+		aiRound();
 	}
 
-	public void Round()
+	public void round()
 	{
 		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
 		for(Character c : model.characters) {
 			tempList.add(c);
 		}
 		for(Character c : tempList) {
-			c.Round();
+			c.round();
 		}
 	}
 	
-	public void AI_Round() {
+	public void aiRound() {
 		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
 		for(Character c : model.characters) {
 			tempList.add(c);
 		}
 		for(Character c : tempList) {
 			if(!c.name.equals("v0")) {
-				ArrayList<Field> neighFields = c.currField.GetNeighbours();
-				Random r = new Random();
-				int rand = r.nextInt(neighFields.size());
-				c.Move(neighFields.get(rand));
-				c.FieldInteract();
+				ArrayList<Field> neighFields = c.currField.getNeighbours();
+				int randomint = rand.nextInt(neighFields.size());
+				c.move(neighFields.get(randomint));
+				c.fieldInteract();
 			}
 		}
 	}
 	
-	public void EndCheck()
+	public void endCheck()
 	{
 		for(Character c : model.characters) {
 			if(c.knownAgents.size() == winCon.size()) {

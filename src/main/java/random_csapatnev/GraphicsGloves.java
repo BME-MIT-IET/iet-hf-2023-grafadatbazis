@@ -13,7 +13,7 @@ public class GraphicsGloves extends GraphicsGear {
 		super(input, parent);
 		try 
 		{
-		    img = ImageIO.read(new File(".\\src\\images\\gloves2.png"));
+		    img = ImageIO.read(new File(StringLiterals.GLOVES_PATH));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

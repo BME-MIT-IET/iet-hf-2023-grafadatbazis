@@ -6,20 +6,20 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 public abstract class GraphicsGear extends JPanel {
-	JPanel parent;
+	JPanel graphicsParent;
 	Safehouse position;
 	transient BufferedImage img;
 	
 	public GraphicsGear(Safehouse input, JPanel parent) 
 	{
 		super();
-		this.parent = parent;
+		graphicsParent = parent;
 		position = input;
 		parent.add(this);
 	}
-	public void Draw()
+	public void draw()
 	{
-		this.setSize(parent.getWidth(), parent.getHeight());
+		this.setSize(graphicsParent.getWidth(), graphicsParent.getHeight());
 		this.setVisible(true);
 		this.setOpaque(false);
 		this.revalidate();
@@ -31,7 +31,7 @@ public abstract class GraphicsGear extends JPanel {
 		super.paint(g);
 		if(position.gear != null)
 		{
-			g.drawImage(img, 0, parent.getHeight() - parent.getHeight()/2, parent.getWidth()/2, parent.getHeight()/2, null);
+			g.drawImage(img, 0, graphicsParent.getHeight() - graphicsParent.getHeight()/2, graphicsParent.getWidth()/2, graphicsParent.getHeight()/2, null);
 		}
 	}
 }

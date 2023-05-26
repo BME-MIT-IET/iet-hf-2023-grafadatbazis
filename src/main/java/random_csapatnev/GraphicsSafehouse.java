@@ -5,9 +5,9 @@ import java.awt.Color;
 @SuppressWarnings("serial")
 public class GraphicsSafehouse extends GraphicsFieldBase 
 {
-	public GraphicsSafehouse(int _x, int _y)
+	public GraphicsSafehouse(int inputX, int inputY)
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		this.setBackground(new Color(255,153,0));
 	}
 }

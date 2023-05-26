@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public class Model implements Serializable 
 {
-	int N;
-	int M;
+	int sizeN;
+	int sizeM;
 	
 	Field[][] fields;
 	ArrayList<Character> characters = new ArrayList<Character>();
@@ -34,7 +34,7 @@ public class Model implements Serializable
 	public void setAgents(ArrayList<Agent> input) { agents = input; }
 	public void setGears(ArrayList<Gear> input) { gears = input; }
 	public void setMaterials(ArrayList<Material> input) { materials = input; }
-	public void setDim(int x, int y) { N = x; M = y; }
+	public void setDim(int x, int y) { sizeN = x; sizeM = y; }
 	
 	public Field[][] getFields() { return fields; }
 	public ArrayList<Character> getCharacters() { return characters; }

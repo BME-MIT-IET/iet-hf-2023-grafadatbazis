@@ -12,9 +12,9 @@ public class Field implements Serializable
 {
 	int x;
 	int y;
-	public Field(int _x, int _y) {
-		x = _x;
-		y = _y;
+	public Field(int inputX, int inputY) {
+		x = inputX;
+		y = inputY;
 	}
 	/**
 	 * A szomszédos mezők listája.
@@ -31,7 +31,7 @@ public class Field implements Serializable
 	 */
 	
 	
-	public Boolean IsNeighbour(Field f)
+	public Boolean isNeighbour(Field f)
 	{
 		return neighbours.contains(f);
 	}
@@ -39,7 +39,7 @@ public class Field implements Serializable
 	 * Eltávolítja a mezőről a paraméterül kapott virológust.
 	 * @param v Eltávolítandó virológus.
 	 */
-	public void RemoveCharacter(Character c)
+	public void removeCharacter(Character c)
 	{
 		characters.remove(c);
 	}
@@ -48,7 +48,7 @@ public class Field implements Serializable
 	 * @param c Az ellenőrizendő karakter
 	 * @return Ezen a mezőn áll-e a v Virológus.
 	 */
-	public Boolean ContainsCharacter(Character c)
+	public Boolean containsCharacter(Character c)
 	{
 		return characters.contains(c);
 	}
@@ -56,11 +56,11 @@ public class Field implements Serializable
 	 * Az éppen itt álló c karakter interaktál a mezővel.
 	 * @param c Az interaktáló karakter.
 	 */
-	public void Interact(Character c) {}
-	public void BearInteract(Bear b){
+	public void interact(Character c) {}
+	public void bearInteract(Bear b){
 		for(Character c : characters) {
 			if(!c.name.startsWith("b")) {
-				b.CharacterInteract(c);
+				b.characterInteract(c);
 			}		
 		}
 	}
@@ -69,17 +69,17 @@ public class Field implements Serializable
 	 * @param f A mező amiről el akar mozogni a Virológus.
 	 * @param c A karakter aki mozogni kíván.
 	 */
-	public void MoveFrom(Field f, Character c)
+	public void moveFrom(Field f, Character c)
 	{
 		this.characters.add(c);
-		f.RemoveCharacter(c);
+		f.removeCharacter(c);
 	}
 	
 	/**
 	 * Visszaadja, a letárolt szomszédos mezők listáját.
 	 * @return Szomszédos mezők listája.
 	 */
-	public ArrayList<Field> GetNeighbours()
+	public ArrayList<Field> getNeighbours()
 	{
 		return neighbours;
 	}
@@ -87,7 +87,7 @@ public class Field implements Serializable
 	 * Visszaadja a letárolt a mezőn rajta álló karakterek listáját.
 	 * @return A jelenlegi mezőn álló karakterek.
 	 */
-	public ArrayList<Character> GetCharacters()
+	public ArrayList<Character> getCharacters()
 	{
 		return characters;
 	}

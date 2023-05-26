@@ -9,9 +9,9 @@ import java.util.Random;
  */
 public class Warehouse extends Field
 {
-	public Warehouse(int _x, int _y) 
+	public Warehouse(int inputX, int inputY) 
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		material = new Material(new Random().nextInt(100) + 1, new Random().nextInt(100) + 1);
 	}
 	/**
@@ -22,17 +22,17 @@ public class Warehouse extends Field
 	 * Felülírja a Field Interact függvényét, az átadott c karakternek átadja, a tárolt anyagokat.
 	 */
 	@Override
-	public void Interact(Character c)
+	public void interact(Character c)
 	{
-		material.PickUp(c);
+		material.pickUp(c);
 	}
 	/**
 	 * Az a függvény, amikor a medve interaktál a jelenlegi mezővel, ezzel elpusztítva az itt lévő anyagokat.
 	 */
 	@Override
-	public void BearInteract(Bear b)
+	public void bearInteract(Bear b)
 	{
-		super.BearInteract(b);
-		material = material.Remove(material);
+		super.bearInteract(b);
+		material = material.remove(material);
 	}
 }

@@ -18,9 +18,9 @@ public class Sack extends Gear
 	 * Felülírja a Gear Effect függvényét, akkor hívódik meg, amikor az adott c karakterre kifejti a kapacitás növelő hatását.
 	 */
 	@Override
-	public void Effect(Character c) 
+	public void effect(Character c) 
 	{
-		c.maxMaterial.AddMaterial(plusCapacity);
+		c.maxMaterial.addMaterial(plusCapacity);
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class Sack extends Gear
 	 * bekerül a c karakter felvett tárgyai közé.
 	 */
 	@Override
-	public void PickUp(Character c) 
+	public void pickUp(Character c) 
 	{
 		c.gears.add(this);
 	}
@@ -41,10 +41,10 @@ public class Sack extends Gear
 	 * kikerül a karakter felvett tárgyai közül.
 	 */
 	@Override
-	public void Remove(Character c)
+	public void remove(Character c)
 	{
 		if(c.activeGears.remove(this)) {
-			c.maxMaterial.Remove(plusCapacity);
+			c.maxMaterial.remove(plusCapacity);
 			c.gears.add(this);
 		}
 	}

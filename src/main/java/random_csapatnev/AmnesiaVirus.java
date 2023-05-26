@@ -15,7 +15,7 @@ public class AmnesiaVirus extends Agent
 	 * a karakter Round függvénye hívja meg.
 	 */
 	@Override
-	public void Round() 
+	public void round() 
 	{
 		expireDate--;
 		if(expireDate == 0) {
@@ -27,11 +27,11 @@ public class AmnesiaVirus extends Agent
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását karakterre.
 	 */
 	@Override
-	public void Effect(Character c) 
+	public void affect(Character c) 
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if(a.name == "AmnesiaVaccine" || a.name == "ProtectiveVaccine") {
+			if(StringLiterals.AMN_VACCINE.equals(a.name) || StringLiterals.PROT_VACCINE.equals(a.name)) {
 				hasProtection = true;
 			}
 		}
@@ -46,13 +46,13 @@ public class AmnesiaVirus extends Agent
 	 * Felülírja az Agent Expire metódusát, ez a függvény hívódik meg amikor lejár vírus hatása.
 	 */
 	@Override
-	public void Expire() 
+	public void expire() 
 	{
 		currCharacter.activeAgents.remove(this);
 	}
 
 	@Override
-	public Agent CreateNew() 
+	public Agent createNew() 
 	{
 		return new AmnesiaVirus();
 	}

@@ -9,26 +9,28 @@ import java.util.Random;
  */
 public class BearVirus extends Agent 
 {
+	private Random rand = new Random();
+
 	public  BearVirus(){
 		name = "BearVirus";
 	}
 	@Override
-	public void Round() {}
+	public void round() {}
 
 	/**
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását virológusra.
 	 */
 	@Override
-	public void Effect(Character c)
+	public void affect(Character c)
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if(a.name == "ProtectiveVaccine" || (c.isCloaked && new Random().nextInt(1000) <= 823)) {
+			if(StringLiterals.PROT_VACCINE.equals(a.name) || (c.isCloaked && rand.nextInt(1000) <= 823)) {
 				hasProtection = true;
 			}
 		}
 		if(!hasProtection) {
-			c.currField.RemoveCharacter(c);
+			c.currField.removeCharacter(c);
 			
 			ArrayList<GraphicsCharacter> tempList = new ArrayList<GraphicsCharacter>(MainFrame.Instance.model.graphicsCharacter.size());
 			for(GraphicsCharacter e : MainFrame.Instance.model.graphicsCharacter) {
@@ -36,7 +38,7 @@ public class BearVirus extends Agent
 			}
 			for(GraphicsCharacter e : tempList) {
 				if(e.c == c) {
-					e.Remove();
+					e.remove();
 					MainFrame.Instance.model.graphicsCharacter.remove(e);
 					MainFrame.Instance.refreshView();
 				}
@@ -55,13 +57,13 @@ public class BearVirus extends Agent
 	}
 
 	@Override
-	public void Expire() 
+	public void expire() 
 	{
 		currCharacter.activeAgents.remove(this);
 	}
 
 	@Override
-	public Agent CreateNew() 
+	public Agent createNew() 
 	{
 		return new BearVirus();
 	}

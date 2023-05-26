@@ -1,5 +1,7 @@
 package random_csapatnev;
 
+import java.util.Objects;
+
 /**
  * Agent osztályból származik, felelőssége, megakadályozni az amnézia vírus hatását.
  */
@@ -14,12 +16,12 @@ public class AmnesiaVaccine extends Agent
 	 * a karakter Round függvénye hívja meg.
 	 */
 	@Override
-	public void Round() 
+	public void round() 
 	{
 		if(currCharacter != null) {
 			activeTime++;
-			if(activeTime == effectTime) {
-				Expire();
+			if(Objects.equals(activeTime, effectTime)) {
+				expire();
 			}
 		}
 		else {
@@ -34,7 +36,7 @@ public class AmnesiaVaccine extends Agent
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását karakterre.
 	 */
 	@Override
-	public void Effect(Character c) 
+	public void affect(Character c) 
 	{
 		c.activeAgents.add(this);
 		this.currCharacter = c;
@@ -43,13 +45,13 @@ public class AmnesiaVaccine extends Agent
 	 * Felülírja az Agent Expire metódusát, ez a függvény hívódik meg amikor lejár vakcina hatása.
 	 */
 	@Override
-	public void Expire() 
+	public void expire() 
 	{
 		currCharacter.activeAgents.remove(this);
 	}
 
 	@Override
-	public Agent CreateNew() 
+	public Agent createNew() 
 	{
 		return new AmnesiaVaccine();
 	}
