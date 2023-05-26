@@ -180,7 +180,7 @@ public class MainFrame extends JFrame {
 		
 		jbtGearInteraction = new JButton(new AbstractAction("Felszerelés Interakciók") {
 			public void actionPerformed(ActionEvent ae) {
-				if(v.gears.size() > 0 || v.activeGears.size() > 0) {
+				if(!v.gears.isEmpty() || !v.activeGears.isEmpty()) {
 					GearPickerFrame();
 				}
 			}

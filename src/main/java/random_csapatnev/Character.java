@@ -10,7 +10,7 @@ import java.util.Random;
 public class Character implements Serializable
 {
 	Random rand = new Random();
-	
+
 	String name = "";
 	/**
 	 * Jelenleg a karakternél lévő anyagok.
@@ -144,11 +144,11 @@ public class Character implements Serializable
 	 */
 	public Gear StealGear()
 	{
-		if(gears.size() > 0)
+		if(!gears.isEmpty())
 		{
 			return gears.remove(rand.nextInt(gears.size()));
 		}
-		else if(activeGears.size() > 0)
+		else if(!activeGears.isEmpty())
 		{
 			return activeGears.remove(rand.nextInt(activeGears.size()));	
 		}
