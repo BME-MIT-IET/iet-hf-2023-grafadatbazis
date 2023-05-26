@@ -7,9 +7,6 @@ import java.util.Objects;
  */
 public class VitusVirus extends Agent
 {
-	private static final String VIT_VACCINE = "VitusVaccine";
-	private static final String PROT_VACCINE = "ProtectiveVaccine";
-
 	public VitusVirus() {
 		name = "VitusVirus";
 	}
@@ -44,7 +41,7 @@ public class VitusVirus extends Agent
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if(VIT_VACCINE.equals(a.name) || PROT_VACCINE.equals(a.name)) {
+			if(StringLiterals.VIT_VACCINE.equals(a.name) || StringLiterals.PROT_VACCINE.equals(a.name)) {
 				hasProtection = true;
 			}
 		}

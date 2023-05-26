@@ -15,8 +15,6 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame {
 	Random rand = new Random();
-	private static String fontstr = "Arial";
-
 	/**
 	 * 
 	 */
@@ -106,17 +104,17 @@ public class MainFrame extends JFrame {
 		vitusEffect = new JLabel("label10");
 		paralyzedEffect = new JLabel("label11");
 		
-		actualField.setFont(new Font(fontstr, Font.BOLD, 15));
-		actualMaterial.setFont(new Font(fontstr, Font.BOLD, 15));
-		aminoacid.setFont(new Font(fontstr, Font.BOLD, 15));
-		nucleotide.setFont(new Font(fontstr, Font.BOLD, 15));
-		activeGears.setFont(new Font(fontstr, Font.BOLD, 15));
-		passiveGears.setFont(new Font(fontstr, Font.BOLD, 15));
-		activeAgents.setFont(new Font(fontstr, Font.BOLD, 15));
-		knownAgents.setFont(new Font(fontstr, Font.BOLD, 15));
-		craftedAgents.setFont(new Font(fontstr, Font.BOLD, 15));
-		vitusEffect.setFont(new Font(fontstr, Font.BOLD, 15));
-		paralyzedEffect.setFont(new Font(fontstr, Font.BOLD, 15));
+		actualField.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		actualMaterial.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		aminoacid.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		nucleotide.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		activeGears.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		passiveGears.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		activeAgents.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		knownAgents.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		craftedAgents.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		vitusEffect.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
+		paralyzedEffect.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 15));
 
 		model = new Model();
 		view = new View(model, frame);
@@ -547,7 +545,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font(fontstr, Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -583,7 +581,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font(fontstr, Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -619,7 +617,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font(fontstr, Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -655,7 +653,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font(fontstr, Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             jf.add(item);
             buttList.add(item);
         }
@@ -678,7 +676,7 @@ public class MainFrame extends JFrame {
                 	jf.dispose();
                 }
             });
-            item.setFont(new Font(fontstr, Font.BOLD, 25));
+            item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
             item.setForeground(Color.RED);
             jf.add(item);
             buttList.add(item);
@@ -745,10 +743,10 @@ public class MainFrame extends JFrame {
             }
         });
         
-        jbtFel.setFont(new Font(fontstr, Font.BOLD, 25));
-        jbtJobb.setFont(new Font(fontstr, Font.BOLD, 25));
-        jbtLe.setFont(new Font(fontstr, Font.BOLD, 25));
-        jbtBal.setFont(new Font(fontstr, Font.BOLD, 25));
+        jbtFel.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+        jbtJobb.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+        jbtLe.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+        jbtBal.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
         
         jbtFel.setEnabled(fel);
         jbtJobb.setEnabled(jobb);

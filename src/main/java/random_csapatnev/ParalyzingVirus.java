@@ -7,9 +7,6 @@ import java.util.Objects;
  */
 public class ParalyzingVirus extends Agent 
 {
-	private static final String PAR_VACCINE = "ParalyzingVaccine";
-	private static final String PROT_VACCINE = "ProtectiveVaccine";
-
 	public ParalyzingVirus() {
 		name = "ParalyzingVirus";
 	}
@@ -44,7 +41,7 @@ public class ParalyzingVirus extends Agent
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if(PAR_VACCINE.equals(a.name) || PROT_VACCINE.equals(a.name)) {
+			if(StringLiterals.PAR_VACCINE.equals(a.name) || StringLiterals.PROT_VACCINE.equals(a.name)) {
 				hasProtection = true;
 			}
 		}
