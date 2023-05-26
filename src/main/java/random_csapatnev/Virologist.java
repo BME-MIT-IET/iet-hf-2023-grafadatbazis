@@ -29,10 +29,10 @@ public class Virologist extends Character
 	public void Move(Field f)
 	{
 		Field fTemp = f;
-		if(isParalyzed) { return; }
-		if(isVitus) { fTemp = currField.GetNeighbours().get(new Random().nextInt(currField.GetNeighbours().size())); }
+		if(Boolean.TRUE.equals(isParalyzed)) { return; }
+		if(Boolean.TRUE.equals(isVitus)) { fTemp = currField.GetNeighbours().get(new Random().nextInt(currField.GetNeighbours().size())); }
 		
-		if(currField.IsNeighbour(f))
+		if(Boolean.TRUE.equals(currField.IsNeighbour(f)))
 		{
 			fTemp.MoveFrom(currField, this);
 			currField = fTemp;
@@ -88,7 +88,7 @@ public class Virologist extends Character
 					break;
 				}
 			}
-			if(canCraft)
+			if(Boolean.TRUE.equals(canCraft))
 			{
 				for(MatEnum curEnum: MatEnum.values())
 				{
@@ -105,7 +105,7 @@ public class Virologist extends Character
 	 */
 	public void AgentUsedOnHim(Agent a, Character c)
 	{
-		if(isGloved)
+		if(Boolean.TRUE.equals(isGloved))
 		{
 			c.AgentUsedOnHim(a, c);
 			for(Gear curGear: activeGears)
@@ -117,7 +117,7 @@ public class Virologist extends Character
 			}
 			return;
 		}
-		else if(isCloaked)
+		else if(Boolean.TRUE.equals(isCloaked))
 		{
 			Random rand = new Random();
 			if(rand.nextInt(1000) < 823)
@@ -161,7 +161,7 @@ public class Virologist extends Character
 	 */
 	public void BearInteract(Character c)
 	{
-		if(currField.ContainsCharacter(c))
+		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
 		{
 			for(int i = activeGears.size() - 1; i <= 0; --i)
 			{
@@ -203,9 +203,9 @@ public class Virologist extends Character
 	 */
 	public void StealGearInteract(Character c)
 	{
-		if(currField.ContainsCharacter(c))
+		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
 		{
-			if(c.isParalyzed)
+			if(Boolean.TRUE.equals(c.isParalyzed))
 			{
 				Gear stolenGear = c.StealGear();
 				if(stolenGear != null)
@@ -220,7 +220,7 @@ public class Virologist extends Character
 	 */
 	public void Use(Character c, Agent a)
 	{
-		if(currField.ContainsCharacter(c))
+		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
 		{
 			if(craftedAgents.contains(a))
 			{
@@ -244,7 +244,7 @@ public class Virologist extends Character
 			curActive.Round();
 		}
 		
-		if(isVitus) {
+		if(Boolean.TRUE.equals(isVitus)) {
 			ArrayList<Field> neighFields = currField.GetNeighbours();
 			Random r = new Random();
 			int rand = r.nextInt(neighFields.size());

@@ -22,7 +22,7 @@ public class Bear extends Character
 	@Override
 	public void Move(Field f)
 	{
-		if(currField.IsNeighbour(f)) {
+		if(Boolean.TRUE.equals(currField.IsNeighbour(f))) {
 			f.MoveFrom(currField, this);
 			currField = f;
 		}
@@ -49,7 +49,7 @@ public class Bear extends Character
 	@Override
 	public void Use(Character c, Agent a)
 	{
-		if(currField.ContainsCharacter(c)) {
+		if(Boolean.TRUE.equals(currField.ContainsCharacter(c))) {
 			c.AgentUsedOnHim(a, c);
 		}
 	}

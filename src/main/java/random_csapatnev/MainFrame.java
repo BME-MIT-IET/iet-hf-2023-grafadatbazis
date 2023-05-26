@@ -533,7 +533,7 @@ public class MainFrame extends JFrame {
                 		if(c.name.startsWith("b")) {
                 			for(Gear g : v.activeGears) {
                     			if (g.name == GearEnum.AXE) {
-                    				if(g.canUse) {
+                    				if(Boolean.TRUE.equals(g.canUse)) {
                     					g.Effect(c);
                     				}
                     			}
@@ -774,7 +774,7 @@ public class MainFrame extends JFrame {
 		for(Gear a : v.activeGears) {
 			if(a.name == GearEnum.AXE) 
 			{
-				if(a.canUse) {
+				if(Boolean.TRUE.equals(a.canUse)) {
 					activeGearsS += a.name + ", ";
 				}
 				else {
