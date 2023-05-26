@@ -28,7 +28,7 @@ public abstract class GraphicsCharacter extends JPanel implements IGraphics
 		this.c = c;
 	}
 	@Override
-	public void Draw(JPanel p, int x, int y, int width, int height)
+	public void draw(JPanel p, int x, int y, int width, int height)
 	{
 		graphicsx = x;
 		graphicsy = y;

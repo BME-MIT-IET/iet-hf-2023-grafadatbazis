@@ -27,7 +27,7 @@ public class View implements Serializable
 		for(int i = 0; i < model.graphicsCharacter.size(); ++i)
 		{
 			GraphicsCharacter gc = model.graphicsCharacter.get(i);
-			gc.Draw(model.graphicsFields[gc.c.currField.x][gc.c.currField.y], model.sizeN * gc.c.currField.y, model.sizeM * gc.c.currField.x, pLen, pLen);
+			gc.draw(model.graphicsFields[gc.c.currField.x][gc.c.currField.y], model.sizeN * gc.c.currField.y, model.sizeM * gc.c.currField.x, pLen, pLen);
 		}
 		for(int i = 0; i < model.graphicsMaterial.size(); ++i)
 		{
