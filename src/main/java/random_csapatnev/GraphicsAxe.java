@@ -13,7 +13,7 @@ public class GraphicsAxe extends GraphicsGear {
 		super(input, parent);
 		try 
 		{
-		    img = ImageIO.read(new File(".\\src\\images\\axe.png"));
+		    img = ImageIO.read(new File(".\\src\\main\\java\\images\\axe.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
