@@ -30,7 +30,7 @@ public class BearVirus extends Agent
 			}
 		}
 		if(!hasProtection) {
-			c.currField.RemoveCharacter(c);
+			c.currField.removeCharacter(c);
 			
 			ArrayList<GraphicsCharacter> tempList = new ArrayList<GraphicsCharacter>(MainFrame.Instance.model.graphicsCharacter.size());
 			for(GraphicsCharacter e : MainFrame.Instance.model.graphicsCharacter) {

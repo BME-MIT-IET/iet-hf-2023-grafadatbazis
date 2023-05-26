@@ -22,8 +22,8 @@ public class Bear extends Character
 	@Override
 	public void move(Field f)
 	{
-		if(Boolean.TRUE.equals(currField.IsNeighbour(f))) {
-			f.MoveFrom(currField, this);
+		if(Boolean.TRUE.equals(currField.isNeighbour(f))) {
+			f.moveFrom(currField, this);
 			currField = f;
 		}
 	}
@@ -33,7 +33,7 @@ public class Bear extends Character
 	@Override
 	public void fieldInteract()
 	{
-		currField.BearInteract(this);
+		currField.bearInteract(this);
 	}
 	/**
 	 * A jelenlegi medve interaktál a paraméterül kapott karakterrel.
@@ -49,7 +49,7 @@ public class Bear extends Character
 	@Override
 	public void use(Character c, Agent a)
 	{
-		if(Boolean.TRUE.equals(currField.ContainsCharacter(c))) {
+		if(Boolean.TRUE.equals(currField.containsCharacter(c))) {
 			c.agentUsedOnHim(a, c);
 		}
 	}

@@ -42,7 +42,7 @@ public class Safehouse extends Field
 	 * ezzel a mezővel, akkor átadja neki a védőfelszereléseket.
 	 */
 	@Override
-	public void Interact(Character c)
+	public void interact(Character c)
 	{
 		if(gear != null) {
 			gear.PickUp(c);

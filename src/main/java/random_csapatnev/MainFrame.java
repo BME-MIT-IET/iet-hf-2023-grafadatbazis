@@ -849,7 +849,7 @@ public class MainFrame extends JFrame {
 		}
 		for(Character c : tempList) {
 			if(!c.name.equals("v0")) {
-				ArrayList<Field> neighFields = c.currField.GetNeighbours();
+				ArrayList<Field> neighFields = c.currField.getNeighbours();
 				int randomint = rand.nextInt(neighFields.size());
 				c.move(neighFields.get(randomint));
 				c.fieldInteract();

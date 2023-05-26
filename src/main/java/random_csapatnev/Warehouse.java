@@ -22,7 +22,7 @@ public class Warehouse extends Field
 	 * Felülírja a Field Interact függvényét, az átadott c karakternek átadja, a tárolt anyagokat.
 	 */
 	@Override
-	public void Interact(Character c)
+	public void interact(Character c)
 	{
 		material.PickUp(c);
 	}
@@ -30,9 +30,9 @@ public class Warehouse extends Field
 	 * Az a függvény, amikor a medve interaktál a jelenlegi mezővel, ezzel elpusztítva az itt lévő anyagokat.
 	 */
 	@Override
-	public void BearInteract(Bear b)
+	public void bearInteract(Bear b)
 	{
-		super.BearInteract(b);
+		super.bearInteract(b);
 		material = material.Remove(material);
 	}
 }

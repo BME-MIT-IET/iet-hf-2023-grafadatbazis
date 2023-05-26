@@ -82,7 +82,7 @@ public class Laboratory extends Field
 	 * Felülírja a Field Interact függvényét, az átadott c karakternek megtanítja az itt tárolt genetikai kódokat.
 	 */
 	@Override
-	public void Interact(Character c)
+	public void interact(Character c)
 	{
 		for(Agent a : agents) {
 			for(Agent ak : c.knownAgents) {

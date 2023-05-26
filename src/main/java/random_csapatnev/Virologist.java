@@ -30,11 +30,11 @@ public class Virologist extends Character
 	{
 		Field fTemp = f;
 		if(Boolean.TRUE.equals(isParalyzed)) { return; }
-		if(Boolean.TRUE.equals(isVitus)) { fTemp = currField.GetNeighbours().get(rand.nextInt(currField.GetNeighbours().size())); }
+		if(Boolean.TRUE.equals(isVitus)) { fTemp = currField.getNeighbours().get(rand.nextInt(currField.getNeighbours().size())); }
 		
-		if(Boolean.TRUE.equals(currField.IsNeighbour(f)))
+		if(Boolean.TRUE.equals(currField.isNeighbour(f)))
 		{
-			fTemp.MoveFrom(currField, this);
+			fTemp.moveFrom(currField, this);
 			currField = fTemp;
 		}
 	}
@@ -43,7 +43,7 @@ public class Virologist extends Character
 	public void fieldInteract() 
 	{
 		if(currField != null) {
-			currField.Interact(this);
+			currField.interact(this);
 		}
 	}
 	
@@ -163,7 +163,7 @@ public class Virologist extends Character
 	@Override
 	public void bearInteract(Character c)
 	{
-		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
+		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
 		{
 			for(int i = activeGears.size() - 1; i <= 0; --i)
 			{
@@ -182,7 +182,7 @@ public class Virologist extends Character
 	 */
 	public void StealMaterialInteract(Character c)
 	{
-		if(currField.ContainsCharacter(c) && c.isParalyzed)
+		if(currField.containsCharacter(c) && c.isParalyzed)
 		{
 			Material maxSteal = new Material(0,0);
 			for(MatEnum curEnum: MatEnum.values())
@@ -205,7 +205,7 @@ public class Virologist extends Character
 	 */
 	public void StealGearInteract(Character c)
 	{
-		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
+		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
 		{
 			if(Boolean.TRUE.equals(c.isParalyzed))
 			{
@@ -223,7 +223,7 @@ public class Virologist extends Character
 	@Override
 	public void use(Character c, Agent a)
 	{
-		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
+		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
 		{
 			if(craftedAgents.contains(a))
 			{
@@ -249,7 +249,7 @@ public class Virologist extends Character
 		}
 		
 		if(Boolean.TRUE.equals(isVitus)) {
-			ArrayList<Field> neighFields = currField.GetNeighbours();
+			ArrayList<Field> neighFields = currField.getNeighbours();
 			int randomint = rand.nextInt(neighFields.size());
 			move(neighFields.get(randomint));
 			fieldInteract();
