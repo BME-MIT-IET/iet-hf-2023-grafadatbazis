@@ -15,15 +15,15 @@ public class View implements Serializable
 	int pLen = 0;
 	
 	Model model;
-	View(Model _model, JFrame _frame)
+	View(Model inputModel, JFrame inputFrame)
 	{
-		model = _model;
-		frame = _frame;
+		model = inputModel;
+		frame = inputFrame;
 	}
 	
 	public void repaintAll() 
 	{
-		int pLen = 1000 / model.sizeM;
+		pLen = 1000 / model.sizeM;
 		for(int i = 0; i < model.graphicsCharacter.size(); ++i)
 		{
 			GraphicsCharacter gc = model.graphicsCharacter.get(i);
