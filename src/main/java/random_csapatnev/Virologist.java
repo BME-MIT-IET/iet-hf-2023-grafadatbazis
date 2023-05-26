@@ -41,6 +41,7 @@ public class Virologist extends Character
 		}
 	}
 	
+	@Override
 	public void FieldInteract() 
 	{
 		if(currField != null) {
@@ -105,6 +106,7 @@ public class Virologist extends Character
 	 * @param a Az adott ágens amit a jelenlegi virológuson használnak.
 	 * @param c Az a virológus aki a jelenlegi virológuson használja az ágenst..
 	 */
+	@Override
 	public void AgentUsedOnHim(Agent a, Character c)
 	{
 		if(Boolean.TRUE.equals(isGloved))
@@ -160,6 +162,7 @@ public class Virologist extends Character
 	 * Az a függvény, amikor a jelenlegi virológus interaktol egy karakterrel, és használja rajta a baltát
 	 * @param c Karakter akivel interaktol
 	 */
+	@Override
 	public void BearInteract(Character c)
 	{
 		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
@@ -219,6 +222,7 @@ public class Virologist extends Character
 	/**
 	 *Felülírja a Character Use függvényét, a megadott karakteren használja a megadott ágenst.
 	 */
+	@Override
 	public void Use(Character c, Agent a)
 	{
 		if(Boolean.TRUE.equals(currField.ContainsCharacter(c)))
@@ -233,6 +237,7 @@ public class Virologist extends Character
 	/**
 	 * Ez hívódik meg amikor a GameManager a kört lépteti.
 	 */
+	@Override
 	public void Round()
 	{
 		ArrayList<Agent> tempList = new ArrayList<Agent>(activeAgents.size());
