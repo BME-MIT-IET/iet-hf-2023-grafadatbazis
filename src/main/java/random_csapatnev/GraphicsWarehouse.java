@@ -4,9 +4,9 @@ import java.awt.Color;
 
 public class GraphicsWarehouse extends GraphicsFieldBase 
 {
-	public GraphicsWarehouse(int _x, int _y)
+	public GraphicsWarehouse(int inputX, int inputY)
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		this.setBackground(new Color(144, 238, 144));
 	}
 }
