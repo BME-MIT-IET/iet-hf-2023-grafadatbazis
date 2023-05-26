@@ -23,7 +23,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// Singleton
-	static MainFrame Instance; 
+	static MainFrame Instance = null;
 	
 	Virologist v;
 	int increment = 0;
@@ -81,6 +81,7 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() 
 	{	
+		MainFrame.Instance = this;
 		frame = new JFrame("random_csapatnev main_frame");
 		frame.setSize(1500, 1030);
 		GridLayout layout = new GridLayout(1, 2);
@@ -446,7 +447,7 @@ public class MainFrame extends JFrame {
 	private void generateRandomFields()
 	{
 		int length = rand.nextInt(15 - 10) + 10;
-	    String inputStr = "";
+		StringBuilder sb = new StringBuilder();
 	    for(int i = 0; i < length; ++i)
 	    {
 	    	for(int j = 0; j < length; ++j)
@@ -454,24 +455,24 @@ public class MainFrame extends JFrame {
 	    		int random = rand.nextInt(100);
 	    		if(random < 3)
 	    		{
-    				inputStr += "S";
+					sb.append("S");
 	    		}
 	    		else if(random >= 3 && random < 6)
 	    		{
-    				inputStr += "W";
+					sb.append("W");
 	    		}
 	    		else if(random >= 6 && random < 11)
 	    		{
-    				inputStr += "L";	
+					sb.append("L");	
 	    		}
 	    		else
 	    		{
-    				inputStr += "F";
+					sb.append("F");
 	    		}
 	    	}
-	    	inputStr += ";";
+			sb.append(";");
 	    }
-	    generateFieldsFromMapMatrix(inputStr);
+	    generateFieldsFromMapMatrix(sb.toString());
 	}
 	private void addPanels()
 	{
@@ -772,48 +773,54 @@ public class MainFrame extends JFrame {
 		aminoacid.setText(String.format("    -Aminosav: %s/%s", v.currMaterial.container.get(MatEnum.AMINOACID), v.maxMaterial.container.get(MatEnum.AMINOACID)));
 		nucleotide.setText(String.format("    -Nukleotid: %s/%s", v.currMaterial.container.get(MatEnum.NUCLEOTIDE), v.maxMaterial.container.get(MatEnum.NUCLEOTIDE)));
 
-		String activeGearsS = "Aktív felszerelések: ";
+		StringBuilder sb = new StringBuilder();
+		sb.append("Aktív felszerelések: ");
 		for(Gear a : v.activeGears) {
 			if(a.name == GearEnum.AXE) 
 			{
 				if(Boolean.TRUE.equals(a.canUse)) {
-					activeGearsS += a.name + ", ";
+					sb.append(a.name + ", ");
 				}
 				else {
-					activeGearsS += a.name + "(B), ";
+					sb.append(a.name + "(B), ");
 				}
 			}
 			else 
 			{
-				activeGearsS += a.name + ", ";
+				sb.append(a.name + ", ");
 			}
 			
 		}
-		activeGears.setText(activeGearsS.substring(0, activeGearsS.length()-2));
+		activeGears.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String passiveGearsS = "Inaktív felszerelések: ";
+		sb.setLength(0);
+		sb.append("Inaktív felszerelések: ");
+
 		for(Gear a : v.gears) {
-			passiveGearsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		passiveGears.setText(passiveGearsS.substring(0, passiveGearsS.length()-2));
+		passiveGears.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String activeAgentsS = "Aktív ágensek: ";
+		sb.setLength(0);
+		sb.append("Aktív ágensek: ");
 		for(Agent a : v.activeAgents) {
-			activeAgentsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		activeAgents.setText(activeAgentsS.substring(0, activeAgentsS.length()-2));
+		activeAgents.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String knownAgentsS = "Megtanult ágensek: ";
+		sb.setLength(0);
+		sb.append("Megtanult ágensek: ");
 		for(Agent a : v.knownAgents) {
-			knownAgentsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		knownAgents.setText(knownAgentsS.substring(0, knownAgentsS.length()-2));
+		knownAgents.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
-		String craftedAgentsS = "Craftolt ágensek: ";
+		sb.setLength(0);
+		sb.append("Craftolt ágensek: ");
 		for(Agent a : v.craftedAgents) {
-			craftedAgentsS += a.name + ", ";
+			sb.append(a.name + ", ");
 		}
-		craftedAgents.setText(craftedAgentsS.substring(0, craftedAgentsS.length()-2));
+		craftedAgents.setText(sb.toString().substring(0, sb.toString().length()-2));
 		
 		vitusEffect.setText(String.format("Vitustánc hatás?: %s", v.isVitus));
 		paralyzedEffect.setText(String.format("Bénult hatás?: %s", v.isParalyzed));
