@@ -7,4 +7,9 @@ public class StringLiterals {
     public static final String VIT_VACCINE = "VitusVaccine";
 
     public static final String FONT_NAME = "Arial";
+
+    public static final String AXE_PATH = ".\\src\\main\\java\\images\\axe.png";
+    public static final String CLOAK_PATH = ".\\src\\main\\java\\images\\cloak.png";
+    public static final String GLOVES_PATH = ".\\src\\main\\java\\images\\gloves2.png";
+    public static final String SACK_PATH = ".\\src\\main\\java\\images\\sack.png";
 }

@@ -13,7 +13,7 @@ public class GraphicsCloak extends GraphicsGear {
 		super(input, parent);
 		try 
 		{
-		    img = ImageIO.read(new File(".\\src\\main\\java\\images\\cloak.png"));
+		    img = ImageIO.read(new File(StringLiterals.CLOAK_PATH));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
