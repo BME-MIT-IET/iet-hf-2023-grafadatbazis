@@ -4,9 +4,9 @@ import java.awt.Color;
 
 public class GraphicsLaboratory extends GraphicsFieldBase
 {
-	public GraphicsLaboratory(int _x, int _y)
+	public GraphicsLaboratory(int inputX, int inputY)
 	{
-		super(_x, _y);
+		super(inputX, inputY);
 		this.setBackground(new Color(159,197,232));
 	}
 }
