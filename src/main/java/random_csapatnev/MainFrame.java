@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
  *
  */
 public class MainFrame extends JFrame {
+	Random rand = new Random();
+
 	/**
 	 * 
 	 */
@@ -442,7 +444,6 @@ public class MainFrame extends JFrame {
 	}
 	private void generateRandomFields()
 	{
-		Random rand = new Random();
 		int length = rand.nextInt(15 - 10) + 10;
 	    String inputStr = "";
 	    for(int i = 0; i < length; ++i)
@@ -841,9 +842,8 @@ public class MainFrame extends JFrame {
 		for(Character c : tempList) {
 			if(!c.name.equals("v0")) {
 				ArrayList<Field> neighFields = c.currField.GetNeighbours();
-				Random r = new Random();
-				int rand = r.nextInt(neighFields.size());
-				c.Move(neighFields.get(rand));
+				int randomint = rand.nextInt(neighFields.size());
+				c.Move(neighFields.get(randomint));
 				c.FieldInteract();
 			}
 		}

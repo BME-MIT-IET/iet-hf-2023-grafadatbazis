@@ -18,6 +18,8 @@ import java.util.Random;
  */
 public class Virologist extends Character
 {
+	Random rand = new Random();
+
 	public Virologist(String _name) {
 		super(_name);
 	}
@@ -30,7 +32,7 @@ public class Virologist extends Character
 	{
 		Field fTemp = f;
 		if(Boolean.TRUE.equals(isParalyzed)) { return; }
-		if(Boolean.TRUE.equals(isVitus)) { fTemp = currField.GetNeighbours().get(new Random().nextInt(currField.GetNeighbours().size())); }
+		if(Boolean.TRUE.equals(isVitus)) { fTemp = currField.GetNeighbours().get(rand.nextInt(currField.GetNeighbours().size())); }
 		
 		if(Boolean.TRUE.equals(currField.IsNeighbour(f)))
 		{
@@ -119,7 +121,6 @@ public class Virologist extends Character
 		}
 		else if(Boolean.TRUE.equals(isCloaked))
 		{
-			Random rand = new Random();
 			if(rand.nextInt(1000) < 823)
 			{
 				return;
@@ -246,9 +247,8 @@ public class Virologist extends Character
 		
 		if(Boolean.TRUE.equals(isVitus)) {
 			ArrayList<Field> neighFields = currField.GetNeighbours();
-			Random r = new Random();
-			int rand = r.nextInt(neighFields.size());
-			Move(neighFields.get(rand));
+			int randomint = rand.nextInt(neighFields.size());
+			Move(neighFields.get(randomint));
 			FieldInteract();
 		}
 	}
