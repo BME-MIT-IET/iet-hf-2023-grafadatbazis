@@ -95,7 +95,7 @@ public class Virologist extends Character
 				{
 					currMaterial.getContainer().put(curEnum, currMaterial.getContainer().get(curEnum) - a.cost.getContainer().get(curEnum));  
 				}
-				craftedAgents.add(curAgent.CreateNew());
+				craftedAgents.add(curAgent.createNew());
 			}
 		}
 	}
@@ -133,7 +133,7 @@ public class Virologist extends Character
 				return;
 			}
 		}
-		a.Effect(c);
+		a.effect(c);
 	}
 
 	/**
@@ -245,7 +245,7 @@ public class Virologist extends Character
 		
 		for(Agent curActive: tempList)
 		{
-			curActive.Round();
+			curActive.round();
 		}
 		
 		if(Boolean.TRUE.equals(isVitus)) {

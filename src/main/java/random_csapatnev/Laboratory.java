@@ -90,9 +90,9 @@ public class Laboratory extends Field
 					return;
 				}
 			}
-			a.Learn(c);
+			a.learn(c);
 			if("BearVirus".equals(a.name)) {
-				a.Effect(c);
+				a.effect(c);
 			}
 		}
 		MainFrame.Instance.endCheck();

@@ -37,23 +37,23 @@ public abstract class Agent implements Serializable
 	/**
 	 * Absztrakt metódus, ez hívódik meg amikor egy karakter aktív ágensei között el van tárolva, a karakter Round függvénye hívja meg.
 	 */
-	public abstract void Round();
+	public abstract void round();
 	/**
 	 * Absztrakt metódus, ez hívódik meg amikor az adott ágens kifejti a hatását a megadott karakterre.
 	 * @param c Karakter akire hatással van.
 	 */
-	public abstract void Effect(Character c);
+	public abstract void effect(Character c);
 	/**
 	 * Ez hívódik meg amikor az adott ágenst megtanulja egy karakter. 
 	 * @param c Karakter aki megtanulja.
 	 */
-	public void Learn (Character c)
+	public void learn (Character c)
 	{
 		c.knownAgents.add(this);
 	}
 	/**
 	 * Absztrakt metódus, ez hívódik meg amikor lejár az ágens hatása.
 	 */
-	public abstract Agent CreateNew();
-	public abstract void Expire();
+	public abstract Agent createNew();
+	public abstract void expire();
 }

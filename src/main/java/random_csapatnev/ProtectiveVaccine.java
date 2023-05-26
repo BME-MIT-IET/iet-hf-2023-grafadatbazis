@@ -16,12 +16,12 @@ public class ProtectiveVaccine extends Agent
 	 * a karakter Round függvénye hívja meg.
 	 */
 	@Override
-	public void Round() 
+	public void round() 
 	{
 		if(currCharacter != null) {
 			activeTime++;
 			if(Objects.equals(activeTime, effectTime)) {
-				Expire();
+				expire();
 			}
 		}
 		else {
@@ -36,7 +36,7 @@ public class ProtectiveVaccine extends Agent
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását a karakterre.
 	 */
 	@Override
-	public void Effect(Character c) 
+	public void effect(Character c) 
 	{
 		c.activeAgents.add(this);
 		this.currCharacter = c;
@@ -46,13 +46,13 @@ public class ProtectiveVaccine extends Agent
 	 * Felülírja az Agent Expire metódusát, ez a függvény hívódik meg amikor lejár vakcina hatása.
 	 */
 	@Override
-	public void Expire() 
+	public void expire() 
 	{
 		currCharacter.activeAgents.remove(this);
 	}
 
 	@Override
-	public Agent CreateNew() 
+	public Agent createNew() 
 	{
 		return new ProtectiveVaccine();
 	}

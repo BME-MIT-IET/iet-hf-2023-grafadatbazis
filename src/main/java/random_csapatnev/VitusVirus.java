@@ -16,13 +16,13 @@ public class VitusVirus extends Agent
 	 * a karakter Round függvénye hívja meg.
 	 */
 	@Override
-	public void Round() 
+	public void round() 
 	{
 		if(currCharacter != null) {
 			currCharacter.setIsVitus(true);
 			activeTime++;
 			if(Objects.equals(activeTime, effectTime)) {
-				Expire();
+				expire();
 			}
 		}
 		else {
@@ -37,7 +37,7 @@ public class VitusVirus extends Agent
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását karakterre.
 	 */
 	@Override
-	public void Effect(Character c) 
+	public void effect(Character c) 
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
@@ -56,14 +56,14 @@ public class VitusVirus extends Agent
 	 * Felülírja az Agent Expire metódusát, ez a függvény hívódik meg amikor lejár vírus hatása.
 	 */
 	@Override
-	public void Expire() 
+	public void expire() 
 	{
 		currCharacter.setIsVitus(false);
 		currCharacter.activeAgents.remove(this);
 	}
 
 	@Override
-	public Agent CreateNew() 
+	public Agent createNew() 
 	{
 		return new VitusVirus();
 	}

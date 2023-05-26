@@ -15,13 +15,13 @@ public class BearVirus extends Agent
 		name = "BearVirus";
 	}
 	@Override
-	public void Round() {}
+	public void round() {}
 
 	/**
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását virológusra.
 	 */
 	@Override
-	public void Effect(Character c)
+	public void effect(Character c)
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
@@ -57,13 +57,13 @@ public class BearVirus extends Agent
 	}
 
 	@Override
-	public void Expire() 
+	public void expire() 
 	{
 		currCharacter.activeAgents.remove(this);
 	}
 
 	@Override
-	public Agent CreateNew() 
+	public Agent createNew() 
 	{
 		return new BearVirus();
 	}
