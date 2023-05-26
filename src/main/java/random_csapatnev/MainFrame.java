@@ -516,20 +516,20 @@ public class MainFrame extends JFrame {
                 			c = ve;
                 		}
                 	}
-                	if(action == "useAgent") {
+                	if("useAgent".equals(action)) {
                 		AgentPickerFrame(c);
                 	}
-                	else if (action == "stealMaterial") {
+                	else if ("stealMaterial".equals(action)) {
                 		System.out.println(c);
                 		v.StealMaterialInteract(c);
                 	}
-                	else if (action == "stealGear") {
+                	else if ("stealGear".equals(action)) {
                 		v.StealGearInteract(c);
                 	}
-                	else if (action == "benit") {
+                	else if ("benit".equals(action)) {
                 		c.SetIsParalyzed(true);
                 	}
-                	else if (action == "useAxe") {
+                	else if ("useAxe".equals(action)) {
                 		if(c.name.startsWith("b")) {
                 			for(Gear g : v.activeGears) {
                     			if (g.name == GearEnum.AXE) {

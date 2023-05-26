@@ -1,5 +1,7 @@
 package random_csapatnev;
 
+import java.util.Objects;
+
 /**
  * Agent osztályból származik, feladata hogy a megadott karakterre kifejtse a vitus tánc hatását.
  */
@@ -19,7 +21,7 @@ public class VitusVirus extends Agent
 		if(currCharacter != null) {
 			currCharacter.SetIsVitus(true);
 			activeTime++;
-			if(activeTime == effectTime) {
+			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
 			}
 		}
@@ -39,7 +41,7 @@ public class VitusVirus extends Agent
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if(a.name == "VitusVaccine" || a.name == "ProtectiveVaccine") {
+			if("VitusVaccine".equals(a.name) || "ProtectiveVaccine".equals(a.name)) {
 				hasProtection = true;
 			}
 		}

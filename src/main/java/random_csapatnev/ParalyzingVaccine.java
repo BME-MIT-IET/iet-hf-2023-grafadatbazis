@@ -1,5 +1,7 @@
 package random_csapatnev;
 
+import java.util.Objects;
+
 /**
  * Agent osztályból származik, feladata, hogy a a ParalyzingVirus hatását megakadályozása.
  */
@@ -19,7 +21,7 @@ public class ParalyzingVaccine extends Agent
 		if(currCharacter != null) {
 			currCharacter.SetIsParalyzed(false);
 			activeTime++;
-			if(activeTime == effectTime) {
+			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
 			}
 		}

@@ -1,5 +1,7 @@
 package random_csapatnev;
 
+import java.util.Objects;
+
 /**
  * Agent osztályból származik, feladata a vitus tánc vírus hatásának megakadályozása.
  */
@@ -18,7 +20,7 @@ public class VitusVaccine extends Agent
 		if(currCharacter != null) {
 			currCharacter.SetIsVitus(false);
 			activeTime++;
-			if(activeTime == effectTime) {
+			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
 			}
 		}

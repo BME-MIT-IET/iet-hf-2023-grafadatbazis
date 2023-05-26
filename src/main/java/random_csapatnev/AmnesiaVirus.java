@@ -31,7 +31,7 @@ public class AmnesiaVirus extends Agent
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if(a.name == "AmnesiaVaccine" || a.name == "ProtectiveVaccine") {
+			if("AmnesiaVaccine".equals(a.name) || "ProtectiveVaccine".equals(a.name)) {
 				hasProtection = true;
 			}
 		}

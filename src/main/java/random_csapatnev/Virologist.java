@@ -1,6 +1,7 @@
 package random_csapatnev;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -70,7 +71,7 @@ public class Virologist extends Character
 		Agent curAgent = null;
 		for(Agent curKnown: knownAgents)
 		{
-			if(curKnown.name == a.name)
+			if(Objects.equals(curKnown.name, a.name))
 			{
 				curAgent = curKnown;
 				break;
@@ -126,7 +127,7 @@ public class Virologist extends Character
 		}
 		for(Agent curAgent: activeAgents)
 		{
-			if(curAgent.name == a.name)
+			if(Objects.equals(curAgent.name, a.name))
 			{
 				return;
 			}

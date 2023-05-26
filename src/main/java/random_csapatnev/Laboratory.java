@@ -91,7 +91,7 @@ public class Laboratory extends Field
 				}
 			}
 			a.Learn(c);
-			if(a.name == "BearVirus") {
+			if("BearVirus".equals(a.name)) {
 				a.Effect(c);
 			}
 		}

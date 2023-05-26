@@ -1,5 +1,7 @@
 package random_csapatnev;
 
+import java.util.Objects;
+
 /**
  * Agent osztályból származik, felelőssége, megakadályozni az amnézia vírus hatását.
  */
@@ -18,7 +20,7 @@ public class AmnesiaVaccine extends Agent
 	{
 		if(currCharacter != null) {
 			activeTime++;
-			if(activeTime == effectTime) {
+			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
 			}
 		}

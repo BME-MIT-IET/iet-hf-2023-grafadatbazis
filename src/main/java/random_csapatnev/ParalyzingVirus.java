@@ -1,5 +1,7 @@
 package random_csapatnev;
 
+import java.util.Objects;
+
 /**
  * Agent osztályból származik, feladata hogy a bénító hatást kifejtése az adott karakterre.
  */
@@ -19,7 +21,7 @@ public class ParalyzingVirus extends Agent
 		if(currCharacter != null) {
 			currCharacter.SetIsParalyzed(true);
 			activeTime++;
-			if(activeTime == effectTime) {
+			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
 			}
 		}
@@ -39,7 +41,7 @@ public class ParalyzingVirus extends Agent
 	{
 		boolean hasProtection = false;
 		for(Agent a : c.activeAgents) {
-			if(a.name == "ParalyzingVaccine" || a.name == "ProtectiveVaccine") {
+			if("ParalyzingVaccine".equals(a.name) || "ProtectiveVaccine".equals(a.name)) {
 				hasProtection = true;
 			}
 		}

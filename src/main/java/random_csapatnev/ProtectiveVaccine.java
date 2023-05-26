@@ -1,5 +1,7 @@
 package random_csapatnev;
 
+import java.util.Objects;
+
 /**
  * Agent osztályból származik, feladata, hogy a vírusok hatásának kifejtését megakadályozása.
  */
@@ -18,7 +20,7 @@ public class ProtectiveVaccine extends Agent
 	{
 		if(currCharacter != null) {
 			activeTime++;
-			if(activeTime == effectTime) {
+			if(Objects.equals(activeTime, effectTime)) {
 				Expire();
 			}
 		}
