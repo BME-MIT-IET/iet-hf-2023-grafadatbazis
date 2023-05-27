@@ -16,11 +16,7 @@ public class BearVirus extends Agent
 	}
 	@Override
 	public void round() {
-<<<<<<< HEAD
 		/*
-=======
-		/**
->>>>>>> bb7a5dca1eb6d575dc009e063dcad24f8077445d
 		 * BearVirus hatása nem tud lejárni, ezért a Round implementációja
 		 * üres, LSP miatt azonban nem dobhat kivételt.
 		 * */
