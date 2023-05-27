@@ -15,7 +15,12 @@ public class BearVirus extends Agent
 		name = "BearVirus";
 	}
 	@Override
-	public void round() {}
+	public void round() {
+		/**
+		 * BearVirus hatása nem tud lejárni, ezért a Round implementációja
+		 * üres, LSP miatt azonban nem dobhat kivételt.
+		 * */
+	}
 
 	/**
 	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását virológusra.
@@ -32,7 +37,7 @@ public class BearVirus extends Agent
 		if(!hasProtection) {
 			c.currField.removeCharacter(c);
 			
-			ArrayList<GraphicsCharacter> tempList = new ArrayList<GraphicsCharacter>(MainFrame.Instance.model.graphicsCharacter.size());
+			ArrayList<GraphicsCharacter> tempList = new ArrayList<>(MainFrame.Instance.model.graphicsCharacter.size());
 			for(GraphicsCharacter e : MainFrame.Instance.model.graphicsCharacter) {
 				tempList.add(e);
 			}
