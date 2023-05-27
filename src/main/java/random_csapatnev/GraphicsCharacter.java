@@ -57,7 +57,7 @@ public abstract class GraphicsCharacter extends JPanel implements IGraphics
 		{
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setStroke(new BasicStroke(4));
-			g2.draw(new Ellipse2D.Double(graphicsWidth/4, graphicsHeight/4, graphicsWidth/2, graphicsHeight/2));
+			g2.draw(new Ellipse2D.Double(graphicsWidth/4.0, graphicsHeight/4.0, graphicsWidth/2.0, graphicsHeight/2.0));
 		}
         g.drawChars(c.name.toCharArray(), 0, c.name.length(), graphicsWidth/2-3, graphicsHeight/2+3);
 	}
