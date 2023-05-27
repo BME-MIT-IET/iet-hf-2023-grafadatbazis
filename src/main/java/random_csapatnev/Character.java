@@ -89,32 +89,88 @@ public class Character implements Serializable
 	 * A karaktert átlépteti a megadott mezőre.
 	 * @param f A mező ahova a karakter lépni szeretne.
 	 */
-	public void move(Field f){}
+	public void move(Field f){
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
 	/**
 	 * A karakter interaktál azzal a mezővel amin éppen áll(currField)
 	 */
-	public void fieldInteract(){}
+	public void fieldInteract(){
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
 	/** A karakter interaktál egy másik karakterrel
 	 * @param c Karakter akivel interaktál.
 	 */
-	public void characterInteract(Character c){}
-	public void bearInteract(Character c) {}
+	public void characterInteract(Character c){
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
+	public void bearInteract(Character c) {
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
 	
 	/**
 	 * A karakter használja a paraméterként megadott ágenst a paraméterként megkapott karakteren
 	 * @param c Character, akin az ágenst kívánjuk használni
 	 * @param a Az ágens amit használni kívánunk.
 	 */
-	public void use(Character c, Agent a){}
+	public void use(Character c, Agent a){
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
 	/**
 	 *  Ez hívódik meg amikor a GameManager a kört lépteti.
 	 */
-	public void agentUsedOnHim(Agent a, Character v){}
-	public void round(){}
+	public void agentUsedOnHim(Agent a, Character v){
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
+	public void round(){
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
 	/**
 	 * Ez hívódik meg amikor a jelenlegi karakteren használják a baltát, ilyenkor a jelenlegi karakter meghal.
 	 */
-	public void die(){}
+	public void die(){
+		/*
+		 * Character a játék logikájában nem példányosodik,
+		 * nincs önálló logikája a játékmenetet illetően.
+		 * Az osztály ennek ellenére nem absztrakt, mert
+		 * a megjelenítésben fel van használva.
+		 */
+	}
 	/**
 	 * A jelenlegi virológustól ellopják az anyagait(currMaterial)
 	 * @param m A max anyagmennyiség amennyit el tudnak lopni.
@@ -160,7 +216,7 @@ public class Character implements Serializable
 	
 	/**
 	 * Eldobja a megadott Geart arra a Fieldre amin jelenleg áll.
-	 * @param gE Az eldobandó felszerelés.
+	 * @param gearEnum Az eldobandó felszerelés.
 	 */
 	public void dropGear(GearEnum gearEnum) {
 		Gear droppedGear = null;
