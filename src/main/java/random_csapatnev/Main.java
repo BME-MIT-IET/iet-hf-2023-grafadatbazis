@@ -35,13 +35,13 @@ public class Main implements Serializable
 				FileInputStream fis = new FileInputStream(split[1]);
 				ObjectInputStream ois = new ObjectInputStream(fis);
 				) {
-				System.out.println("load " + split[1] + " Sikeres!");
+				Logger.out(java.util.logging.Level.INFO, "load " + split[1] + " Sikeres!");
 
 				MainFrame tempmf = new MainFrame((MainFrame)ois.readObject());
 				mf = tempmf;
 				
 				// TODO Load grafikus bug de amúgy működik
-			} catch (Exception e1) { System.out.println(e1); }
+			} catch (Exception e1) { Logger.out(java.util.logging.Level.SEVERE, e1.getMessage()); }
 		}
 	}
 	
@@ -208,6 +208,6 @@ public class Main implements Serializable
 				) {
 				if(!fname.endsWith(".vak")) { fname += ".vak"; }
 				oos.writeObject(mf);
-			} catch (Exception ex) { System.out.println(ex); }
+			} catch (Exception ex) { Logger.out(java.util.logging.Level.SEVERE, ex.getMessage()); }
 	}
 }

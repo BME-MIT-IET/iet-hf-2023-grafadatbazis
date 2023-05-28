@@ -15,7 +15,7 @@ public class Logger {
 	    return sb.toString();
 	}
 	
-	public static void out(String inp) {
-		System.out.println(tabber(tabCount) + inp);
+	public static void out(java.util.logging.Level inplevel, String inp) {
+		java.util.logging.Logger.getGlobal().log(inplevel, inp);
 	}
 }

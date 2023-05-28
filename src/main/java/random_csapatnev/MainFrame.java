@@ -522,7 +522,6 @@ public class MainFrame extends JFrame {
                 		agentPickerFrame(c);
                 	}
                 	else if ("stealMaterial".equals(action)) {
-                		System.out.println(c);
                 		v.stealMaterialInteract(c);
                 	}
                 	else if ("stealGear".equals(action)) {
