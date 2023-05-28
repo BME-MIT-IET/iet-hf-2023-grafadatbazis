@@ -162,7 +162,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "stealMaterial");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -174,7 +175,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "stealGear");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -198,7 +200,8 @@ public class MainFrame extends JFrame {
 				try {
 					virologistFrame(v.currField.characters, "useAgent");
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -210,7 +213,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "useAxe");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -222,7 +226,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "benit");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -340,7 +345,8 @@ public class MainFrame extends JFrame {
 						}
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
