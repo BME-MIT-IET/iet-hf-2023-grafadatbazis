@@ -15,7 +15,7 @@ public class GraphicsSack extends GraphicsGear {
 		{
 		    img = ImageIO.read(new File(StringLiterals.SACK_PATH));
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
 		}
 	}
 }

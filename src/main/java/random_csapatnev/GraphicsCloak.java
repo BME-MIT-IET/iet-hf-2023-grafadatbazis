@@ -15,7 +15,7 @@ public class GraphicsCloak extends GraphicsGear {
 		{
 		    img = ImageIO.read(new File(StringLiterals.CLOAK_PATH));
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
 		}
 	}
 }
