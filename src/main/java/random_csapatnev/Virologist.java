@@ -165,7 +165,7 @@ public class Virologist extends Character
 	{
 		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
 		{
-			for(int i = activeGears.size() - 1; i <= 0; --i)
+			for(int i = 0; i < activeGears.size(); i++)
 			{
 				if(activeGears.get(i).getName() == GearEnum.AXE)
 				{
