@@ -288,7 +288,7 @@ public class MainFrame extends JFrame {
 		frame.add(jobbJp);
 		
         frame.setLocationRelativeTo(null);  
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
         frame.setResizable(true);
         frame.setVisible(true);

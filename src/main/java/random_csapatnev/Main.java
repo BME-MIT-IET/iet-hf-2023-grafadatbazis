@@ -117,7 +117,7 @@ public class Main implements Serializable
 		
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(null);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jf.setVisible(true); 
 	}
 	
@@ -197,7 +197,7 @@ public class Main implements Serializable
 		
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(null);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jf.setVisible(true); 
 	}
 	
