@@ -81,7 +81,7 @@ public class Main implements Serializable
 					try {
 						load(new String[] {"", jfc.getSelectedFile().getPath()});
 						startFrame.setVisible(false);
-					} catch (Exception e1) {}
+					} catch (Exception e1) { Logger.out(java.util.logging.Level.SEVERE, e1.getMessage()); }
 				}
 			}
 		});
