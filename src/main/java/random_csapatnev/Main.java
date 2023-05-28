@@ -31,17 +31,16 @@ public class Main implements Serializable
 	
 	private static void load(String[] split) {
 		if(split.length >= 2) {
-			try {
-				System.out.println("load " + split[1] + " Sikeres!");
+			try (
 				FileInputStream fis = new FileInputStream(split[1]);
 				ObjectInputStream ois = new ObjectInputStream(fis);
+				) {
+				System.out.println("load " + split[1] + " Sikeres!");
 
 				MainFrame tempmf = new MainFrame((MainFrame)ois.readObject());
 				mf = tempmf;
 				
 				// TODO Load grafikus bug de amúgy működik
-				
-				ois.close();
 			} catch (Exception e1) { System.out.println(e1); }
 		}
 	}
@@ -203,12 +202,12 @@ public class Main implements Serializable
 	}
 	
 	public static void saveGameFrame(String fname) {
-			try {
-				if(!fname.endsWith(".vak")) { fname += ".vak"; }
+			try (
 				FileOutputStream fileos = new FileOutputStream(fname);
 				ObjectOutputStream oos = new ObjectOutputStream(fileos);
+				) {
+				if(!fname.endsWith(".vak")) { fname += ".vak"; }
 				oos.writeObject(mf);
-				oos.close();
 			} catch (Exception ex) { System.out.println(ex); }
 	}
 }
