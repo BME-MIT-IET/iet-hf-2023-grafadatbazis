@@ -3,6 +3,10 @@ package random_csapatnev;
 public class Logger {
 	static int tabCount = 0;
 	
+	private Logger() {
+		// Statikus osztály
+	}
+
 	public static String tabber(int count) {
 		StringBuilder sb = new StringBuilder(); 
 	    for (int i = 0; i < count; i++) {
