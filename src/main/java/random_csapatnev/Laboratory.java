@@ -67,6 +67,8 @@ public class Laboratory extends Field
 					MainFrame.Instance.winCon.add(a1.name);
 				}
 				break;
+			default:
+				break;
 		}
 		
 		if(r.nextInt(10) == 0) {
