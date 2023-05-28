@@ -509,6 +509,7 @@ public class MainFrame extends JFrame {
                 			c = ve;
                 		}
                 	}
+					if(c != null) {
                 	if("useAgent".equals(action)) {
                 		agentPickerFrame(c);
                 	}
@@ -529,6 +530,7 @@ public class MainFrame extends JFrame {
                     		}
                 		
                 	}
+				}
                 	refreshView();
                 	jf.dispose();
                 }
