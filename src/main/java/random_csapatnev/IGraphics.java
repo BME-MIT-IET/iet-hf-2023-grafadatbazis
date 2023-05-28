@@ -8,7 +8,6 @@ import javax.swing.JPanel;
  *
  */
 
-public interface IGraphics 
-{
+public interface IGraphics {
 	public void draw(JPanel p, int x, int y, int width, int height);
 }

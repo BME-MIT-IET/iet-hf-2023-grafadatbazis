@@ -13,8 +13,7 @@ import javax.swing.JPanel;
  * Karakterek grafikus megjelenítéséért felelős abstract osztály.
  *
  */
-public abstract class GraphicsCharacter extends JPanel implements IGraphics 
-{
+public abstract class GraphicsCharacter extends JPanel implements IGraphics {
 	int graphicsX = 0;
 	int graphicsY = 0;
 	int graphicsWidth = 0;
@@ -22,20 +21,19 @@ public abstract class GraphicsCharacter extends JPanel implements IGraphics
 	JPanel graphicsParent = null;
 	Character c;
 	Color color = Color.LIGHT_GRAY;
-	GraphicsCharacter(Character c)
-	{
+
+	GraphicsCharacter(Character c) {
 		super();
 		this.c = c;
 	}
+
 	@Override
-	public void draw(JPanel p, int x, int y, int width, int height)
-	{
+	public void draw(JPanel p, int x, int y, int width, int height) {
 		graphicsX = x;
 		graphicsY = y;
 		graphicsWidth = width;
 		graphicsHeight = height;
-		if(graphicsParent != null)
-		{
+		if (graphicsParent != null) {
 			graphicsParent.remove(this);
 		}
 		graphicsParent = p;
@@ -46,22 +44,22 @@ public abstract class GraphicsCharacter extends JPanel implements IGraphics
 		this.revalidate();
 		this.repaint();
 	}
+
 	@Override
-	public void paint(Graphics g)
-	{
+	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(color);
-		g.fillOval(graphicsWidth/4, graphicsHeight/4, graphicsWidth/2, graphicsHeight/2);
+		g.fillOval(graphicsWidth / 4, graphicsHeight / 4, graphicsWidth / 2, graphicsHeight / 2);
 		g.setColor(Color.BLACK);
-		if(c.name.equals("v0"))
-		{
+		if (c.name.equals("v0")) {
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setStroke(new BasicStroke(4));
-			g2.draw(new Ellipse2D.Double(graphicsWidth/4.0, graphicsHeight/4.0, graphicsWidth/2.0, graphicsHeight/2.0));
+			g2.draw(new Ellipse2D.Double(graphicsWidth / 4.0, graphicsHeight / 4.0, graphicsWidth / 2.0,
+					graphicsHeight / 2.0));
 		}
-        g.drawChars(c.name.toCharArray(), 0, c.name.length(), graphicsWidth/2-3, graphicsHeight/2+3);
+		g.drawChars(c.name.toCharArray(), 0, c.name.length(), graphicsWidth / 2 - 3, graphicsHeight / 2 + 3);
 	}
-	
+
 	public void remove() {
 		if (graphicsParent != null) {
 			graphicsParent.remove(this);

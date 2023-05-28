@@ -13,5 +13,6 @@ public final class StringLiterals {
     public static final String GLOVES_PATH = ".\\src\\main\\java\\images\\gloves2.png";
     public static final String SACK_PATH = ".\\src\\main\\java\\images\\sack.png";
 
-    private StringLiterals(){}
+    private StringLiterals() {
+    }
 }

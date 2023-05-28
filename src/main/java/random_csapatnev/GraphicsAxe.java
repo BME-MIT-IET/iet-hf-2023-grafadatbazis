@@ -8,12 +8,10 @@ import javax.swing.JPanel;
 
 public class GraphicsAxe extends GraphicsGear {
 
-	public GraphicsAxe(Safehouse input, JPanel parent)
-	{
+	public GraphicsAxe(Safehouse input, JPanel parent) {
 		super(input, parent);
-		try 
-		{
-		    img = ImageIO.read(new File(StringLiterals.AXE_PATH));
+		try {
+			img = ImageIO.read(new File(StringLiterals.AXE_PATH));
 		} catch (IOException e) {
 			Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
 		}

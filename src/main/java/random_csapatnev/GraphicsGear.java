@@ -9,29 +9,28 @@ public abstract class GraphicsGear extends JPanel {
 	JPanel graphicsParent;
 	Safehouse position;
 	transient BufferedImage img;
-	
-	protected GraphicsGear(Safehouse input, JPanel parent) 
-	{
+
+	protected GraphicsGear(Safehouse input, JPanel parent) {
 		super();
 		graphicsParent = parent;
 		position = input;
 		parent.add(this);
 	}
-	public void draw()
-	{
+
+	public void draw() {
 		this.setSize(graphicsParent.getWidth(), graphicsParent.getHeight());
 		this.setVisible(true);
 		this.setOpaque(false);
 		this.revalidate();
 		this.repaint();
 	}
+
 	@Override
-	public void paint(Graphics g)
-	{
+	public void paint(Graphics g) {
 		super.paint(g);
-		if(position.gear != null)
-		{
-			g.drawImage(img, 0, graphicsParent.getHeight() - graphicsParent.getHeight()/2, graphicsParent.getWidth()/2, graphicsParent.getHeight()/2, null);
+		if (position.gear != null) {
+			g.drawImage(img, 0, graphicsParent.getHeight() - graphicsParent.getHeight() / 2,
+					graphicsParent.getWidth() / 2, graphicsParent.getHeight() / 2, null);
 		}
 	}
 }

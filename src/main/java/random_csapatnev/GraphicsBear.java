@@ -8,9 +8,8 @@ import java.awt.Color;
  *
  */
 public class GraphicsBear extends GraphicsCharacter {
-	public GraphicsBear(Bear c) 
-	{
+	public GraphicsBear(Bear c) {
 		super(c);
-		color = new Color(180,95,6); 
+		color = new Color(180, 95, 6);
 	}
 }
