@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static org.junit.Assert.assertEquals;
-import static random_csapatnev.CouldHeMove.couldHeMove;
 
 class CouldHeUseAgents{
     static String couldHeUseAgents(boolean usageSuccess) {
