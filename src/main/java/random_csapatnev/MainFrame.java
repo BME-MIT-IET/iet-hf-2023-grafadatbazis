@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame {
 	Random rand = new Random();
+	boolean gameRunning = true;
 	/**
 	 * 
 	 */
@@ -331,7 +332,7 @@ public class MainFrame extends JFrame {
 			@Override
 			public void run() {
 				try {
-					while(true) {
+					while(gameRunning) {
 						Thread.sleep(3000);
 						if(aiToggle) {
 							overallRound();
@@ -860,9 +861,11 @@ public class MainFrame extends JFrame {
 		for(Character c : model.characters) {
 			if(c.knownAgents.size() == winCon.size()) {
 				if(c.name.equals("v0")) {
+					gameRunning = false;
 					Main.endGame(true);
 				}
 				else {
+					gameRunning = false;
 					Main.endGame(false);
 				}
 			}
