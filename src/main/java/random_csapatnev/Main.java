@@ -31,18 +31,17 @@ public class Main implements Serializable
 	
 	private static void load(String[] split) {
 		if(split.length >= 2) {
-			try {
-				System.out.println("load " + split[1] + " Sikeres!");
+			try (
 				FileInputStream fis = new FileInputStream(split[1]);
 				ObjectInputStream ois = new ObjectInputStream(fis);
+				) {
+				Logger.out(java.util.logging.Level.INFO, "load " + split[1] + " Sikeres!");
 
 				MainFrame tempmf = new MainFrame((MainFrame)ois.readObject());
 				mf = tempmf;
 				
 				// TODO Load grafikus bug de amúgy működik
-				
-				ois.close();
-			} catch (Exception e1) { System.out.println(e1); }
+			} catch (Exception e1) { Logger.out(java.util.logging.Level.SEVERE, e1.getMessage()); }
 		}
 	}
 	
@@ -82,7 +81,7 @@ public class Main implements Serializable
 					try {
 						load(new String[] {"", jfc.getSelectedFile().getPath()});
 						startFrame.setVisible(false);
-					} catch (Exception e1) {}
+					} catch (Exception e1) { Logger.out(java.util.logging.Level.SEVERE, e1.getMessage()); }
 				}
 			}
 		});
@@ -118,7 +117,7 @@ public class Main implements Serializable
 		
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(null);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jf.setVisible(true); 
 	}
 	
@@ -198,17 +197,17 @@ public class Main implements Serializable
 		
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(null);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jf.setVisible(true); 
 	}
 	
 	public static void saveGameFrame(String fname) {
-			try {
-				if(!fname.endsWith(".vak")) { fname += ".vak"; }
+			try (
 				FileOutputStream fileos = new FileOutputStream(fname);
 				ObjectOutputStream oos = new ObjectOutputStream(fileos);
+				) {
+				if(!fname.endsWith(".vak")) { fname += ".vak"; }
 				oos.writeObject(mf);
-				oos.close();
-			} catch (Exception ex) { System.out.println(ex); }
+			} catch (Exception ex) { Logger.out(java.util.logging.Level.SEVERE, ex.getMessage()); }
 	}
 }

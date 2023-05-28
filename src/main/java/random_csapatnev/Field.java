@@ -56,7 +56,11 @@ public class Field implements Serializable
 	 * Az éppen itt álló c karakter interaktál a mezővel.
 	 * @param c Az interaktáló karakter.
 	 */
-	public void interact(Character c) {}
+	public void interact(Character c) {
+		/*
+		 * Üres implementáció, mivel az üres mező nem csinál semmit amikor interaktál vele egy karakter.
+		 */
+	}
 	public void bearInteract(Bear b){
 		for(Character c : characters) {
 			if(!c.name.startsWith("b")) {

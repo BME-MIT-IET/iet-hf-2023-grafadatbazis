@@ -59,6 +59,11 @@ public class Bear extends Character
 	@Override
 	public void round()
 	{
+		/*
+		 * A round függvény az ágensek lejárását implementálja karaktereken,
+		 * üres így mivel a medvén nem lehetséges ágenst használni,
+		 * ezáltal nem is nézzük hogy lejár-e a hatása bárminek rajta.
+		 */
 	}
 	/**
 	 * Ez a függvény hívódik meg amikor a jelenlegi medve meghal.

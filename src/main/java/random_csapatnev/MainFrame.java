@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame {
 	Random rand = new Random();
+	boolean gameRunning = true;
 	/**
 	 * 
 	 */
@@ -161,7 +162,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "stealMaterial");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -173,7 +175,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "stealGear");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -197,7 +200,8 @@ public class MainFrame extends JFrame {
 				try {
 					virologistFrame(v.currField.characters, "useAgent");
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -209,7 +213,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "useAxe");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -221,7 +226,8 @@ public class MainFrame extends JFrame {
 						virologistFrame(v.currField.characters, "benit");
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -287,7 +293,7 @@ public class MainFrame extends JFrame {
 		frame.add(jobbJp);
 		
         frame.setLocationRelativeTo(null);  
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
         frame.setResizable(true);
         frame.setVisible(true);
@@ -331,7 +337,7 @@ public class MainFrame extends JFrame {
 			@Override
 			public void run() {
 				try {
-					while(true) {
+					while(gameRunning) {
 						Thread.sleep(3000);
 						if(aiToggle) {
 							overallRound();
@@ -339,7 +345,8 @@ public class MainFrame extends JFrame {
 						}
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
+					Thread.currentThread().interrupt();
 				}
 			}
 		});
@@ -393,9 +400,6 @@ public class MainFrame extends JFrame {
 		                	}
 		                    break;
 		                case 'F':
-		                	model.fields[i][j] = new Field(i, j);
-		                	model.graphicsFields[i][j] = new GraphicsField(i, j);
-		                    break;
 		                default:
 		                	model.fields[i][j] = new Field(i, j);
 		                	model.graphicsFields[i][j] = new GraphicsField(i, j);
@@ -410,34 +414,22 @@ public class MainFrame extends JFrame {
 	        {
 	        	if(model.fields[i][j] != null)
 	        	{
-	        		if(i < model.fields.length - 1)
-	        		{
-	        			if(model.fields[i+1][j] != null)
+	        		if(i < model.fields.length - 1 && (model.fields[i+1][j] != null))
 	        			{
 		        			model.fields[i][j].neighbours.add(model.fields[i+1][j]);	
-	        			}
-	        		}
-	        		if(i > 0)
-	        		{
-	        			if(model.fields[i-1][j] != null)
+						}
+	        		if(i > 0 && (model.fields[i-1][j] != null))
 	        			{
 		        			model.fields[i][j].neighbours.add(model.fields[i-1][j]);	
 	        			}
-	        		}
-	        		if(j > 0)
-	        		{
-	        			if(model.fields[i][j-1] != null)
+	        		if(j > 0 && (model.fields[i][j-1] != null))
 	        			{
 		        			model.fields[i][j].neighbours.add(model.fields[i][j-1]);	
-	        			}	
-	        		}
-	        		if(j < model.fields[i].length - 1)
-	        		{
-	        			if(model.fields[i][j+1] != null)
+	        			}
+	        		if(j < model.fields[i].length - 1 && (model.fields[i][j+1] != null))
 	        			{
-		        			model.fields[i][j].neighbours.add(model.fields[i][j+1]);	
-	        			}	
-	        		}
+		        			model.fields[i][j].neighbours.add(model.fields[i][j+1]);		
+	        			}
 	        	}
 	        }
 	    }
@@ -517,11 +509,11 @@ public class MainFrame extends JFrame {
                 			c = ve;
                 		}
                 	}
+					if(c != null) {
                 	if("useAgent".equals(action)) {
                 		agentPickerFrame(c);
                 	}
                 	else if ("stealMaterial".equals(action)) {
-                		System.out.println(c);
                 		v.stealMaterialInteract(c);
                 	}
                 	else if ("stealGear".equals(action)) {
@@ -530,17 +522,15 @@ public class MainFrame extends JFrame {
                 	else if ("benit".equals(action)) {
                 		c.setIsParalyzed(true);
                 	}
-                	else if ("useAxe".equals(action)) {
-                		if(c.name.startsWith("b")) {
+                	else if ("useAxe".equals(action) && (c.name.startsWith("b"))) {
                 			for(Gear g : v.activeGears) {
-                    			if (g.name == GearEnum.AXE) {
-                    				if(Boolean.TRUE.equals(g.canUse)) {
+                    			if (g.name == GearEnum.AXE && (Boolean.TRUE.equals(g.canUse))) {
                     					g.effect(c);
-                    				}
                     			}
                     		}
-                		}
+                		
                 	}
+				}
                 	refreshView();
                 	jf.dispose();
                 }
@@ -860,9 +850,11 @@ public class MainFrame extends JFrame {
 		for(Character c : model.characters) {
 			if(c.knownAgents.size() == winCon.size()) {
 				if(c.name.equals("v0")) {
+					gameRunning = false;
 					Main.endGame(true);
 				}
 				else {
+					gameRunning = false;
 					Main.endGame(false);
 				}
 			}

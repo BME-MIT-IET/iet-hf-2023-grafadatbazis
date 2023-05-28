@@ -119,13 +119,10 @@ public class Virologist extends Character
 			}
 			return;
 		}
-		else if(Boolean.TRUE.equals(isCloaked))
-		{
-			if(rand.nextInt(1000) < 823)
+		else if(Boolean.TRUE.equals(isCloaked) && (rand.nextInt(1000) < 823))
 			{
-				return;
+				return;	
 			}
-		}
 		for(Agent curAgent: activeAgents)
 		{
 			if(Objects.equals(curAgent.name, a.name))
@@ -144,16 +141,13 @@ public class Virologist extends Character
 	{
 		for(int i = gears.size() - 1; i >= 0; --i)
 		{
-			if(gears.get(i).getName() == g)
-			{
-				if(activeGears.size() < 3)
+			if(gears.get(i).getName() == g && (activeGears.size() < 3))
 				{
 					Gear curGear = gears.remove(i);
 					curGear.effect(this);
 					activeGears.add(curGear);
 					break;
 				}
-			}
 		}
 	}
 	/**
@@ -165,7 +159,7 @@ public class Virologist extends Character
 	{
 		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
 		{
-			for(int i = activeGears.size() - 1; i <= 0; --i)
+			for(int i = 0; i < activeGears.size(); i++)
 			{
 				if(activeGears.get(i).getName() == GearEnum.AXE)
 				{
@@ -205,9 +199,7 @@ public class Virologist extends Character
 	 */
 	public void stealGearInteract(Character c)
 	{
-		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
-		{
-			if(Boolean.TRUE.equals(c.isParalyzed))
+		if(Boolean.TRUE.equals(currField.containsCharacter(c)) && (Boolean.TRUE.equals(c.isParalyzed)))
 			{
 				Gear stolenGear = c.stealGear();
 				if(stolenGear != null)
@@ -215,7 +207,6 @@ public class Virologist extends Character
 					gears.add(stolenGear);
 				}
 			}
-		}
 	}
 	/**
 	 *Felülírja a Character Use függvényét, a megadott karakteren használja a megadott ágenst.
@@ -223,14 +214,11 @@ public class Virologist extends Character
 	@Override
 	public void use(Character c, Agent a)
 	{
-		if(Boolean.TRUE.equals(currField.containsCharacter(c)))
-		{
-			if(craftedAgents.contains(a))
+		if(Boolean.TRUE.equals(currField.containsCharacter(c)) && (craftedAgents.contains(a)))
 			{
 				c.agentUsedOnHim(a, c);
 				craftedAgents.remove(a);
 			}
-		}
 	}
 	/**
 	 * Ez hívódik meg amikor a GameManager a kört lépteti.

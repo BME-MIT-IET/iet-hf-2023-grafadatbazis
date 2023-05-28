@@ -33,6 +33,8 @@ public class Safehouse extends Field
 		case 3:
 			gear = new Sack();
 			break;
+		default:
+			break;
 		}
 	}
 	

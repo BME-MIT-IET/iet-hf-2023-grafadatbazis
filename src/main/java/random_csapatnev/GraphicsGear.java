@@ -10,7 +10,7 @@ public abstract class GraphicsGear extends JPanel {
 	Safehouse position;
 	transient BufferedImage img;
 	
-	public GraphicsGear(Safehouse input, JPanel parent) 
+	protected GraphicsGear(Safehouse input, JPanel parent) 
 	{
 		super();
 		graphicsParent = parent;

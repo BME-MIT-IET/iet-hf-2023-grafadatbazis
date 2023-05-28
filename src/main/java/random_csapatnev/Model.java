@@ -24,11 +24,6 @@ public class Model implements Serializable
 	ArrayList<GraphicsGear> graphicsGear = new ArrayList<GraphicsGear>();
 	ArrayList<GraphicsMaterial> graphicsMaterial = new ArrayList<GraphicsMaterial>();
 	
-	public Model() 
-	{
-		
-	}
-	
 	public void setFields(Field[][] input) { fields = input; }
 	public void setCharacters(ArrayList<Character> input) { characters = input; }
 	public void setAgents(ArrayList<Agent> input) { agents = input; }
@@ -66,8 +61,4 @@ public class Model implements Serializable
 	public void setGraphicsMaterial(ArrayList<GraphicsMaterial> graphicsMaterial) {
 		this.graphicsMaterial = graphicsMaterial;
 	}
-	
-	public void createGraphicsObjects() {}
-	public void clearData() {}
-	public void repaint() {}
 }
