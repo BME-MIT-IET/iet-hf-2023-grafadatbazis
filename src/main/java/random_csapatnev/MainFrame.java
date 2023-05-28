@@ -414,34 +414,22 @@ public class MainFrame extends JFrame {
 	        {
 	        	if(model.fields[i][j] != null)
 	        	{
-	        		if(i < model.fields.length - 1)
-	        		{
-	        			if(model.fields[i+1][j] != null)
+	        		if(i < model.fields.length - 1 && (model.fields[i+1][j] != null))
 	        			{
 		        			model.fields[i][j].neighbours.add(model.fields[i+1][j]);	
-	        			}
-	        		}
-	        		if(i > 0)
-	        		{
-	        			if(model.fields[i-1][j] != null)
+						}
+	        		if(i > 0 && (model.fields[i-1][j] != null))
 	        			{
 		        			model.fields[i][j].neighbours.add(model.fields[i-1][j]);	
 	        			}
-	        		}
-	        		if(j > 0)
-	        		{
-	        			if(model.fields[i][j-1] != null)
+	        		if(j > 0 && (model.fields[i][j-1] != null))
 	        			{
 		        			model.fields[i][j].neighbours.add(model.fields[i][j-1]);	
-	        			}	
-	        		}
-	        		if(j < model.fields[i].length - 1)
-	        		{
-	        			if(model.fields[i][j+1] != null)
+	        			}
+	        		if(j < model.fields[i].length - 1 && (model.fields[i][j+1] != null))
 	        			{
-		        			model.fields[i][j].neighbours.add(model.fields[i][j+1]);	
-	        			}	
-	        		}
+		        			model.fields[i][j].neighbours.add(model.fields[i][j+1]);		
+	        			}
 	        	}
 	        }
 	    }
@@ -533,16 +521,13 @@ public class MainFrame extends JFrame {
                 	else if ("benit".equals(action)) {
                 		c.setIsParalyzed(true);
                 	}
-                	else if ("useAxe".equals(action)) {
-                		if(c.name.startsWith("b")) {
+                	else if ("useAxe".equals(action) && (c.name.startsWith("b"))) {
                 			for(Gear g : v.activeGears) {
-                    			if (g.name == GearEnum.AXE) {
-                    				if(Boolean.TRUE.equals(g.canUse)) {
+                    			if (g.name == GearEnum.AXE && (Boolean.TRUE.equals(g.canUse))) {
                     					g.effect(c);
-                    				}
                     			}
                     		}
-                		}
+                		
                 	}
                 	refreshView();
                 	jf.dispose();
