@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 public class ParalyzingVaccine extends Agent {
 	public ParalyzingVaccine() {
-		name = "ParalyzingVaccine";
+		name = StringLiterals.PAR_VACCINE;
 	}
 
 	/**

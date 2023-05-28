@@ -13,7 +13,7 @@ public class BearVirus extends Agent {
 	private Random rand = new Random();
 
 	public BearVirus() {
-		name = "BearVirus";
+		name = StringLiterals.BEAR_VIRUS;
 	}
 
 	@Override

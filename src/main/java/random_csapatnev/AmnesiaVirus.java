@@ -6,7 +6,7 @@ package random_csapatnev;
  */
 public class AmnesiaVirus extends Agent {
 	public AmnesiaVirus() {
-		name = "AmnesiaVirus";
+		name = StringLiterals.AMN_VIRUS;
 	}
 
 	/**
