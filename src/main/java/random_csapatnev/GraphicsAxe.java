@@ -15,7 +15,7 @@ public class GraphicsAxe extends GraphicsGear {
 		{
 		    img = ImageIO.read(new File(StringLiterals.AXE_PATH));
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
 		}
 	}
 }
