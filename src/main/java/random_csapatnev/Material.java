@@ -19,11 +19,9 @@ public class Material implements Serializable
 	 */
 	public Material() { container = new HashMap<MatEnum, Integer>(); }
     public Material(final int a, final int b) {
-    	container = new HashMap<MatEnum, Integer>(){{
-    		put(MatEnum.AMINOACID, a);
-    		put(MatEnum.NUCLEOTIDE, b);
-    	}
-    	};
+    	container = new HashMap<>();
+		container.put(MatEnum.AMINOACID, a);
+		container.put(MatEnum.NUCLEOTIDE, b);
     }
 	
 	/**
