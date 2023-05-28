@@ -400,9 +400,6 @@ public class MainFrame extends JFrame {
 		                	}
 		                    break;
 		                case 'F':
-		                	model.fields[i][j] = new Field(i, j);
-		                	model.graphicsFields[i][j] = new GraphicsField(i, j);
-		                    break;
 		                default:
 		                	model.fields[i][j] = new Field(i, j);
 		                	model.graphicsFields[i][j] = new GraphicsField(i, j);
