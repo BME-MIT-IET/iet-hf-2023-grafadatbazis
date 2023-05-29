@@ -1,17 +1,10 @@
 package random_csapatnev;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.io.Serializable;
 
-import javax.swing.JPanel;
-import javax.swing.border.MatteBorder;
-
-public class GraphicsWarehouse extends GraphicsFieldBase 
-{
-	public GraphicsWarehouse(int _x, int _y)
-	{
-		super(_x, _y);
+public class GraphicsWarehouse extends GraphicsFieldBase {
+	public GraphicsWarehouse(int inputX, int inputY) {
+		super(inputX, inputY);
 		this.setBackground(new Color(144, 238, 144));
 	}
 }
