@@ -33,7 +33,7 @@ A projekt célja a korábban ismertetett program kódjának átvizsgálása, tes
 - [Maven](doc/maven.md)
 
 ### 2. feladat: Manuális kód átvizsgálás, statikus kódanalízis, kódminőség javítása
-- [Placeholder]()
+- [Statikus Analízis](doc/staticanalysis.md)
 
 ### 3. feladat: Unit tesztek készítése, végrehajtása, dokumentálása, kódlefedettségének mérése és javítása
 - [Placeholder]()

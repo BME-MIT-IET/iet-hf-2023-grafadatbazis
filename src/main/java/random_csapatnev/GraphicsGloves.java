@@ -2,22 +2,18 @@ package random_csapatnev;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class GraphicsGloves extends GraphicsGear implements Serializable {
+public class GraphicsGloves extends GraphicsGear {
 
-	public GraphicsGloves(Safehouse input, JPanel parent) 
-	{
+	public GraphicsGloves(Safehouse input, JPanel parent) {
 		super(input, parent);
-		try 
-		{
-		    img = ImageIO.read(new File(".\\src\\images\\gloves2.png"));
+		try {
+			img = ImageIO.read(new File(StringLiterals.GLOVES_PATH));
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
 		}
 	}
 }

@@ -25,12 +25,12 @@ public class VirologistCraftsStepDefs {
     public void does_not_know_agent(){}
     @Given("Virologist has {int} AminoAcid and {int} Nucleotid")
     public void hasNMaterial(int aminoAcid, int nucleotid){
-        virologist.currMaterial.AddMaterial(new Material(aminoAcid, nucleotid));
+        virologist.currMaterial.addMaterial(new Material(aminoAcid, nucleotid));
     }
     @When("I ask whether he could craft Agent")
     public void ask_whether_he_could_craft(){
         if(virologist.knownAgents.size()>0)
-            virologist.CraftAgent(virologist.knownAgents.get(0));
+            virologist.craftAgent(virologist.knownAgents.get(0));
         actualAnswer = couldHeCraft(virologist.craftedAgents.size()>0);
     }
     @Then("He should answer {string} craft")

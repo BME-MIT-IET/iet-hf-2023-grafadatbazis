@@ -3,11 +3,11 @@ package random_csapatnev;
 import java.io.Serializable;
 
 /**
- * Felelőssége az adott ágens működéséhez szükséges adatok tárolása, pl.: lejárati idő, név, aktív idő, 
+ * Felelőssége az adott ágens működéséhez szükséges adatok tárolása, pl.:
+ * lejárati idő, név, aktív idő,
  * majd ezeknek a paramétereknek a segítségével a hatásának kifejtése.
  */
-public abstract class Agent implements Serializable
-{
+public abstract class Agent implements Serializable {
 	/**
 	 * Az adott ágens neve.
 	 */
@@ -17,43 +17,52 @@ public abstract class Agent implements Serializable
 	 */
 	Integer activeTime = 0;
 	/**
-	 *  Azt mutatja, hogy az adott ágensnek mennyi ideig tart a hatása.
+	 * Azt mutatja, hogy az adott ágensnek mennyi ideig tart a hatása.
 	 */
 	Integer effectTime = 3;
 	/**
-	 * Azt mutatja, hogy az adott ágenst mennyi és milyen anyagokba kerül előállítani
+	 * Azt mutatja, hogy az adott ágenst mennyi és milyen anyagokba kerül
+	 * előállítani
 	 */
 	Material cost = new Material(5, 5);
 	/**
-	 *  Azt mutatja, hogy jelenleg melyik karakterre fejti ki a hatását.
+	 * Azt mutatja, hogy jelenleg melyik karakterre fejti ki a hatását.
 	 */
 	Character currCharacter;
-	
+
 	Character ownerCharacter;
 	/**
 	 * Azt mutatja, hogy mikor jár le az adott ágens (nem lehet utána felhasználni).
 	 */
-	Integer expireDate = 3; 
+	Integer expireDate = 3;
+
 	/**
-	 * Absztrakt metódus, ez hívódik meg amikor egy karakter aktív ágensei között el van tárolva, a karakter Round függvénye hívja meg.
+	 * Absztrakt metódus, ez hívódik meg amikor egy karakter aktív ágensei között el
+	 * van tárolva, a karakter Round függvénye hívja meg.
 	 */
-	public abstract void Round();
+	public abstract void round();
+
 	/**
-	 * Absztrakt metódus, ez hívódik meg amikor az adott ágens kifejti a hatását a megadott karakterre.
+	 * Absztrakt metódus, ez hívódik meg amikor az adott ágens kifejti a hatását a
+	 * megadott karakterre.
+	 * 
 	 * @param c Karakter akire hatással van.
 	 */
-	public abstract void Effect(Character c);
+	public abstract void affect(Character c);
+
 	/**
-	 * Ez hívódik meg amikor az adott ágenst megtanulja egy karakter. 
+	 * Ez hívódik meg amikor az adott ágenst megtanulja egy karakter.
+	 * 
 	 * @param c Karakter aki megtanulja.
 	 */
-	public void Learn (Character c)
-	{
+	public void learn(Character c) {
 		c.knownAgents.add(this);
 	}
+
 	/**
 	 * Absztrakt metódus, ez hívódik meg amikor lejár az ágens hatása.
 	 */
-	public abstract Agent CreateNew();
-	public abstract void Expire();
+	public abstract Agent createNew();
+
+	public abstract void expire();
 }
