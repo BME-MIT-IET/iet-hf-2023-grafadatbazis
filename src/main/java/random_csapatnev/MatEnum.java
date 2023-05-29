@@ -1,12 +1,12 @@
 package random_csapatnev;
 
 /**
- * Indikálja, hogy a Material container-ben milyen típusú anyagok vannak letárolva, 
- * illetve ez alapján lehet majd kikérni, 
+ * Indikálja, hogy a Material container-ben milyen típusú anyagok vannak
+ * letárolva,
+ * illetve ez alapján lehet majd kikérni,
  * hogy melyik anyag típusból mennyi van.
  */
-public enum MatEnum
-{
+public enum MatEnum {
 	AMINOACID,
 	NUCLEOTIDE
 }

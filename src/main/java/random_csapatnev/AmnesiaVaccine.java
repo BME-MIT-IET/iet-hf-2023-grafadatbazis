@@ -3,56 +3,55 @@ package random_csapatnev;
 import java.util.Objects;
 
 /**
- * Agent osztályból származik, felelőssége, megakadályozni az amnézia vírus hatását.
+ * Agent osztályból származik, felelőssége, megakadályozni az amnézia vírus
+ * hatását.
  */
-public class AmnesiaVaccine extends Agent
-{
+public class AmnesiaVaccine extends Agent {
 	public AmnesiaVaccine() {
-		name = "AmnesiaVaccine";
+		name = StringLiterals.AMN_VACCINE;
 	}
+
 	/**
-	 * Felülírja az Agent Round metódusát, 
-	 * ez hívódik meg amikor egy karakter aktív ágensei között el van tárolva, 
+	 * Felülírja az Agent Round metódusát,
+	 * ez hívódik meg amikor egy karakter aktív ágensei között el van tárolva,
 	 * a karakter Round függvénye hívja meg.
 	 */
 	@Override
-	public void round() 
-	{
-		if(currCharacter != null) {
+	public void round() {
+		if (currCharacter != null) {
 			activeTime++;
-			if(Objects.equals(activeTime, effectTime)) {
+			if (Objects.equals(activeTime, effectTime)) {
 				expire();
 			}
-		}
-		else {
+		} else {
 			expireDate--;
-			if(expireDate == 0) {
+			if (expireDate == 0) {
 				ownerCharacter.craftedAgents.remove(this);
 			}
 		}
 	}
 
 	/**
-	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti a hatását karakterre.
+	 * Felülírja az Agent Effect metódusát, ez a függvény hívódik meg amikor kifejti
+	 * a hatását karakterre.
 	 */
 	@Override
-	public void affect(Character c) 
-	{
+	public void affect(Character c) {
 		c.activeAgents.add(this);
 		this.currCharacter = c;
 	}
+
 	/**
-	 * Felülírja az Agent Expire metódusát, ez a függvény hívódik meg amikor lejár vakcina hatása.
+	 * Felülírja az Agent Expire metódusát, ez a függvény hívódik meg amikor lejár
+	 * vakcina hatása.
 	 */
 	@Override
-	public void expire() 
-	{
+	public void expire() {
 		currCharacter.activeAgents.remove(this);
 	}
 
 	@Override
-	public Agent createNew() 
-	{
+	public Agent createNew() {
 		return new AmnesiaVaccine();
 	}
 }
