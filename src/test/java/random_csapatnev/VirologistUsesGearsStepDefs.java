@@ -36,14 +36,14 @@ public class VirologistUsesGearsStepDefs{
         virologist.gears.add(gear1);
         virologist.gears.add(gear2);
         virologist.gears.add(gear3);
-        virologist.EquipGear(GearEnum.CLOAK);
-        virologist.EquipGear(GearEnum.CLOAK);
-        virologist.EquipGear(GearEnum.CLOAK);
+        virologist.equipGear(GearEnum.CLOAK);
+        virologist.equipGear(GearEnum.CLOAK);
+        virologist.equipGear(GearEnum.CLOAK);
     }
 
     @When("I ask if he could equip Gear")
     public void ask_whether_he_could_use(){
-        virologist.EquipGear(GearEnum.GLOVES);
+        virologist.equipGear(GearEnum.GLOVES);
         boolean result = false;
         if(virologist.activeGears.contains(gear) && virologist.isGloved == true){
             result = true;
