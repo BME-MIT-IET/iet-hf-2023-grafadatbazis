@@ -14,9 +14,9 @@ class CouldHeMove{
 }
 
 public class VirologistMovesStepDefs {
-    private Virologist virologist = new Virologist("test");
+    private final Virologist virologist = new Virologist("test");
     private Agent activeAgent;
-    private Field startingField = new Field(0,0);
+    private final Field startingField = new Field(0,0);
     private Field neighbourField;
     private String actualAnswer;
     @Given("Virologist has no effects affecting their movement")
@@ -24,7 +24,7 @@ public class VirologistMovesStepDefs {
     @Given("Virologist is paralyzed")
     public void paralyzed(){
         ParalyzingVirus paralyzingVirus = new ParalyzingVirus();
-        paralyzingVirus.Effect(this.virologist);
+        paralyzingVirus.affect(this.virologist);
     }
     @Given("Virologist stands on a Field with one neighbour")
     public void one_neighbour(){
@@ -35,8 +35,8 @@ public class VirologistMovesStepDefs {
     }
     @When("I ask whether he could move to that field")
     public void ask_whether_he_could_move(){
-        if(virologist.currField.GetNeighbours().size()>0){
-            virologist.Move(virologist.currField.GetNeighbours().get(0));
+        if(virologist.currField.getNeighbours().size()>0){
+            virologist.move(virologist.currField.getNeighbours().get(0));
         }
 
         actualAnswer = couldHeMove(neighbourField.characters.contains(virologist));
