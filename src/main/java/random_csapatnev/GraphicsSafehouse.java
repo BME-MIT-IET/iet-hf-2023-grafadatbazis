@@ -2,7 +2,6 @@ package random_csapatnev;
 
 import java.awt.Color;
 
-@SuppressWarnings("serial")
 public class GraphicsSafehouse extends GraphicsFieldBase {
 	public GraphicsSafehouse(int inputX, int inputY) {
 		super(inputX, inputY);
