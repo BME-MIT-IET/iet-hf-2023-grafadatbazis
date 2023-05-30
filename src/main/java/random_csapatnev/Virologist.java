@@ -1,6 +1,7 @@
 package random_csapatnev;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -221,7 +222,7 @@ public class Virologist extends Character {
 		}
 
 		if (Boolean.TRUE.equals(isVitus)) {
-			ArrayList<Field> neighFields = currField.getNeighbours();
+			List<Field> neighFields = currField.getNeighbours();
 			int randomint = rand.nextInt(neighFields.size());
 			move(neighFields.get(randomint));
 			fieldInteract();

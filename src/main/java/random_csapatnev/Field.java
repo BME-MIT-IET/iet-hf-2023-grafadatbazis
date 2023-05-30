@@ -2,6 +2,7 @@ package random_csapatnev;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A pályának egy alap építő eleme,
@@ -21,11 +22,11 @@ public class Field implements Serializable {
 	/**
 	 * A szomszédos mezők listája.
 	 */
-	ArrayList<Field> neighbours = new ArrayList<>();
+	private List<Field> neighbours = new ArrayList<>();
 	/**
 	 * Az adott mezőn aktuálisan elhelyezkedő virológusok listája.
 	 */
-	ArrayList<Character> characters = new ArrayList<>();
+	private List<Character> characters = new ArrayList<>();
 
 	/**
 	 * Megállapítja egy paraméterül kapott mezőről, hogy szomszédos-e.
@@ -94,7 +95,7 @@ public class Field implements Serializable {
 	 * 
 	 * @return Szomszédos mezők listája.
 	 */
-	public ArrayList<Field> getNeighbours() {
+	public List<Field> getNeighbours() {
 		return neighbours;
 	}
 
@@ -103,7 +104,7 @@ public class Field implements Serializable {
 	 * 
 	 * @return A jelenlegi mezőn álló karakterek.
 	 */
-	public ArrayList<Character> getCharacters() {
+	public List<Character> getCharacters() {
 		return characters;
 	}
 }

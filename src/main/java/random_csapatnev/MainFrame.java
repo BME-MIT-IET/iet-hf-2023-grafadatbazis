@@ -1,6 +1,7 @@
 package random_csapatnev;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.*;
@@ -160,16 +161,16 @@ public class MainFrame extends JFrame {
 
 		jbtStealMat = new JButton(new AbstractAction("Anyag lopása másik virológustól.") {
 			public void actionPerformed(ActionEvent ae) {
-				if (v.currField.characters.size() > 1) {
-					virologistFrame(v.currField.characters, "stealMaterial");
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "stealMaterial");
 				}
 			}
 		});
 
 		jbtStealGear = new JButton(new AbstractAction("Felszerelés lopása másik virológustól.") {
 			public void actionPerformed(ActionEvent ae) {
-				if (v.currField.characters.size() > 1) {
-					virologistFrame(v.currField.characters, "stealGear");
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "stealGear");
 				}
 			}
 		});
@@ -190,22 +191,22 @@ public class MainFrame extends JFrame {
 
 		jbtUseAgent = new JButton(new AbstractAction("Ágens használata") {
 			public void actionPerformed(ActionEvent ae) {
-				virologistFrame(v.currField.characters, "useAgent");
+				virologistFrame(v.currField.getCharacters(), "useAgent");
 			}
 		});
 
 		jbtUseAxe = new JButton(new AbstractAction("Balta használata") {
 			public void actionPerformed(ActionEvent ae) {
-				if (v.currField.characters.size() > 1) {
-					virologistFrame(v.currField.characters, "useAxe");
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "useAxe");
 				}
 			}
 		});
 
 		jbtAdminBenit = new JButton(new AbstractAction("Admin: Character bénítása") {
 			public void actionPerformed(ActionEvent ae) {
-				if (v.currField.characters.size() > 1) {
-					virologistFrame(v.currField.characters, "benit");
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "benit");
 				}
 			}
 		});
@@ -224,7 +225,7 @@ public class MainFrame extends JFrame {
 				vEnemy.currMaterial.addMaterial(new Material(50, 50));
 				model.getCharacters().add(vEnemy);
 				vEnemy.currField = v.currField;
-				vEnemy.currField.characters.add(vEnemy);
+				vEnemy.currField.getCharacters().add(vEnemy);
 				GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
 				model.getGraphicsCharacter().add(vGEnemy);
 			}
@@ -289,7 +290,7 @@ public class MainFrame extends JFrame {
 		v = new Virologist("v" + increment++);
 		model.getCharacters().add(v);
 		v.currField = model.fields[0][0];
-		model.fields[0][0].characters.add(v);
+		model.fields[0][0].getCharacters().add(v);
 		GraphicsVirologist vG = new GraphicsVirologist(v);
 		model.getGraphicsCharacter().add(vG);
 
@@ -300,7 +301,7 @@ public class MainFrame extends JFrame {
 			int randN = new Random().nextInt(model.sizeN);
 			int randM = new Random().nextInt(model.sizeM);
 			vEnemy.currField = model.fields[randN][randM];
-			model.fields[randN][randM].characters.add(vEnemy);
+			model.fields[randN][randM].getCharacters().add(vEnemy);
 			GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
 			model.getGraphicsCharacter().add(vGEnemy);
 		}
@@ -383,16 +384,16 @@ public class MainFrame extends JFrame {
 			for (int j = 0; j < model.fields[i].length; ++j) {
 				if (model.fields[i][j] != null) {
 					if (i < model.fields.length - 1 && (model.fields[i + 1][j] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i + 1][j]);
+						model.fields[i][j].getNeighbours().add(model.fields[i + 1][j]);
 					}
 					if (i > 0 && (model.fields[i - 1][j] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i - 1][j]);
+						model.fields[i][j].getNeighbours().add(model.fields[i - 1][j]);
 					}
 					if (j > 0 && (model.fields[i][j - 1] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i][j - 1]);
+						model.fields[i][j].getNeighbours().add(model.fields[i][j - 1]);
 					}
 					if (j < model.fields[i].length - 1 && (model.fields[i][j + 1] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i][j + 1]);
+						model.fields[i][j].getNeighbours().add(model.fields[i][j + 1]);
 					}
 				}
 			}
@@ -443,7 +444,7 @@ public class MainFrame extends JFrame {
 		this.repaint();
 	}
 
-	public void virologistFrame(final ArrayList<Character> virList, final String action) {
+	public void virologistFrame(final List<Character> virList, final String action) {
 		final JFrame jf = new JFrame("random_csapatnev virologist_frame");
 		jf.setSize(250, 350);
 		jf.setLayout(new FlowLayout());
@@ -781,7 +782,7 @@ public class MainFrame extends JFrame {
 		}
 		for (Character c : tempList) {
 			if (!c.name.equals("v0")) {
-				ArrayList<Field> neighFields = c.currField.getNeighbours();
+				List<Field> neighFields = c.currField.getNeighbours();
 				int randomint = rand.nextInt(neighFields.size());
 				c.move(neighFields.get(randomint));
 				c.fieldInteract();
