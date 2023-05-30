@@ -143,18 +143,11 @@ public class MainFrame extends JFrame {
 				int x = v.currField.x;
 				int y = v.currField.y;
 
-				if (x - 1 >= 0 && model.fields[x - 1][y] != null) {
-					top = true;
-				}
-				if (y - 1 >= 0 && model.fields[x][y - 1] != null) {
-					left = true;
-				}
-				if (x + 1 <= model.sizeM - 1 && model.fields[x + 1][y] != null) {
-					bot = true;
-				}
-				if (y + 1 <= model.sizeN - 1 && model.fields[x][y + 1] != null) {
-					right = true;
-				}
+				top = isValidField(x - 1, y, model);
+				left = isValidField(x, y - 1, model);
+				bot = isValidField(x + 1, y, model);
+				right = isValidField(x, y + 1, model);
+
 				movePickerFrame(top, right, bot, left);
 			}
 		});
@@ -276,6 +269,10 @@ public class MainFrame extends JFrame {
 
 		frame.setResizable(true);
 		frame.setVisible(true);
+	}
+
+	private boolean isValidField(int inputX, int inputY, Model inputModel){
+		return inputX >= 0 && inputX < inputModel.sizeM && inputY >= 0 && inputY < inputModel.sizeN && inputModel.fields[inputX][inputY] != null;
 	}
 
 	public MainFrame(boolean random, String mapMatrix, int enemyCount) {
