@@ -244,11 +244,11 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				Virologist vEnemy = new Virologist("v" + increment++);
 				vEnemy.currMaterial.addMaterial(new Material(50, 50));
-				model.characters.add(vEnemy);
+				model.getCharacters().add(vEnemy);
 				vEnemy.currField = v.currField;
 				vEnemy.currField.characters.add(vEnemy);
 				GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
-				model.graphicsCharacter.add(vGEnemy);
+				model.getGraphicsCharacter().add(vGEnemy);
 			}
 		});
 
@@ -309,22 +309,22 @@ public class MainFrame extends JFrame {
 		addPanels();
 
 		v = new Virologist("v" + increment++);
-		model.characters.add(v);
+		model.getCharacters().add(v);
 		v.currField = model.fields[0][0];
 		model.fields[0][0].characters.add(v);
 		GraphicsVirologist vG = new GraphicsVirologist(v);
-		model.graphicsCharacter.add(vG);
+		model.getGraphicsCharacter().add(vG);
 
 		for (int i = 0; i < enemyCount; i++) {
 			Virologist vEnemy = new Virologist("v" + increment++);
 			vEnemy.currMaterial.addMaterial(new Material(50, 50));
-			model.characters.add(vEnemy);
+			model.getCharacters().add(vEnemy);
 			int randN = new Random().nextInt(model.sizeN);
 			int randM = new Random().nextInt(model.sizeM);
 			vEnemy.currField = model.fields[randN][randM];
 			model.fields[randN][randM].characters.add(vEnemy);
 			GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
-			model.graphicsCharacter.add(vGEnemy);
+			model.getGraphicsCharacter().add(vGEnemy);
 		}
 		refreshView();
 		startRounds();
@@ -367,7 +367,7 @@ public class MainFrame extends JFrame {
 							model.fields[i][j] = wh;
 							model.graphicsFields[i][j] = new GraphicsWarehouse(i, j);
 							GraphicsMaterial gm = new GraphicsMaterial(wh.material, model.graphicsFields[i][j]);
-							model.graphicsMaterial.add(gm);
+							model.getGraphicsMaterial().add(gm);
 							break;
 						case 'L':
 							model.fields[i][j] = new Laboratory(i, j);
@@ -379,16 +379,16 @@ public class MainFrame extends JFrame {
 							model.graphicsFields[i][j] = new GraphicsSafehouse(i, j);
 							switch (sf.gear.name) {
 								case CLOAK:
-									model.graphicsGear.add(new GraphicsCloak(sf, model.graphicsFields[i][j]));
+									model.getGraphicsGear().add(new GraphicsCloak(sf, model.graphicsFields[i][j]));
 									break;
 								case GLOVES:
-									model.graphicsGear.add(new GraphicsGloves(sf, model.graphicsFields[i][j]));
+									model.getGraphicsGear().add(new GraphicsGloves(sf, model.graphicsFields[i][j]));
 									break;
 								case SACK:
-									model.graphicsGear.add(new GraphicsSack(sf, model.graphicsFields[i][j]));
+									model.getGraphicsGear().add(new GraphicsSack(sf, model.graphicsFields[i][j]));
 									break;
 								case AXE:
-									model.graphicsGear.add(new GraphicsAxe(sf, model.graphicsFields[i][j]));
+									model.getGraphicsGear().add(new GraphicsAxe(sf, model.graphicsFields[i][j]));
 									break;
 							}
 							break;
@@ -787,8 +787,8 @@ public class MainFrame extends JFrame {
 	}
 
 	public void round() {
-		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
-		for (Character c : model.characters) {
+		ArrayList<Character> tempList = new ArrayList<Character>(model.getCharacters().size());
+		for (Character c : model.getCharacters()) {
 			tempList.add(c);
 		}
 		for (Character c : tempList) {
@@ -797,8 +797,8 @@ public class MainFrame extends JFrame {
 	}
 
 	public void aiRound() {
-		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
-		for (Character c : model.characters) {
+		ArrayList<Character> tempList = new ArrayList<Character>(model.getCharacters().size());
+		for (Character c : model.getCharacters()) {
 			tempList.add(c);
 		}
 		for (Character c : tempList) {
@@ -812,7 +812,7 @@ public class MainFrame extends JFrame {
 	}
 
 	public void endCheck() {
-		for (Character c : model.characters) {
+		for (Character c : model.getCharacters()) {
 			if (c.knownAgents.size() == winCon.size()) {
 				if (c.name.equals("v0")) {
 					gameRunning = false;

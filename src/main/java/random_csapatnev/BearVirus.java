@@ -39,27 +39,27 @@ public class BearVirus extends Agent {
 		if (!hasProtection) {
 			c.currField.removeCharacter(c);
 
-			ArrayList<GraphicsCharacter> tempList = new ArrayList<>(MainFrame.Instance.model.graphicsCharacter.size());
-			for (GraphicsCharacter e : MainFrame.Instance.model.graphicsCharacter) {
+			ArrayList<GraphicsCharacter> tempList = new ArrayList<>(MainFrame.Instance.model.getGraphicsCharacter().size());
+			for (GraphicsCharacter e : MainFrame.Instance.model.getGraphicsCharacter()) {
 				tempList.add(e);
 			}
 			for (GraphicsCharacter e : tempList) {
 				if (e.c == c) {
 					e.remove();
-					MainFrame.Instance.model.graphicsCharacter.remove(e);
+					MainFrame.Instance.model.getGraphicsCharacter().remove(e);
 					MainFrame.Instance.refreshView();
 				}
 			}
 
-			MainFrame.Instance.model.characters.remove(c);
+			MainFrame.Instance.model.getCharacters().remove(c);
 
 			if (c.name.equals("v0")) {
 				Main.endGame(false);
 			}
 
 			Bear b = new Bear(c, "b" + c.name.substring(1));
-			MainFrame.Instance.model.characters.add(b);
-			MainFrame.Instance.model.graphicsCharacter.add(new GraphicsBear(b));
+			MainFrame.Instance.model.getCharacters().add(b);
+			MainFrame.Instance.model.getGraphicsCharacter().add(new GraphicsBear(b));
 		}
 	}
 
