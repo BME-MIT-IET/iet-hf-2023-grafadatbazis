@@ -361,16 +361,14 @@ public class MainFrame extends JFrame {
 				initializeWarehouse(i, j);
 				break;
 			case 'L':
-				model.fields[i][j] = new Laboratory(i, j);
-				model.graphicsFields[i][j] = new GraphicsLaboratory(i, j);
+				initializeLaboratory(i, j);
 				break;
 			case 'S':
 				initializeSafehouse(i, j);
 				break;
 			case 'F':
 			default:
-				model.fields[i][j] = new Field(i, j);
-				model.graphicsFields[i][j] = new GraphicsField(i, j);
+				initializeEmptyField(i, j);
 				break;
 		}
 	}
@@ -381,6 +379,11 @@ public class MainFrame extends JFrame {
 		model.graphicsFields[i][j] = new GraphicsWarehouse(i, j);
 		GraphicsMaterial gm = new GraphicsMaterial(wh.material, model.graphicsFields[i][j]);
 		model.getGraphicsMaterial().add(gm);
+	}
+
+	private void initializeLaboratory(int i, int j) {
+		model.fields[i][j] = new Laboratory(i, j);
+		model.graphicsFields[i][j] = new GraphicsLaboratory(i, j);
 	}
 
 	private void initializeSafehouse(int i, int j) {
@@ -401,6 +404,11 @@ public class MainFrame extends JFrame {
 				model.getGraphicsGear().add(new GraphicsAxe(sf, model.graphicsFields[i][j]));
 				break;
 		}
+	}
+
+	private void initializeEmptyField(int i, int j){
+		model.fields[i][j] = new Field(i, j);
+		model.graphicsFields[i][j] = new GraphicsField(i, j);
 	}
 
 	private void initializeFields() {
