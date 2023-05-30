@@ -160,26 +160,16 @@ public class MainFrame extends JFrame {
 
 		jbtStealMat = new JButton(new AbstractAction("Anyag lopása másik virológustól.") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "stealMaterial");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.characters.size() > 1) {
+					virologistFrame(v.currField.characters, "stealMaterial");
 				}
 			}
 		});
 
 		jbtStealGear = new JButton(new AbstractAction("Felszerelés lopása másik virológustól.") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "stealGear");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.characters.size() > 1) {
+					virologistFrame(v.currField.characters, "stealGear");
 				}
 			}
 		});
@@ -200,37 +190,22 @@ public class MainFrame extends JFrame {
 
 		jbtUseAgent = new JButton(new AbstractAction("Ágens használata") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					virologistFrame(v.currField.characters, "useAgent");
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
-				}
+				virologistFrame(v.currField.characters, "useAgent");
 			}
 		});
 
 		jbtUseAxe = new JButton(new AbstractAction("Balta használata") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "useAxe");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.characters.size() > 1) {
+					virologistFrame(v.currField.characters, "useAxe");
 				}
 			}
 		});
 
 		jbtAdminBenit = new JButton(new AbstractAction("Admin: Character bénítása") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "benit");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.characters.size() > 1) {
+					virologistFrame(v.currField.characters, "benit");
 				}
 			}
 		});
