@@ -787,7 +787,7 @@ public class MainFrame extends JFrame {
 	}
 
 	public void round() {
-		ArrayList<Character> tempList = new ArrayList<Character>(model.getCharacters().size());
+		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters().size());
 		for (Character c : model.getCharacters()) {
 			tempList.add(c);
 		}
@@ -797,7 +797,7 @@ public class MainFrame extends JFrame {
 	}
 
 	public void aiRound() {
-		ArrayList<Character> tempList = new ArrayList<Character>(model.getCharacters().size());
+		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters().size());
 		for (Character c : model.getCharacters()) {
 			tempList.add(c);
 		}

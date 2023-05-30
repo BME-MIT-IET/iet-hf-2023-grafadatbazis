@@ -81,7 +81,7 @@ public class Bear extends Character {
 		this.currField.characters.add(c);
 		this.currField.characters.remove(this);
 
-		ArrayList<GraphicsCharacter> tempList = new ArrayList<GraphicsCharacter>(
+		ArrayList<GraphicsCharacter> tempList = new ArrayList<>(
 				MainFrame.Instance.model.getGraphicsCharacter().size());
 		for (GraphicsCharacter e : MainFrame.Instance.model.getGraphicsCharacter()) {
 			tempList.add(e);
