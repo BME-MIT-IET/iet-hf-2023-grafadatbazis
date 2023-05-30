@@ -529,19 +529,19 @@ public class MainFrame extends JFrame {
 
 	private void handleAction(Character character, String action) {
 		switch (action) {
-			case "useAgent":
+			case StringLiterals.ACT_USEAGENT:
 				agentPickerFrame(character);
 				break;
-			case "stealMaterial":
+			case StringLiterals.ACT_STEALMATERIAL:
 				v.stealMaterialInteract(character);
 				break;
-			case "stealGear":
+			case StringLiterals.ACT_STEALGEAR:
 				v.stealGearInteract(character);
 				break;
-			case "benit":
+			case StringLiterals.ACT_PARALYZE:
 				character.setIsParalyzed(true);
 				break;
-			case "useAxe":
+			case StringLiterals.ACT_USEAXE:
 				if (character.name.startsWith("b")) {
 					for (Gear gear : v.activeGears) {
 						if (gear.name == GearEnum.AXE && Boolean.TRUE.equals(gear.canUse)) {
