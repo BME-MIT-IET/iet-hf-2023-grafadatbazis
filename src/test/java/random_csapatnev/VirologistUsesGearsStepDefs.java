@@ -3,6 +3,7 @@ package random_csapatnev;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import random_csapatnev.ModelClasses.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,28 +23,28 @@ public class VirologistUsesGearsStepDefs{
     public void virologist_has_gloves(){
         gear = new Gloves();
         actualGear = gear.getName().toString();
-        virologist.gears.add(gear);
+        virologist.addGear(gear);
     }
 
     @Given("Virologist has a Cloak")
     public void virologist_has_a_cloak(){
         gear = new Cloak();
         actualGear = gear.getName().toString();
-        virologist.gears.add(gear);
+        virologist.addGear(gear);
     }
 
     @Given("Virologist has an Axe")
     public void virologist_has_an_axe(){
         gear = new Axe();
         actualGear = gear.getName().toString();
-        virologist.gears.add(gear);
+        virologist.addGear(gear);
     }
 
     @Given("Virologist has a Sack")
     public void virologist_has_a_sack(){
         gear = new Sack();
         actualGear = gear.getName().toString();
-        virologist.gears.add(gear);
+        virologist.addGear(gear);
     }
 
     @Given("Virologist does not have Gloves")
@@ -59,9 +60,9 @@ public class VirologistUsesGearsStepDefs{
         Gear gear1 = new Cloak();
         Gear gear2 = new Cloak();
         Gear gear3 = new Cloak();
-        virologist.gears.add(gear1);
-        virologist.gears.add(gear2);
-        virologist.gears.add(gear3);
+        virologist.addGear(gear1);
+        virologist.addGear(gear2);
+        virologist.addGear(gear3);
         virologist.equipGear(GearEnum.CLOAK);
         virologist.equipGear(GearEnum.CLOAK);
         virologist.equipGear(GearEnum.CLOAK);
@@ -71,7 +72,7 @@ public class VirologistUsesGearsStepDefs{
     public void ask_whether_he_could_use(){
         virologist.equipGear(GearEnum.GLOVES);
         boolean result = false;
-        if(virologist.activeGears.contains(gear) && virologist.isGloved == true){
+        if(virologist.getActiveGears().contains(gear) && virologist.getIsGloved()){
             result = true;
         }
         
@@ -82,7 +83,7 @@ public class VirologistUsesGearsStepDefs{
     public void ask_whether_he_could_use_cloak(){
         virologist.equipGear(GearEnum.CLOAK);
         boolean result = false;
-        if(virologist.activeGears.contains(gear) && virologist.isCloaked == true){
+        if(virologist.getActiveGears().contains(gear) && virologist.getIsCloaked()){
             result = true;
         }
         
@@ -93,7 +94,7 @@ public class VirologistUsesGearsStepDefs{
     public void ask_whether_he_could_use_axe(){
         virologist.equipGear(GearEnum.AXE);
         boolean result = false;
-        if(virologist.activeGears.contains(gear)){
+        if(virologist.getActiveGears().contains(gear)){
             result = true;
         }
         
@@ -104,7 +105,7 @@ public class VirologistUsesGearsStepDefs{
     public void ask_whether_he_could_use_sack(){
         virologist.equipGear(GearEnum.SACK);
         boolean result = false;
-        if(virologist.activeGears.contains(gear)){
+        if(virologist.getActiveGears().contains(gear)){
             result = true;
         }
         
