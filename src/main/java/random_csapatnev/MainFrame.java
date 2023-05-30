@@ -625,59 +625,53 @@ public class MainFrame extends JFrame {
 		jf.setSize(250, 350);
 		jf.setLayout(new FlowLayout());
 
-		ArrayList<JButton> buttList = new ArrayList<>();
-
-		for (Gear s : v.gears) {
-			JButton item = new JButton(s.name.toString());
-			item.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Gear g = null;
-					for (Gear ge : v.gears) {
-						if (ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
-							g = ge;
-						}
-					}
-					if (g != null) {
-						v.equipGear(g.name);
-					}
-					refreshView();
-					jf.dispose();
-				}
-			});
-			item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
-			jf.add(item);
-			buttList.add(item);
-		}
-
-		for (Gear s : v.activeGears) {
-			JButton item = new JButton(s.name.toString());
-			item.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Gear g = null;
-					for (Gear ge : v.activeGears) {
-						if (ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
-							g = ge;
-						}
-					}
-					if (g != null) {
-						v.unequipGear(g.name);
-					}
-					refreshView();
-					jf.dispose();
-				}
-			});
-			item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
-			item.setForeground(Color.RED);
-			jf.add(item);
-			buttList.add(item);
-		}
+		addGearButtons(jf, v.gears, false);
+		addGearButtons(jf, v.activeGears, true);
 
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(frame);
 		jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		jf.setVisible(true);
+	}
+
+	private void addGearButtons(final JFrame inputFrame, List<Gear> gears, final boolean isActive) {
+		for (final Gear gear : gears) {
+			JButton button = new JButton(gear.name.toString());
+			button.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+			button.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					handleGearAction(inputFrame, gear, isActive);
+				}
+			});
+			if (isActive) {
+				button.setForeground(Color.RED);
+			}
+			inputFrame.add(button);
+		}
+	}
+
+	private void handleGearAction(JFrame inputFrame, Gear gear, boolean isActive) {
+		List<Gear> gearList = isActive ? v.activeGears : v.gears;
+		Gear selectedGear = findGearByName(gearList, gear.name);
+		if (selectedGear != null) {
+			if (isActive) {
+				v.unequipGear(selectedGear.name);
+			} else {
+				v.equipGear(selectedGear.name);
+			}
+		}
+		refreshView();
+		inputFrame.dispose();
+	}
+
+	private Gear findGearByName(List<Gear> gearList, GearEnum gearName) {
+		for (Gear gear : gearList) {
+			if (gear.name == gearName) {
+				return gear;
+			}
+		}
+		return null;
 	}
 
 	public GearEnum stringToGearEnum(String s) {
