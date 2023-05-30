@@ -330,68 +330,108 @@ public class MainFrame extends JFrame {
 
 	private void generateFieldsFromMapMatrix(String inputString) {
 		String[] rows = inputString.split(";");
-		model.sizeN = rows.length;
-		model.sizeM = rows[0].length();
+		initializeModelSize(rows);
+		initializeGraphicsFields(rows);
+		initializeFields(rows);
+		connectNeighbours();
+	}
+
+	private void initializeModelSize(String[] inputRows){
+		model.sizeN = inputRows.length;
+		model.sizeM = inputRows[0].length();
+	}
+
+	private void initializeGraphicsFields(String[] rows) {
 		model.graphicsFields = new GraphicsFieldBase[rows[0].length()][rows.length];
 		model.fields = new Field[rows[0].length()][rows.length];
+	
 		for (int i = 0; i < model.graphicsFields.length; ++i) {
 			for (int j = 0; j < model.graphicsFields[i].length; ++j) {
 				if (i < rows.length && j < rows[j].length()) {
-					switch (rows[i].charAt(j)) {
-						case 'W':
-							Warehouse wh = new Warehouse(i, j);
-							model.fields[i][j] = wh;
-							model.graphicsFields[i][j] = new GraphicsWarehouse(i, j);
-							GraphicsMaterial gm = new GraphicsMaterial(wh.material, model.graphicsFields[i][j]);
-							model.getGraphicsMaterial().add(gm);
-							break;
-						case 'L':
-							model.fields[i][j] = new Laboratory(i, j);
-							model.graphicsFields[i][j] = new GraphicsLaboratory(i, j);
-							break;
-						case 'S':
-							Safehouse sf = new Safehouse(i, j);
-							model.fields[i][j] = sf;
-							model.graphicsFields[i][j] = new GraphicsSafehouse(i, j);
-							switch (sf.gear.name) {
-								case CLOAK:
-									model.getGraphicsGear().add(new GraphicsCloak(sf, model.graphicsFields[i][j]));
-									break;
-								case GLOVES:
-									model.getGraphicsGear().add(new GraphicsGloves(sf, model.graphicsFields[i][j]));
-									break;
-								case SACK:
-									model.getGraphicsGear().add(new GraphicsSack(sf, model.graphicsFields[i][j]));
-									break;
-								case AXE:
-									model.getGraphicsGear().add(new GraphicsAxe(sf, model.graphicsFields[i][j]));
-									break;
-							}
-							break;
-						case 'F':
-						default:
-							model.fields[i][j] = new Field(i, j);
-							model.graphicsFields[i][j] = new GraphicsField(i, j);
-							break;
-					}
+					initializeField(rows, i, j);
 				}
 			}
 		}
+	}
+
+	private void initializeField(String[] rows, int i, int j) {
+		switch (rows[i].charAt(j)) {
+			case 'W':
+				initializeWarehouse(i, j);
+				break;
+			case 'L':
+				model.fields[i][j] = new Laboratory(i, j);
+				model.graphicsFields[i][j] = new GraphicsLaboratory(i, j);
+				break;
+			case 'S':
+				initializeSafehouse(i, j);
+				break;
+			case 'F':
+			default:
+				model.fields[i][j] = new Field(i, j);
+				model.graphicsFields[i][j] = new GraphicsField(i, j);
+				break;
+		}
+	}
+
+	private void initializeWarehouse(int i, int j) {
+		Warehouse wh = new Warehouse(i, j);
+		model.fields[i][j] = wh;
+		model.graphicsFields[i][j] = new GraphicsWarehouse(i, j);
+		GraphicsMaterial gm = new GraphicsMaterial(wh.material, model.graphicsFields[i][j]);
+		model.getGraphicsMaterial().add(gm);
+	}
+
+	private void initializeSafehouse(int i, int j) {
+		Safehouse sf = new Safehouse(i, j);
+		model.fields[i][j] = sf;
+		model.graphicsFields[i][j] = new GraphicsSafehouse(i, j);
+		switch (sf.gear.name) {
+			case CLOAK:
+				model.getGraphicsGear().add(new GraphicsCloak(sf, model.graphicsFields[i][j]));
+				break;
+			case GLOVES:
+				model.getGraphicsGear().add(new GraphicsGloves(sf, model.graphicsFields[i][j]));
+				break;
+			case SACK:
+				model.getGraphicsGear().add(new GraphicsSack(sf, model.graphicsFields[i][j]));
+				break;
+			case AXE:
+				model.getGraphicsGear().add(new GraphicsAxe(sf, model.graphicsFields[i][j]));
+				break;
+		}
+	}
+	
+	private void initializeFields(String[] rows) {
 		for (int i = 0; i < model.fields.length; ++i) {
 			for (int j = 0; j < model.fields[i].length; ++j) {
 				if (model.fields[i][j] != null) {
-					if (i < model.fields.length - 1 && (model.fields[i + 1][j] != null)) {
-						model.fields[i][j].getNeighbours().add(model.fields[i + 1][j]);
-					}
-					if (i > 0 && (model.fields[i - 1][j] != null)) {
-						model.fields[i][j].getNeighbours().add(model.fields[i - 1][j]);
-					}
-					if (j > 0 && (model.fields[i][j - 1] != null)) {
-						model.fields[i][j].getNeighbours().add(model.fields[i][j - 1]);
-					}
-					if (j < model.fields[i].length - 1 && (model.fields[i][j + 1] != null)) {
-						model.fields[i][j].getNeighbours().add(model.fields[i][j + 1]);
-					}
+					connectNeighbours(i, j);
+				}
+			}
+		}
+	}
+
+	private void connectNeighbours(int i, int j) {
+		if (i < model.fields.length - 1 && (model.fields[i + 1][j] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i + 1][j]);
+		}
+		if (i > 0 && (model.fields[i - 1][j] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i - 1][j]);
+		}
+		if (j > 0 && (model.fields[i][j - 1] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i][j - 1]);
+		}
+		if (j < model.fields[i].length - 1 && (model.fields[i][j + 1] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i][j + 1]);
+		}
+	}
+	
+	private void connectNeighbours() {
+		for (int i = 0; i < model.fields.length; ++i) {
+			for (int j = 0; j < model.fields[i].length; ++j) {
+				if (model.fields[i][j] != null) {
+					connectNeighbours(i, j);
 				}
 			}
 		}
