@@ -135,7 +135,10 @@ public class MainFrame extends JFrame {
 
 		jbtMove = new JButton(new AbstractAction("Move") {
 			public void actionPerformed(ActionEvent ae) {
-				boolean top = false, right = false, left = false, bot = false;
+				boolean top = false;
+				boolean right = false;
+				boolean left = false;
+				boolean bot = false;
 				int x = v.currField.x;
 				int y = v.currField.y;
 
@@ -465,7 +468,7 @@ public class MainFrame extends JFrame {
 		this.repaint();
 	}
 
-	public void virologistFrame(final ArrayList<Character> virList, final String action) throws InterruptedException {
+	public void virologistFrame(final ArrayList<Character> virList, final String action) {
 		final JFrame jf = new JFrame("random_csapatnev virologist_frame");
 		jf.setSize(250, 350);
 		jf.setLayout(new FlowLayout());
