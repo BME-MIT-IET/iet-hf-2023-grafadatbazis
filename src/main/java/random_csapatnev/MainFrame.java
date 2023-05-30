@@ -271,8 +271,9 @@ public class MainFrame extends JFrame {
 		frame.setVisible(true);
 	}
 
-	private boolean isValidField(int inputX, int inputY, Model inputModel){
-		return inputX >= 0 && inputX < inputModel.sizeM && inputY >= 0 && inputY < inputModel.sizeN && inputModel.fields[inputX][inputY] != null;
+	private boolean isValidField(int inputX, int inputY, Model inputModel) {
+		return inputX >= 0 && inputX < inputModel.sizeM && inputY >= 0 && inputY < inputModel.sizeN
+				&& inputModel.fields[inputX][inputY] != null;
 	}
 
 	public MainFrame(boolean random, String mapMatrix, int enemyCount) {
@@ -332,11 +333,11 @@ public class MainFrame extends JFrame {
 		String[] rows = inputString.split(";");
 		initializeModelSize(rows);
 		initializeGraphicsFields(rows);
-		initializeFields(rows);
+		initializeFields();
 		connectNeighbours();
 	}
 
-	private void initializeModelSize(String[] inputRows){
+	private void initializeModelSize(String[] inputRows) {
 		model.sizeN = inputRows.length;
 		model.sizeM = inputRows[0].length();
 	}
@@ -344,7 +345,7 @@ public class MainFrame extends JFrame {
 	private void initializeGraphicsFields(String[] rows) {
 		model.graphicsFields = new GraphicsFieldBase[rows[0].length()][rows.length];
 		model.fields = new Field[rows[0].length()][rows.length];
-	
+
 		for (int i = 0; i < model.graphicsFields.length; ++i) {
 			for (int j = 0; j < model.graphicsFields[i].length; ++j) {
 				if (i < rows.length && j < rows[j].length()) {
@@ -401,8 +402,8 @@ public class MainFrame extends JFrame {
 				break;
 		}
 	}
-	
-	private void initializeFields(String[] rows) {
+
+	private void initializeFields() {
 		for (int i = 0; i < model.fields.length; ++i) {
 			for (int j = 0; j < model.fields[i].length; ++j) {
 				if (model.fields[i][j] != null) {
@@ -426,7 +427,7 @@ public class MainFrame extends JFrame {
 			model.fields[i][j].getNeighbours().add(model.fields[i][j + 1]);
 		}
 	}
-	
+
 	private void connectNeighbours() {
 		for (int i = 0; i < model.fields.length; ++i) {
 			for (int j = 0; j < model.fields[i].length; ++j) {
@@ -486,50 +487,65 @@ public class MainFrame extends JFrame {
 		jf.setSize(250, 350);
 		jf.setLayout(new FlowLayout());
 
-		ArrayList<JButton> buttList = new ArrayList<>();
-
 		for (Character s : virList) {
 			JButton item = new JButton(s.name);
 			item.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Character c = null;
-					for (Character ve : virList) {
-						if (ve.name.equals(e.getActionCommand())) {
-							c = ve;
-						}
-					}
-					if (c != null) {
-						if ("useAgent".equals(action)) {
-							agentPickerFrame(c);
-						} else if ("stealMaterial".equals(action)) {
-							v.stealMaterialInteract(c);
-						} else if ("stealGear".equals(action)) {
-							v.stealGearInteract(c);
-						} else if ("benit".equals(action)) {
-							c.setIsParalyzed(true);
-						} else if ("useAxe".equals(action) && (c.name.startsWith("b"))) {
-							for (Gear g : v.activeGears) {
-								if (g.name == GearEnum.AXE && (Boolean.TRUE.equals(g.canUse))) {
-									g.effect(c);
-								}
-							}
+					Character c = findCharacterByName(virList, e.getActionCommand());
 
-						}
+					if (c != null) {
+						handleAction(c, action);
 					}
-					refreshView();
 					jf.dispose();
 				}
 			});
 			item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
 			jf.add(item);
-			buttList.add(item);
 		}
 
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(frame);
 		jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		jf.setVisible(true);
+	}
+
+	private Character findCharacterByName(List<Character> characterList, String name) {
+		for (Character character : characterList) {
+			if (character.name.equals(name)) {
+				return character;
+			}
+		}
+		return null;
+	}
+
+	private void handleAction(Character character, String action) {
+		switch (action) {
+			case "useAgent":
+				agentPickerFrame(character);
+				break;
+			case "stealMaterial":
+				v.stealMaterialInteract(character);
+				break;
+			case "stealGear":
+				v.stealGearInteract(character);
+				break;
+			case "benit":
+				character.setIsParalyzed(true);
+				break;
+			case "useAxe":
+				if (character.name.startsWith("b")) {
+					for (Gear gear : v.activeGears) {
+						if (gear.name == GearEnum.AXE && Boolean.TRUE.equals(gear.canUse)) {
+							gear.effect(character);
+						}
+					}
+				}
+				break;
+			default:
+				break;
+		}
+		refreshView();
 	}
 
 	public void agentPickerFrame(final Character c) {
