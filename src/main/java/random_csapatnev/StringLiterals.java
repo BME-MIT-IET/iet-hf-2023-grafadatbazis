@@ -11,6 +11,12 @@ public final class StringLiterals {
     public static final String PAR_VIRUS = "ParalyzingVirus";
     public static final String VIT_VIRUS = "VitusVirus";
 
+    public static final String ACT_USEAGENT = "useAgent";
+    public static final String ACT_STEALMATERIAL = "stealMaterial";
+    public static final String ACT_STEALGEAR = "stealGear";
+    public static final String ACT_PARALYZE = "paralyze";
+    public static final String ACT_USEAXE = "useAxe";
+
     public static final String FONT_NAME = "Arial";
 
     public static final String AXE_PATH = ".\\src\\main\\java\\images\\axe.png";

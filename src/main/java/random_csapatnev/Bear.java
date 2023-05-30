@@ -75,24 +75,20 @@ public class Bear extends Character {
 	@Override
 	public void die() {
 		Character c = new Character(this, "c" + this.name.substring(1));
-		MainFrame.Instance.model.characters.add(c);
-		MainFrame.Instance.model.graphicsCharacter.add(new GraphicsDeadCharacter(c));
+		MainFrame.Instance.model.getCharacters().add(c);
+		MainFrame.Instance.model.getGraphicsCharacter().add(new GraphicsDeadCharacter(c));
 
-		this.currField.characters.add(c);
-		this.currField.characters.remove(this);
+		this.currField.getCharacters().add(c);
+		this.currField.getCharacters().remove(this);
 
-		ArrayList<GraphicsCharacter> tempList = new ArrayList<GraphicsCharacter>(
-				MainFrame.Instance.model.graphicsCharacter.size());
-		for (GraphicsCharacter e : MainFrame.Instance.model.graphicsCharacter) {
-			tempList.add(e);
-		}
+		ArrayList<GraphicsCharacter> tempList = new ArrayList<>(MainFrame.Instance.model.getGraphicsCharacter());
 		for (GraphicsCharacter e : tempList) {
 			if (e.c == this) {
 				e.remove();
-				MainFrame.Instance.model.graphicsCharacter.remove(e);
+				MainFrame.Instance.model.getGraphicsCharacter().remove(e);
 				MainFrame.Instance.refreshView();
 			}
 		}
-		MainFrame.Instance.model.characters.remove(this);
+		MainFrame.Instance.model.getCharacters().remove(this);
 	}
 }

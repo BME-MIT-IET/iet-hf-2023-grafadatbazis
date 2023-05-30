@@ -1,7 +1,8 @@
 package random_csapatnev;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.EnumMap;
+import java.util.Map;
 
 /**
  * Reprezentálja,
@@ -10,19 +11,19 @@ import java.util.HashMap;
  */
 public class Material implements Serializable {
 	/**
-	 * HashMap<MatEnum,Integer>: Tárolja a nukleotidok és aminosavak mennyiségét.
+	 * EnumMap<MatEnum,Integer>: Tárolja a nukleotidok és aminosavak mennyiségét.
 	 */
-	HashMap<MatEnum, Integer> container;
+	EnumMap<MatEnum, Integer> container;
 
 	/**
 	 * Konstruktorok.
 	 */
 	public Material() {
-		container = new HashMap<MatEnum, Integer>();
+		container = new EnumMap<>(MatEnum.class);
 	}
 
 	public Material(final int a, final int b) {
-		container = new HashMap<>();
+		container = new EnumMap<>(MatEnum.class);
 		container.put(MatEnum.AMINOACID, a);
 		container.put(MatEnum.NUCLEOTIDE, b);
 	}
@@ -62,7 +63,7 @@ public class Material implements Serializable {
 	 * 
 	 * @return Letárolt container.
 	 */
-	public HashMap<MatEnum, Integer> getContainer() {
+	public Map<MatEnum, Integer> getContainer() {
 		return container;
 	}
 

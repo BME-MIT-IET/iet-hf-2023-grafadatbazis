@@ -21,16 +21,16 @@ public class VirologistUsesAgentsStepDefs{
 
     @Given("Virologist1 and Virologist2 stands on the same Field")
     public void virologists_on_same_field(){
-        this.field.characters.add(virologist1);
-        this.field.characters.add(virologist2);
+        this.field.getCharacters().add(virologist1);
+        this.field.getCharacters().add(virologist2);
         this.virologist1.currField = field;
         this.virologist2.currField = field;
     }
 
     @Given("Virologist1 and Virologist2 is not on the same Field")
     public void virologists_not_on_same_field(){
-        this.field.characters.add(virologist1);
-        this.otherField.characters.add(virologist2);
+        this.field.getCharacters().add(virologist1);
+        this.otherField.getCharacters().add(virologist2);
         this.virologist1.currField = field;
         this.virologist2.currField = otherField;
     }

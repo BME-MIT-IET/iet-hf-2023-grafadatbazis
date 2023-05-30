@@ -1,6 +1,7 @@
 package random_csapatnev;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.*;
@@ -135,48 +136,34 @@ public class MainFrame extends JFrame {
 
 		jbtMove = new JButton(new AbstractAction("Move") {
 			public void actionPerformed(ActionEvent ae) {
-				boolean top = false, right = false, left = false, bot = false;
+				boolean top = false;
+				boolean right = false;
+				boolean left = false;
+				boolean bottom = false;
 				int x = v.currField.x;
 				int y = v.currField.y;
 
-				if (x - 1 >= 0 && model.fields[x - 1][y] != null) {
-					top = true;
-				}
-				if (y - 1 >= 0 && model.fields[x][y - 1] != null) {
-					left = true;
-				}
-				if (x + 1 <= model.sizeM - 1 && model.fields[x + 1][y] != null) {
-					bot = true;
-				}
-				if (y + 1 <= model.sizeN - 1 && model.fields[x][y + 1] != null) {
-					right = true;
-				}
-				movePickerFrame(top, right, bot, left);
+				top = isValidField(x - 1, y, model);
+				left = isValidField(x, y - 1, model);
+				bottom = isValidField(x + 1, y, model);
+				right = isValidField(x, y + 1, model);
+
+				movePickerFrame(top, right, bottom, left);
 			}
 		});
 
 		jbtStealMat = new JButton(new AbstractAction("Anyag lopása másik virológustól.") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "stealMaterial");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "stealMaterial");
 				}
 			}
 		});
 
 		jbtStealGear = new JButton(new AbstractAction("Felszerelés lopása másik virológustól.") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "stealGear");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "stealGear");
 				}
 			}
 		});
@@ -197,37 +184,22 @@ public class MainFrame extends JFrame {
 
 		jbtUseAgent = new JButton(new AbstractAction("Ágens használata") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					virologistFrame(v.currField.characters, "useAgent");
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
-				}
+				virologistFrame(v.currField.getCharacters(), "useAgent");
 			}
 		});
 
 		jbtUseAxe = new JButton(new AbstractAction("Balta használata") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "useAxe");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "useAxe");
 				}
 			}
 		});
 
 		jbtAdminBenit = new JButton(new AbstractAction("Admin: Character bénítása") {
 			public void actionPerformed(ActionEvent ae) {
-				try {
-					if (v.currField.characters.size() > 1) {
-						virologistFrame(v.currField.characters, "benit");
-					}
-				} catch (InterruptedException e) {
-					Logger.out(java.util.logging.Level.SEVERE, e.getMessage());
-					Thread.currentThread().interrupt();
+				if (v.currField.getCharacters().size() > 1) {
+					virologistFrame(v.currField.getCharacters(), "benit");
 				}
 			}
 		});
@@ -244,11 +216,11 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				Virologist vEnemy = new Virologist("v" + increment++);
 				vEnemy.currMaterial.addMaterial(new Material(50, 50));
-				model.characters.add(vEnemy);
+				model.getCharacters().add(vEnemy);
 				vEnemy.currField = v.currField;
-				vEnemy.currField.characters.add(vEnemy);
+				vEnemy.currField.getCharacters().add(vEnemy);
 				GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
-				model.graphicsCharacter.add(vGEnemy);
+				model.getGraphicsCharacter().add(vGEnemy);
 			}
 		});
 
@@ -299,6 +271,11 @@ public class MainFrame extends JFrame {
 		frame.setVisible(true);
 	}
 
+	private boolean isValidField(int inputX, int inputY, Model inputModel) {
+		return inputX >= 0 && inputX < inputModel.sizeM && inputY >= 0 && inputY < inputModel.sizeN
+				&& inputModel.fields[inputX][inputY] != null;
+	}
+
 	public MainFrame(boolean random, String mapMatrix, int enemyCount) {
 		this();
 		if (random) {
@@ -309,22 +286,22 @@ public class MainFrame extends JFrame {
 		addPanels();
 
 		v = new Virologist("v" + increment++);
-		model.characters.add(v);
+		model.getCharacters().add(v);
 		v.currField = model.fields[0][0];
-		model.fields[0][0].characters.add(v);
+		model.fields[0][0].getCharacters().add(v);
 		GraphicsVirologist vG = new GraphicsVirologist(v);
-		model.graphicsCharacter.add(vG);
+		model.getGraphicsCharacter().add(vG);
 
 		for (int i = 0; i < enemyCount; i++) {
 			Virologist vEnemy = new Virologist("v" + increment++);
 			vEnemy.currMaterial.addMaterial(new Material(50, 50));
-			model.characters.add(vEnemy);
+			model.getCharacters().add(vEnemy);
 			int randN = new Random().nextInt(model.sizeN);
 			int randM = new Random().nextInt(model.sizeM);
 			vEnemy.currField = model.fields[randN][randM];
-			model.fields[randN][randM].characters.add(vEnemy);
+			model.fields[randN][randM].getCharacters().add(vEnemy);
 			GraphicsVirologist vGEnemy = new GraphicsVirologist(vEnemy);
-			model.graphicsCharacter.add(vGEnemy);
+			model.getGraphicsCharacter().add(vGEnemy);
 		}
 		refreshView();
 		startRounds();
@@ -354,68 +331,116 @@ public class MainFrame extends JFrame {
 
 	private void generateFieldsFromMapMatrix(String inputString) {
 		String[] rows = inputString.split(";");
-		model.sizeN = rows.length;
-		model.sizeM = rows[0].length();
+		initializeModelSize(rows);
+		initializeGraphicsFields(rows);
+		initializeFields();
+		connectNeighbours();
+	}
+
+	private void initializeModelSize(String[] inputRows) {
+		model.sizeN = inputRows.length;
+		model.sizeM = inputRows[0].length();
+	}
+
+	private void initializeGraphicsFields(String[] rows) {
 		model.graphicsFields = new GraphicsFieldBase[rows[0].length()][rows.length];
 		model.fields = new Field[rows[0].length()][rows.length];
+
 		for (int i = 0; i < model.graphicsFields.length; ++i) {
 			for (int j = 0; j < model.graphicsFields[i].length; ++j) {
 				if (i < rows.length && j < rows[j].length()) {
-					switch (rows[i].charAt(j)) {
-						case 'W':
-							Warehouse wh = new Warehouse(i, j);
-							model.fields[i][j] = wh;
-							model.graphicsFields[i][j] = new GraphicsWarehouse(i, j);
-							GraphicsMaterial gm = new GraphicsMaterial(wh.material, model.graphicsFields[i][j]);
-							model.graphicsMaterial.add(gm);
-							break;
-						case 'L':
-							model.fields[i][j] = new Laboratory(i, j);
-							model.graphicsFields[i][j] = new GraphicsLaboratory(i, j);
-							break;
-						case 'S':
-							Safehouse sf = new Safehouse(i, j);
-							model.fields[i][j] = sf;
-							model.graphicsFields[i][j] = new GraphicsSafehouse(i, j);
-							switch (sf.gear.name) {
-								case CLOAK:
-									model.graphicsGear.add(new GraphicsCloak(sf, model.graphicsFields[i][j]));
-									break;
-								case GLOVES:
-									model.graphicsGear.add(new GraphicsGloves(sf, model.graphicsFields[i][j]));
-									break;
-								case SACK:
-									model.graphicsGear.add(new GraphicsSack(sf, model.graphicsFields[i][j]));
-									break;
-								case AXE:
-									model.graphicsGear.add(new GraphicsAxe(sf, model.graphicsFields[i][j]));
-									break;
-							}
-							break;
-						case 'F':
-						default:
-							model.fields[i][j] = new Field(i, j);
-							model.graphicsFields[i][j] = new GraphicsField(i, j);
-							break;
-					}
+					initializeField(rows, i, j);
 				}
 			}
 		}
+	}
+
+	private void initializeField(String[] rows, int i, int j) {
+		switch (rows[i].charAt(j)) {
+			case 'W':
+				initializeWarehouse(i, j);
+				break;
+			case 'L':
+				initializeLaboratory(i, j);
+				break;
+			case 'S':
+				initializeSafehouse(i, j);
+				break;
+			case 'F':
+			default:
+				initializeEmptyField(i, j);
+				break;
+		}
+	}
+
+	private void initializeWarehouse(int i, int j) {
+		Warehouse wh = new Warehouse(i, j);
+		model.fields[i][j] = wh;
+		model.graphicsFields[i][j] = new GraphicsWarehouse(i, j);
+		GraphicsMaterial gm = new GraphicsMaterial(wh.material, model.graphicsFields[i][j]);
+		model.getGraphicsMaterial().add(gm);
+	}
+
+	private void initializeLaboratory(int i, int j) {
+		model.fields[i][j] = new Laboratory(i, j);
+		model.graphicsFields[i][j] = new GraphicsLaboratory(i, j);
+	}
+
+	private void initializeSafehouse(int i, int j) {
+		Safehouse sf = new Safehouse(i, j);
+		model.fields[i][j] = sf;
+		model.graphicsFields[i][j] = new GraphicsSafehouse(i, j);
+		switch (sf.gear.name) {
+			case CLOAK:
+				model.getGraphicsGear().add(new GraphicsCloak(sf, model.graphicsFields[i][j]));
+				break;
+			case GLOVES:
+				model.getGraphicsGear().add(new GraphicsGloves(sf, model.graphicsFields[i][j]));
+				break;
+			case SACK:
+				model.getGraphicsGear().add(new GraphicsSack(sf, model.graphicsFields[i][j]));
+				break;
+			case AXE:
+				model.getGraphicsGear().add(new GraphicsAxe(sf, model.graphicsFields[i][j]));
+				break;
+		}
+	}
+
+	private void initializeEmptyField(int i, int j){
+		model.fields[i][j] = new Field(i, j);
+		model.graphicsFields[i][j] = new GraphicsField(i, j);
+	}
+
+	private void initializeFields() {
 		for (int i = 0; i < model.fields.length; ++i) {
 			for (int j = 0; j < model.fields[i].length; ++j) {
 				if (model.fields[i][j] != null) {
-					if (i < model.fields.length - 1 && (model.fields[i + 1][j] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i + 1][j]);
-					}
-					if (i > 0 && (model.fields[i - 1][j] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i - 1][j]);
-					}
-					if (j > 0 && (model.fields[i][j - 1] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i][j - 1]);
-					}
-					if (j < model.fields[i].length - 1 && (model.fields[i][j + 1] != null)) {
-						model.fields[i][j].neighbours.add(model.fields[i][j + 1]);
-					}
+					connectNeighbours(i, j);
+				}
+			}
+		}
+	}
+
+	private void connectNeighbours(int i, int j) {
+		if (i < model.fields.length - 1 && (model.fields[i + 1][j] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i + 1][j]);
+		}
+		if (i > 0 && (model.fields[i - 1][j] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i - 1][j]);
+		}
+		if (j > 0 && (model.fields[i][j - 1] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i][j - 1]);
+		}
+		if (j < model.fields[i].length - 1 && (model.fields[i][j + 1] != null)) {
+			model.fields[i][j].getNeighbours().add(model.fields[i][j + 1]);
+		}
+	}
+
+	private void connectNeighbours() {
+		for (int i = 0; i < model.fields.length; ++i) {
+			for (int j = 0; j < model.fields[i].length; ++j) {
+				if (model.fields[i][j] != null) {
+					connectNeighbours(i, j);
 				}
 			}
 		}
@@ -465,55 +490,70 @@ public class MainFrame extends JFrame {
 		this.repaint();
 	}
 
-	public void virologistFrame(final ArrayList<Character> virList, final String action) throws InterruptedException {
+	public void virologistFrame(final List<Character> virList, final String action) {
 		final JFrame jf = new JFrame("random_csapatnev virologist_frame");
 		jf.setSize(250, 350);
 		jf.setLayout(new FlowLayout());
-
-		ArrayList<JButton> buttList = new ArrayList<>();
 
 		for (Character s : virList) {
 			JButton item = new JButton(s.name);
 			item.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Character c = null;
-					for (Character ve : virList) {
-						if (ve.name.equals(e.getActionCommand())) {
-							c = ve;
-						}
-					}
-					if (c != null) {
-						if ("useAgent".equals(action)) {
-							agentPickerFrame(c);
-						} else if ("stealMaterial".equals(action)) {
-							v.stealMaterialInteract(c);
-						} else if ("stealGear".equals(action)) {
-							v.stealGearInteract(c);
-						} else if ("benit".equals(action)) {
-							c.setIsParalyzed(true);
-						} else if ("useAxe".equals(action) && (c.name.startsWith("b"))) {
-							for (Gear g : v.activeGears) {
-								if (g.name == GearEnum.AXE && (Boolean.TRUE.equals(g.canUse))) {
-									g.effect(c);
-								}
-							}
+					Character c = findCharacterByName(virList, e.getActionCommand());
 
-						}
+					if (c != null) {
+						handleAction(c, action);
 					}
-					refreshView();
 					jf.dispose();
 				}
 			});
 			item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
 			jf.add(item);
-			buttList.add(item);
 		}
 
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(frame);
 		jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		jf.setVisible(true);
+	}
+
+	private Character findCharacterByName(List<Character> characterList, String name) {
+		for (Character character : characterList) {
+			if (character.name.equals(name)) {
+				return character;
+			}
+		}
+		return null;
+	}
+
+	private void handleAction(Character character, String action) {
+		switch (action) {
+			case StringLiterals.ACT_USEAGENT:
+				agentPickerFrame(character);
+				break;
+			case StringLiterals.ACT_STEALMATERIAL:
+				v.stealMaterialInteract(character);
+				break;
+			case StringLiterals.ACT_STEALGEAR:
+				v.stealGearInteract(character);
+				break;
+			case StringLiterals.ACT_PARALYZE:
+				character.setIsParalyzed(true);
+				break;
+			case StringLiterals.ACT_USEAXE:
+				if (character.name.startsWith("b")) {
+					for (Gear gear : v.activeGears) {
+						if (gear.name == GearEnum.AXE && Boolean.TRUE.equals(gear.canUse)) {
+							gear.effect(character);
+						}
+					}
+				}
+				break;
+			default:
+				break;
+		}
+		refreshView();
 	}
 
 	public void agentPickerFrame(final Character c) {
@@ -593,59 +633,53 @@ public class MainFrame extends JFrame {
 		jf.setSize(250, 350);
 		jf.setLayout(new FlowLayout());
 
-		ArrayList<JButton> buttList = new ArrayList<>();
-
-		for (Gear s : v.gears) {
-			JButton item = new JButton(s.name.toString());
-			item.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Gear g = null;
-					for (Gear ge : v.gears) {
-						if (ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
-							g = ge;
-						}
-					}
-					if (g != null) {
-						v.equipGear(g.name);
-					}
-					refreshView();
-					jf.dispose();
-				}
-			});
-			item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
-			jf.add(item);
-			buttList.add(item);
-		}
-
-		for (Gear s : v.activeGears) {
-			JButton item = new JButton(s.name.toString());
-			item.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Gear g = null;
-					for (Gear ge : v.activeGears) {
-						if (ge.name.equals(stringToGearEnum(e.getActionCommand()))) {
-							g = ge;
-						}
-					}
-					if (g != null) {
-						v.unequipGear(g.name);
-					}
-					refreshView();
-					jf.dispose();
-				}
-			});
-			item.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
-			item.setForeground(Color.RED);
-			jf.add(item);
-			buttList.add(item);
-		}
+		addGearButtons(jf, v.gears, false);
+		addGearButtons(jf, v.activeGears, true);
 
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(frame);
 		jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		jf.setVisible(true);
+	}
+
+	private void addGearButtons(final JFrame inputFrame, List<Gear> gears, final boolean isActive) {
+		for (final Gear gear : gears) {
+			JButton button = new JButton(gear.name.toString());
+			button.setFont(new Font(StringLiterals.FONT_NAME, Font.BOLD, 25));
+			button.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					handleGearAction(inputFrame, gear, isActive);
+				}
+			});
+			if (isActive) {
+				button.setForeground(Color.RED);
+			}
+			inputFrame.add(button);
+		}
+	}
+
+	private void handleGearAction(JFrame inputFrame, Gear gear, boolean isActive) {
+		List<Gear> gearList = isActive ? v.activeGears : v.gears;
+		Gear selectedGear = findGearByName(gearList, gear.name);
+		if (selectedGear != null) {
+			if (isActive) {
+				v.unequipGear(selectedGear.name);
+			} else {
+				v.equipGear(selectedGear.name);
+			}
+		}
+		refreshView();
+		inputFrame.dispose();
+	}
+
+	private Gear findGearByName(List<Gear> gearList, GearEnum gearName) {
+		for (Gear gear : gearList) {
+			if (gear.name == gearName) {
+				return gear;
+			}
+		}
+		return null;
 	}
 
 	public GearEnum stringToGearEnum(String s) {
@@ -787,23 +821,17 @@ public class MainFrame extends JFrame {
 	}
 
 	public void round() {
-		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
-		for (Character c : model.characters) {
-			tempList.add(c);
-		}
+		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters());
 		for (Character c : tempList) {
 			c.round();
 		}
 	}
 
 	public void aiRound() {
-		ArrayList<Character> tempList = new ArrayList<Character>(model.characters.size());
-		for (Character c : model.characters) {
-			tempList.add(c);
-		}
+		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters());
 		for (Character c : tempList) {
 			if (!c.name.equals("v0")) {
-				ArrayList<Field> neighFields = c.currField.getNeighbours();
+				List<Field> neighFields = c.currField.getNeighbours();
 				int randomint = rand.nextInt(neighFields.size());
 				c.move(neighFields.get(randomint));
 				c.fieldInteract();
@@ -812,7 +840,7 @@ public class MainFrame extends JFrame {
 	}
 
 	public void endCheck() {
-		for (Character c : model.characters) {
+		for (Character c : model.getCharacters()) {
 			if (c.knownAgents.size() == winCon.size()) {
 				if (c.name.equals("v0")) {
 					gameRunning = false;

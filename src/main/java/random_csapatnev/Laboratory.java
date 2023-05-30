@@ -16,8 +16,8 @@ public class Laboratory extends Field {
 	public Laboratory(int inputX, int inputY) {
 		super(inputX, inputY);
 		Random r = new Random();
-		Agent a1;
-		Agent a2;
+		Agent a1 = null;
+		Agent a2 = null;
 		switch (r.nextInt(4)) {
 			case 0:
 				// Paralyzing
@@ -25,12 +25,6 @@ public class Laboratory extends Field {
 				a2 = new ParalyzingVaccine();
 				agents.add(a1);
 				agents.add(a2);
-				if (!MainFrame.Instance.winCon.contains(a1.name)) {
-					MainFrame.Instance.winCon.add(a1.name);
-				}
-				if (!MainFrame.Instance.winCon.contains(a2.name)) {
-					MainFrame.Instance.winCon.add(a2.name);
-				}
 				break;
 			case 1:
 				// Vitus
@@ -38,12 +32,6 @@ public class Laboratory extends Field {
 				a2 = new VitusVaccine();
 				agents.add(a1);
 				agents.add(a2);
-				if (!MainFrame.Instance.winCon.contains(a1.name)) {
-					MainFrame.Instance.winCon.add(a1.name);
-				}
-				if (!MainFrame.Instance.winCon.contains(a2.name)) {
-					MainFrame.Instance.winCon.add(a2.name);
-				}
 				break;
 			case 2:
 				// Amnesia
@@ -51,23 +39,21 @@ public class Laboratory extends Field {
 				a2 = new AmnesiaVaccine();
 				agents.add(a1);
 				agents.add(a2);
-				if (!MainFrame.Instance.winCon.contains(a1.name)) {
-					MainFrame.Instance.winCon.add(a1.name);
-				}
-				if (!MainFrame.Instance.winCon.contains(a2.name)) {
-					MainFrame.Instance.winCon.add(a2.name);
-				}
 				break;
 			case 3:
 				// Protective
 				a1 = new ProtectiveVaccine();
 				agents.add(a1);
-				if (!MainFrame.Instance.winCon.contains(a1.name)) {
-					MainFrame.Instance.winCon.add(a1.name);
-				}
 				break;
 			default:
 				break;
+		}
+
+		if (a1 != null && (!MainFrame.Instance.winCon.contains(a1.name))) {
+			MainFrame.Instance.winCon.add(a1.name);
+		}
+		if (a2 != null && (!MainFrame.Instance.winCon.contains(a2.name))) {
+			MainFrame.Instance.winCon.add(a2.name);
 		}
 
 		if (r.nextInt(10) == 0) {

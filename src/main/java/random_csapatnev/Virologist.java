@@ -1,8 +1,8 @@
 package random_csapatnev;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * Ez az osztály tartalmazza a játékhoz szükséges adatokat és
@@ -212,17 +212,14 @@ public class Virologist extends Character {
 	 */
 	@Override
 	public void round() {
-		ArrayList<Agent> tempList = new ArrayList<Agent>(activeAgents.size());
-		for (Agent curActive : activeAgents) {
-			tempList.add(curActive);
-		}
+		ArrayList<Agent> tempList = new ArrayList<>(activeAgents);
 
 		for (Agent curActive : tempList) {
 			curActive.round();
 		}
 
 		if (Boolean.TRUE.equals(isVitus)) {
-			ArrayList<Field> neighFields = currField.getNeighbours();
+			List<Field> neighFields = currField.getNeighbours();
 			int randomint = rand.nextInt(neighFields.size());
 			move(neighFields.get(randomint));
 			fieldInteract();
