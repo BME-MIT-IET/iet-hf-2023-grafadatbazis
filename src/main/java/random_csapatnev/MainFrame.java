@@ -139,16 +139,16 @@ public class MainFrame extends JFrame {
 				boolean top = false;
 				boolean right = false;
 				boolean left = false;
-				boolean bot = false;
+				boolean bottom = false;
 				int x = v.currField.x;
 				int y = v.currField.y;
 
 				top = isValidField(x - 1, y, model);
 				left = isValidField(x, y - 1, model);
-				bot = isValidField(x + 1, y, model);
+				bottom = isValidField(x + 1, y, model);
 				right = isValidField(x, y + 1, model);
 
-				movePickerFrame(top, right, bot, left);
+				movePickerFrame(top, right, bottom, left);
 			}
 		});
 
