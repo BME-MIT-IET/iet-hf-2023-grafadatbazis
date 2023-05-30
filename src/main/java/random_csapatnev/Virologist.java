@@ -2,7 +2,6 @@ package random_csapatnev;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * Ez az osztály tartalmazza a játékhoz szükséges adatokat és
