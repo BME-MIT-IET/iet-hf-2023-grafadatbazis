@@ -15,7 +15,6 @@ class CouldHeMove{
 
 public class VirologistMovesStepDefs {
     private final Virologist virologist = new Virologist("test");
-    private Agent activeAgent;
     private final Field startingField = new Field(0,0);
     private Field neighbourField;
     private String actualAnswer;
@@ -28,10 +27,10 @@ public class VirologistMovesStepDefs {
     }
     @Given("Virologist stands on a Field with one neighbour")
     public void one_neighbour(){
-        this.startingField.characters.add(virologist);
+        this.startingField.getCharacters().add(virologist);
         this.virologist.currField = startingField;
         this.neighbourField = new Field(1,0);
-        this.startingField.neighbours.add(neighbourField);
+        this.startingField.getNeighbours().add(neighbourField);
     }
     @When("I ask whether he could move to that field")
     public void ask_whether_he_could_move(){
@@ -39,7 +38,7 @@ public class VirologistMovesStepDefs {
             virologist.move(virologist.currField.getNeighbours().get(0));
         }
 
-        actualAnswer = couldHeMove(neighbourField.characters.contains(virologist));
+        actualAnswer = couldHeMove(neighbourField.getCharacters().contains(virologist));
     }
     @Then("He should answer {string} move")
     public void he_should_answer(String expectedAnswer){
