@@ -71,7 +71,6 @@ public class VirologistFieldInteractStepDefs{
         if(virologist.gears.size()>0){
             result = true;
         }
-        System.out.println(virologist.gears.size());
         actualAnswer = CouldHeGainStuff.couldHeGainStuff(result);
     }
 
