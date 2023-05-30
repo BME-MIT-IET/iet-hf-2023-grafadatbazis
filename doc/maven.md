@@ -3,7 +3,7 @@
 A projekt eredetileg nem Mavenben készült, az alkalmazás struktúrája nem 
 is volt erre felkeszítve. Ennek megoldásához generáltam egy üres Maven projektet CLI-ben,
 és ebbe bekötöttem az eredeti alkalmazást. 
-A projekt forrásfájlai innentől kezdve az elvárt src/java/.. struktúrában vannak. 
+A projekt forrásfájljai innentől kezdve az elvárt src/java/.. struktúrában vannak. 
 A pom.xml kezdeti beállításait is elvégeztem. 
 
 # Maven CI beállítása
