@@ -3,6 +3,9 @@ package random_csapatnev;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import random_csapatnev.ModelClasses.Field;
+import random_csapatnev.ModelClasses.ParalyzingVirus;
+import random_csapatnev.ModelClasses.Virologist;
 
 import static org.junit.Assert.assertEquals;
 import static random_csapatnev.CouldHeMove.couldHeMove;
@@ -28,14 +31,14 @@ public class VirologistMovesStepDefs {
     @Given("Virologist stands on a Field with one neighbour")
     public void one_neighbour(){
         this.startingField.getCharacters().add(virologist);
-        this.virologist.currField = startingField;
+        this.virologist.setCurrField(startingField);
         this.neighbourField = new Field(1,0);
         this.startingField.getNeighbours().add(neighbourField);
     }
     @When("I ask whether he could move to that field")
     public void ask_whether_he_could_move(){
-        if(virologist.currField.getNeighbours().size()>0){
-            virologist.move(virologist.currField.getNeighbours().get(0));
+        if(virologist.getCurrField().getNeighbours().size()>0){
+            virologist.move(virologist.getCurrField().getNeighbours().get(0));
         }
 
         actualAnswer = couldHeMove(neighbourField.getCharacters().contains(virologist));

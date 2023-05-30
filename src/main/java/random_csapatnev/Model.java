@@ -1,5 +1,15 @@
 package random_csapatnev;
 
+import random_csapatnev.ModelClasses.Agent;
+import random_csapatnev.ModelClasses.Field;
+import random_csapatnev.ModelClasses.Gear;
+import random_csapatnev.ModelClasses.Material;
+import random_csapatnev.ViewClasses.GraphicsCharacter;
+import random_csapatnev.ViewClasses.GraphicsFieldBase;
+import random_csapatnev.ViewClasses.GraphicsGear;
+import random_csapatnev.ViewClasses.GraphicsMaterial;
+import random_csapatnev.ModelClasses.Character;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
