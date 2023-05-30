@@ -813,20 +813,14 @@ public class MainFrame extends JFrame {
 	}
 
 	public void round() {
-		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters().size());
-		for (Character c : model.getCharacters()) {
-			tempList.add(c);
-		}
+		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters());
 		for (Character c : tempList) {
 			c.round();
 		}
 	}
 
 	public void aiRound() {
-		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters().size());
-		for (Character c : model.getCharacters()) {
-			tempList.add(c);
-		}
+		ArrayList<Character> tempList = new ArrayList<>(model.getCharacters());
 		for (Character c : tempList) {
 			if (!c.name.equals("v0")) {
 				List<Field> neighFields = c.currField.getNeighbours();

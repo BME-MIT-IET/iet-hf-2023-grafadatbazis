@@ -212,10 +212,7 @@ public class Virologist extends Character {
 	 */
 	@Override
 	public void round() {
-		ArrayList<Agent> tempList = new ArrayList<>(activeAgents.size());
-		for (Agent curActive : activeAgents) {
-			tempList.add(curActive);
-		}
+		ArrayList<Agent> tempList = new ArrayList<>(activeAgents);
 
 		for (Agent curActive : tempList) {
 			curActive.round();

@@ -39,10 +39,7 @@ public class BearVirus extends Agent {
 		if (!hasProtection) {
 			c.currField.removeCharacter(c);
 
-			ArrayList<GraphicsCharacter> tempList = new ArrayList<>(MainFrame.Instance.model.getGraphicsCharacter().size());
-			for (GraphicsCharacter e : MainFrame.Instance.model.getGraphicsCharacter()) {
-				tempList.add(e);
-			}
+			ArrayList<GraphicsCharacter> tempList = new ArrayList<>(MainFrame.Instance.model.getGraphicsCharacter());
 			for (GraphicsCharacter e : tempList) {
 				if (e.c == c) {
 					e.remove();
