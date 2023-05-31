@@ -195,6 +195,93 @@ A képen létható állásban a v1 virológussal léptem egy mezőre, majd az �
 Amennyiben nincs másik virológus a játékos mezőjén, akkor nem jelenik meg ez az ablak a gombok megnyomásának hatására.
 ![](7.1.png)
 
+***
+
+ 
+    8.	Anyagkészlet lopása
+**Rövid leírás:**
+- Ellenőrizzük, hogy a játék megfelelően kezeli, ha a játékos egy másik virológustól anyagot próbál lopni.
+
+**Elvárt eredmény:**
+- Ha két virológus sikeresen találkozik és az egyik megpróbálja ellopni az anyagokat a másiktól, akkor a játék megfelelően kezeli a lopási kísérletet és végrehajtja a szükséges interakciókat.
+
+**Tényleges eredmény:**
+- A lopási kísérlet nem sikerül, a játék nem mozdítja át az anyagokat a játékos virológusának a készlete közé.  
+
+**Teszt lépései:**
+1.	Játék indítása
+2.	A játékos irányítja az egyik virológust, a másik virológus pedig véletlenszerűen mozog a pályán. 
+3.	Az véletlenszerűen mozgó virológus rendelkezik anyagokkal a készletében. 
+4.	A két virológus olyan mezőre lép, ahol találkoznak.
+5.	 Az irányított virológus megpróbálja ellopni az anyagokat a másik virológus készletéből.
+
+A felugró ablak sikeresen megjelenik, viszont a megtámadott virológus kiválasztása után nem történik meg az anyagnak az átmozgatása a játékos virológusának a készletébe.
+
+![](8.1.png)
+
+***
+
+    9.	Felszerelés lopása
+**Rövid leírás:**
+- Ellenőrizzük, hogy a játék megfelelően kezeli, ha a játékos egy másik virológustól felszerelést próbál lopni.
+
+**Elvárt eredmény:**
+- Ha két virológus sikeresen találkozik és az egyik megpróbál ellopni egy felszerelést a másiktól, akkor a játék megfelelően kezeli a lopási kísérletet és végrehajtja a szükséges interakciókat.
+
+**Tényleges eredmény:**
+- A lopási kísérlet nem sikerül, a játék nem mozdítja át a felszerelést a játékoshoz. 
+
+**Teszt lépései:**
+1.	Játék indítása
+2.	A játékos irányítja az egyik virológust, a másik virológus pedig véletlenszerűen mozog a pályán. 
+3.	Az véletlenszerűen mozgó virológus rendelkezik védőfelszereléssel. 
+4.	A két virológus olyan mezőre lép, ahol találkoznak.
+5.	 Az irányított virológus megpróbálja ellopni a védőfelszerelést a másik virológus készletéből.
+
+A felugró ablak sikeresen megjelenik, viszont a megtámadott virológus kiválasztása után nem történik meg a védőfelszerelés átmozgatása a játékos virológusához.
+
+![](9.1.png)
+
+***
+
+    10.	Játék vége a genetikai kódok megszerzésével
+**Rövid leírás:**
+- Ellenőrizzük, hogy a játék megfelelően értékeli és jelzi a játék végét, amikor egy virológus megszerzi az összes genetikai kódot.
+
+**Elvárt eredmény:**
+- Ha egy virológus sikeresen megszerzi az összes genetikai kódot, a játék megfelelően értékeli és jelzi a győzelmet.
+
+**Tényleges eredmény:**
+- A játékos virológusa sikeresen megszerezte az összes genetikai kódot, a játék helyesen értékelte és jelentette a győzelmet.
+
+**Teszt lépései:**
+1.	Játék indítása
+2.	A játékos irányítja a virológusát a játéktéren. 
+3.	A játékos elmozdul a laboratórium mezőkre, ahol lehetősége van genetikai kódokat megszerezni.
+4.	 A virológus megszerzi az összes genetikai kódot a laboratórium mezőkről.
+5.	 A játék ellenőrzi, hogy valóban minden genetikai kódot megszereztek-e.
+6.	 Ha a virológus sikeresen megszerezte az összes genetikai kódot, a játék jelzi a győzelmet és befejezi a játékot.
+
+Elkezdtem bejárni az összes laboratóriumot (kék mezők) és interaktáltam velük, hogy begyűjtsem a kódokat.
+![](10.1.png)
+![](10.2.png)
+![](10.3.png)
+![](10.4.png)
+
+Miután minden genetikai kódot letapogattam, a program ezt „Victory!” felirattal jelzi. 
+Amennyiben nem a felhasználó, hanem egy másik virológus nyerni a játékot, akkor a „Game Over!” felirat jelenik meg egy felugró ablakban.
+![](10.5.png)
+
+Amennyiben nem a felhasználó, hanem egy másik virológus nyerni a játékot, akkor a „Game Over!” felirat jelenik meg egy felugró ablakban.
+![](10.6.png)
+
+
+
+
+
+
+
+
 
 
 
