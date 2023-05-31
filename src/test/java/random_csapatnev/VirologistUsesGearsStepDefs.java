@@ -24,7 +24,6 @@ public class VirologistUsesGearsStepDefs{
         gear = new Gloves();
         actualGear = gear.getName().toString();
         virologist.addGear(gear);
-        //EZ JOL MUKODIK.
     }
 
     @Given("Virologist has a Cloak")
@@ -73,7 +72,7 @@ public class VirologistUsesGearsStepDefs{
     public void ask_whether_he_could_use(){
         virologist.equipGear(GearEnum.GLOVES);
         boolean result = false;
-        if(virologist.getActiveGears().contains(gear) && virologist.isGloved){
+        if(virologist.getActiveGears().contains(gear) && virologist.getIsGloved()){
             result = true;
         }
 

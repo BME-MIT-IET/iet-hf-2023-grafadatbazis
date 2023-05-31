@@ -226,17 +226,17 @@ public class Virologist extends Character {
 			fieldInteract();
 		}
 	}
-	public ArrayList<Agent> getCraftedAgents(){
+	public List<Agent> getCraftedAgents(){
 		return this.craftedAgents;
 	}
 	public void addCraftedAgent(Agent a){
 		this.craftedAgents.add(a);
 	}
 
-	public ArrayList<Gear> getGears(){
+	public List<Gear> getGears(){
 		return this.gears;
 	}
-	public ArrayList<Gear> getActiveGears(){
+	public List<Gear> getActiveGears(){
 		return this.activeGears;
 	}
 	public Material getCurrMaterial(){
@@ -246,7 +246,7 @@ public class Virologist extends Character {
 		return this.maxMaterial;
 	}
 
-	public ArrayList<Agent> getActiveAgents() {
+	public List<Agent> getActiveAgents() {
 		return this.activeAgents;
 	}
 	public boolean getIsVitus(){

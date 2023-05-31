@@ -2,6 +2,7 @@ package random_csapatnev.modelclasses;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -44,7 +45,7 @@ public class Character implements Serializable {
 	/**
 	 * Megadja, hogy a virológuson van-e kesztyű.
 	 */
-	public Boolean isGloved = false;
+	Boolean isGloved = false;
 	/**
 	 * Megadja, hogy a virológuson van-e Köpeny.
 	 */
@@ -251,7 +252,7 @@ public class Character implements Serializable {
 	public String getName(){
 		return this.name;
 	}
-	public ArrayList<Agent> getKnownAgents(){
+	public List<Agent> getKnownAgents(){
 		return this.knownAgents;
 	}
 	public boolean getIsGloved(){

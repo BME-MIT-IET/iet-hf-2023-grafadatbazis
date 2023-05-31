@@ -864,4 +864,5 @@ public class MainFrame extends JFrame {
 	public List<String> getWincon(){
 		return this.winCon;
 	}
+
 }
