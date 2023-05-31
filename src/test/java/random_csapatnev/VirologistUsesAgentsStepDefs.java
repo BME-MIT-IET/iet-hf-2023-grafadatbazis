@@ -3,6 +3,10 @@ package random_csapatnev;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import random_csapatnev.modelclasses.Agent;
+import random_csapatnev.modelclasses.Field;
+import random_csapatnev.modelclasses.ParalyzingVirus;
+import random_csapatnev.modelclasses.Virologist;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,22 +27,22 @@ public class VirologistUsesAgentsStepDefs{
     public void virologists_on_same_field(){
         this.field.getCharacters().add(virologist1);
         this.field.getCharacters().add(virologist2);
-        this.virologist1.currField = field;
-        this.virologist2.currField = field;
+        this.virologist1.setCurrField(field);
+        this.virologist2.setCurrField(field);
     }
 
     @Given("Virologist1 and Virologist2 is not on the same Field")
     public void virologists_not_on_same_field(){
         this.field.getCharacters().add(virologist1);
         this.otherField.getCharacters().add(virologist2);
-        this.virologist1.currField = field;
-        this.virologist2.currField = otherField;
+        this.virologist1.setCurrField(field);
+        this.virologist2.setCurrField(otherField);
     }
 
     @Given("Virologist1 has the Agent crafted")
     public void virologist1_has_agent(){
         Agent agentToUse = new ParalyzingVirus();
-        this.virologist1.craftedAgents.add(agentToUse.createNew());
+        this.virologist1.addCraftedAgent(agentToUse.createNew());
     }
 
     @Given("Virologist1 does not have the Agent crafted")
@@ -47,10 +51,10 @@ public class VirologistUsesAgentsStepDefs{
     @When("I ask if he could use Agent on Virologist2")
     public void ask_whether_he_could_use(){
         boolean result = false;
-        if(virologist1.craftedAgents.size()>0){
-            Agent agentToUse = virologist1.craftedAgents.get(0);
+        if(virologist1.getCraftedAgents().size()>0){
+            Agent agentToUse = virologist1.getCraftedAgents().get(0);
             virologist1.use(virologist2, agentToUse);
-            result = virologist2.activeAgents.contains(agentToUse);
+            result = virologist2.getActiveAgents().contains(agentToUse);
         }
         actualAnswer = CouldHeUseAgents.couldHeUseAgents(result);
     }

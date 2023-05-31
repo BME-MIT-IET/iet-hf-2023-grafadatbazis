@@ -3,6 +3,7 @@ package random_csapatnev;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import random_csapatnev.modelclasses.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,19 +23,19 @@ public class VirologistFieldInteractStepDefs {
     @Given("Virologist is on a Laboratory")
     public void virologist_is_on_laboratory() {
         field = new Laboratory(0, 0);
-        virologist.currField = field;
+        virologist.setCurrField(field);
     }
 
     @Given("Virologist is on a Warehouse")
     public void virologist_is_on_warehouse() {
         field = new Warehouse(0, 0);
-        virologist.currField = field;
+        virologist.setCurrField(field);
     }
 
     @Given("Virologist is on a Safehouse")
     public void virologist_is_on_safehouse() {
         field = new Safehouse(0, 0);
-        virologist.currField = field;
+        virologist.setCurrField(field);
     }
 
     @When("I ask if he learnt a new Agent")
@@ -57,7 +58,7 @@ public class VirologistFieldInteractStepDefs {
     public void ask_whether_he_gained_materials() {
         boolean result = false;
         virologist.fieldInteract();
-        Map<MatEnum, Integer> material = virologist.currMaterial.container;
+        Map<MatEnum, Integer> material = virologist.getCurrMaterial().getContainer();
         if (material.get(MatEnum.AMINOACID) > 0 || material.get(MatEnum.NUCLEOTIDE) > 0) {
             result = true;
         }
@@ -68,7 +69,7 @@ public class VirologistFieldInteractStepDefs {
     public void ask_whether_he_gained_gear() {
         boolean result = false;
         virologist.fieldInteract();
-        if (virologist.gears.size() > 0 || virologist.activeGears.size() > 0) {
+        if (virologist.getGears().size() > 0 || virologist.getActiveGears().size() > 0) {
             result = true;
         }
         actualAnswer = CouldHeGainStuff.couldHeGainStuff(result);

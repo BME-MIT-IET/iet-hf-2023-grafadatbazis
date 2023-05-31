@@ -85,3 +85,7 @@ A SonarCloud által jelzett állapot: [(1)](SonarCloudIt4End.png)
 A javítások nem csak hatékonyságot növeltek hanem a kód sokkal olvashatóbb és szabályosabb/biztonságosabb lett, nem nyúlunk keresztül osztályokon csak úgy, nem másolunk feleslegesen listákat, ahol lehetséges, kódot egyszerűsítettünk/kiemeltünk.
 
 [PR #25](https://github.com/BME-MIT-IET/iet-hf-2023-grafadatbazis/pull/25)
+
+## Manuális kódelemzés és javítások
+
+A kiinduló projekt nem rendelkezett semmiféle struktúrával az osztályok funkcióját, kapcsolatát illetően. Megpróbáltam nagyjából funckionalitás szerint mappákba rendezni őket, ez rengeteg egyéb, súlyos hibát elő is hozott - minden tagváltozó értéke közvetlenül volt írva és olvasva, ezt az azonos package-ben levőség package láthatóságon keresztül lehetővé tette. Ezeket ott, ahol a meglévő tesztek elkapták a problémát javítottam, de továbbra is rengeteg ilyen van a kódban, ezeknek a kijavítása mindenképpen prioritás lenne, ha maradna rá idő. 

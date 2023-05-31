@@ -1,5 +1,9 @@
 package random_csapatnev;
 
+import random_csapatnev.viewclasses.GraphicsCharacter;
+import random_csapatnev.viewclasses.GraphicsGear;
+import random_csapatnev.viewclasses.GraphicsMaterial;
+
 import java.io.Serializable;
 
 import javax.swing.JFrame;
@@ -24,8 +28,9 @@ public class View implements Serializable {
 		pLen = 1000 / model.sizeM;
 		for (int i = 0; i < model.getGraphicsCharacter().size(); ++i) {
 			GraphicsCharacter gc = model.getGraphicsCharacter().get(i);
-			gc.draw(model.graphicsFields[gc.c.currField.x][gc.c.currField.y], model.sizeN * gc.c.currField.y,
-					model.sizeM * gc.c.currField.x, pLen, pLen);
+			gc.draw(model.graphicsFields[gc.getC().getCurrField().getX()][gc.getC().getCurrField().getY()],
+					model.sizeN * gc.getC().getCurrField().getY(),
+					model.sizeM * gc.getC().getCurrField().getX(), pLen, pLen);
 		}
 		for (int i = 0; i < model.getGraphicsMaterial().size(); ++i) {
 			GraphicsMaterial m = model.getGraphicsMaterial().get(i);
