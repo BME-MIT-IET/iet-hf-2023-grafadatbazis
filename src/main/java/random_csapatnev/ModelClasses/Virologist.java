@@ -232,14 +232,12 @@ public class Virologist extends Character {
 	public void addCraftedAgent(Agent a){
 		this.craftedAgents.add(a);
 	}
-	public void addGear(Gear g){
-		this.gears.add(g);
-	}
+
 	public ArrayList<Gear> getGears(){
 		return this.gears;
 	}
 	public ArrayList<Gear> getActiveGears(){
-		return this.gears;
+		return this.activeGears;
 	}
 	public Material getCurrMaterial(){
 		return this.currMaterial;
@@ -257,10 +255,5 @@ public class Virologist extends Character {
 	public boolean getIsParalyzed(){
 		return this.isParalyzed;
 	}
-	public boolean getIsGloved(){
-		return this.isGloved;
-	}
-	public boolean getIsCloaked(){
-		return this.isCloaked;
-	}
+
 }
