@@ -1,4 +1,4 @@
-package random_csapatnev.viewClasses;
+package random_csapatnev.viewclasses;
 
 import java.awt.Color;
 

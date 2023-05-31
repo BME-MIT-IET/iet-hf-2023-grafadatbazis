@@ -4,10 +4,10 @@ import random_csapatnev.modelclasses.Agent;
 import random_csapatnev.modelclasses.Field;
 import random_csapatnev.modelclasses.Gear;
 import random_csapatnev.modelclasses.Material;
-import random_csapatnev.viewClasses.GraphicsCharacter;
-import random_csapatnev.viewClasses.GraphicsFieldBase;
-import random_csapatnev.viewClasses.GraphicsGear;
-import random_csapatnev.viewClasses.GraphicsMaterial;
+import random_csapatnev.viewclasses.GraphicsCharacter;
+import random_csapatnev.viewclasses.GraphicsFieldBase;
+import random_csapatnev.viewclasses.GraphicsGear;
+import random_csapatnev.viewclasses.GraphicsMaterial;
 import random_csapatnev.modelclasses.Character;
 
 import java.io.Serializable;

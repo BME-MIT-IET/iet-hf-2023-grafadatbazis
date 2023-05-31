@@ -2,8 +2,8 @@ package random_csapatnev.modelclasses;
 
 import random_csapatnev.*;
 import random_csapatnev.MainFrame;
-import random_csapatnev.viewClasses.GraphicsBear;
-import random_csapatnev.viewClasses.GraphicsCharacter;
+import random_csapatnev.viewclasses.GraphicsBear;
+import random_csapatnev.viewclasses.GraphicsCharacter;
 
 import java.util.ArrayList;
 import java.util.Random;

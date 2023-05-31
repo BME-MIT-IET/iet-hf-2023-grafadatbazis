@@ -2,7 +2,7 @@ package random_csapatnev;
 
 import random_csapatnev.modelclasses.*;
 import random_csapatnev.modelclasses.Character;
-import random_csapatnev.viewClasses.*;
+import random_csapatnev.viewclasses.*;
 
 
 import java.util.ArrayList;

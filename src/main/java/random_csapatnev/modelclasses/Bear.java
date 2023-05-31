@@ -1,8 +1,8 @@
 package random_csapatnev.modelclasses;
 
 import random_csapatnev.*;
-import random_csapatnev.viewClasses.GraphicsCharacter;
-import random_csapatnev.viewClasses.GraphicsDeadCharacter;
+import random_csapatnev.viewclasses.GraphicsCharacter;
+import random_csapatnev.viewclasses.GraphicsDeadCharacter;
 
 
 import java.util.ArrayList;

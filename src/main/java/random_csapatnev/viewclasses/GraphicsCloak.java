@@ -1,4 +1,4 @@
-package random_csapatnev.viewClasses;
+package random_csapatnev.viewclasses;
 
 import random_csapatnev.Logger;
 import random_csapatnev.modelclasses.Safehouse;
