@@ -146,6 +146,58 @@ A választás után a „Craftolt ágensek” -nél megjelenik a kiválasztott �
 ![](5.4.png)
 
 
+***
+
+    6.	Védőfelszerelés megszerzése   
+**Rövid leírás:**
+- A játékos megszerzi a védőfelszerelést az óvóhelyen.
+
+**Elvárt eredmény:**
+- A játékos sikeresen megszerzi a védőfelszerelést az óvóhelyen.
+
+**Tényleges eredmény:**
+- A játékos sikeresen megszerzi a védőfelszerelést az óvóhelyen
+Erről visszajelzést kap a képernyőn.
+
+**Teszt lépései:**
+1.	Játék indítása
+2.	Óvóhelyre navigálás
+3.	Interakció a mezővel
+
+Kezdőállapot, még nincs védőfelszerelés. 
+![](6.1.png)
+
+Óvóhelyre navigálás, interakció a mezővel. Az adott mezőn lévő felszerelés felvétele, visszajelzés adása a képernyőn. Ugyanazon mezővel kapcsolatos újabb interakció hatására helyesen nem történik semmi.
+![](6.2.png)
+
+Másik óvóhelyen történő interakció során helyesen felvételre kerül egy újabb felszerelés.
+![](6.3.png)
+
+***
+
+ 
+    7.	Virológusok találkozása
+**Rövid leírás:**
+- Ellenőrizzük, hogy a játék megfelelően kezeli a virológusok találkozását a játéktéren.
+
+**Elvárt eredmény:**
+- Ha legalább egy másik virológussal ugyanazon a mezőn áll a játékos karaktere, akkor a másik virológus intraktálására használatos gombok használata esetén egy felugró ablakot kell látnunk, amiben kiválasztható az adott mezőn álló virológusok közül egy, akire érvényesíteni szeretnénk az adott gomb hatását.
+
+**Tényleges eredmény:**
+- Ha több virológus is egy mezőn áll, akkor megjelenik az elvárt ablak, ahol kiválaszthatjuk, az interaktálni kívánt virológust.  
+
+**Teszt lépései:**
+1.	Játék indítása
+2.	Egy másik virológussal egy mezőre lépni
+3.	„Anyag lopása másik virológustól” gomb használata
+
+A képen létható állásban a v1 virológussal léptem egy mezőre, majd az „Anyag lopása másik virológustól” gomb hatására megjelent az elvárt ablak, a helyes adatokkal.
+Amennyiben nincs másik virológus a játékos mezőjén, akkor nem jelenik meg ez az ablak a gombok megnyomásának hatására.
+![](7.1.png)
+
+
+
+
 
 
 
