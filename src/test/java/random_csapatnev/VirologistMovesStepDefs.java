@@ -3,9 +3,9 @@ package random_csapatnev;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import random_csapatnev.ModelClasses.Field;
-import random_csapatnev.ModelClasses.ParalyzingVirus;
-import random_csapatnev.ModelClasses.Virologist;
+import random_csapatnev.modelclasses.Field;
+import random_csapatnev.modelclasses.ParalyzingVirus;
+import random_csapatnev.modelclasses.Virologist;
 
 import static org.junit.Assert.assertEquals;
 import static random_csapatnev.CouldHeMove.couldHeMove;

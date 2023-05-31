@@ -2,10 +2,10 @@ package random_csapatnev;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import random_csapatnev.ModelClasses.Agent;
-import random_csapatnev.ModelClasses.Material;
-import random_csapatnev.ModelClasses.Virologist;
-import random_csapatnev.ModelClasses.VitusVirus;
+import random_csapatnev.modelclasses.Agent;
+import random_csapatnev.modelclasses.Material;
+import random_csapatnev.modelclasses.Virologist;
+import random_csapatnev.modelclasses.VitusVirus;
 
 import static org.junit.Assert.*;
 import static random_csapatnev.CouldHeCraft.couldHeCraft;

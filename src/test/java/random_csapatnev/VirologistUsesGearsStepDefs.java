@@ -3,7 +3,7 @@ package random_csapatnev;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import random_csapatnev.ModelClasses.*;
+import random_csapatnev.modelclasses.*;
 
 import static org.junit.Assert.assertEquals;
 

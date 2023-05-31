@@ -1,8 +1,8 @@
 package random_csapatnev;
 
-import random_csapatnev.ModelClasses.*;
-import random_csapatnev.ModelClasses.Character;
-import random_csapatnev.ViewClasses.*;
+import random_csapatnev.modelclasses.*;
+import random_csapatnev.modelclasses.Character;
+import random_csapatnev.viewClasses.*;
 
 
 import java.util.ArrayList;
@@ -861,7 +861,7 @@ public class MainFrame extends JFrame {
 	public Model getModel(){
 		return this.model;
 	}
-	public ArrayList<String> getWincon(){
+	public List<String> getWincon(){
 		return this.winCon;
 	}
 }

@@ -1,14 +1,14 @@
 package random_csapatnev;
 
-import random_csapatnev.ModelClasses.Agent;
-import random_csapatnev.ModelClasses.Field;
-import random_csapatnev.ModelClasses.Gear;
-import random_csapatnev.ModelClasses.Material;
-import random_csapatnev.ViewClasses.GraphicsCharacter;
-import random_csapatnev.ViewClasses.GraphicsFieldBase;
-import random_csapatnev.ViewClasses.GraphicsGear;
-import random_csapatnev.ViewClasses.GraphicsMaterial;
-import random_csapatnev.ModelClasses.Character;
+import random_csapatnev.modelclasses.Agent;
+import random_csapatnev.modelclasses.Field;
+import random_csapatnev.modelclasses.Gear;
+import random_csapatnev.modelclasses.Material;
+import random_csapatnev.viewClasses.GraphicsCharacter;
+import random_csapatnev.viewClasses.GraphicsFieldBase;
+import random_csapatnev.viewClasses.GraphicsGear;
+import random_csapatnev.viewClasses.GraphicsMaterial;
+import random_csapatnev.modelclasses.Character;
 
 import java.io.Serializable;
 import java.util.ArrayList;

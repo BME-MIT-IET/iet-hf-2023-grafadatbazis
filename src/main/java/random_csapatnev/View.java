@@ -1,8 +1,8 @@
 package random_csapatnev;
 
-import random_csapatnev.ViewClasses.GraphicsCharacter;
-import random_csapatnev.ViewClasses.GraphicsGear;
-import random_csapatnev.ViewClasses.GraphicsMaterial;
+import random_csapatnev.viewClasses.GraphicsCharacter;
+import random_csapatnev.viewClasses.GraphicsGear;
+import random_csapatnev.viewClasses.GraphicsMaterial;
 
 import java.io.Serializable;
 
