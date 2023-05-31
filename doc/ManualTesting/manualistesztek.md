@@ -32,7 +32,7 @@
 
 ***
 
-    2.	Felhasználó virológusának mozgatása :
+    2.	Felhasználó virológusának mozgatása:
 
 **Rövid leírás:**
 - A játékos mozog a játéktéren egy felugró ablakon található nyilak segítségével az egér használatával.
@@ -48,8 +48,6 @@
 2.	Move gomb megnyomása
 3.	A felugró ablakból kiválasztani a kívánt irányt.
 4.	2.-3. lépést ismételni mind a 4 irányra
-
-
 
 ![](2.1.png)
 ↓ jobbra mozgás
@@ -134,15 +132,18 @@ Felvétel utáni állapot. A felvett mennyiséget a mezőről levonja, a játék
 6.	Ha van elég anyag, akkor ágens kreálása, ha nincs, akkor 4.-5. lépés ismétlése
 
 Laborra (kék mező) lépés, kód letapogatása.
+
 ![](5.1.png)
 
 Raktárra lépés, anyagok begyűjtése.
+
 ![](5.2.png)
 
 Ágens készítése, „Craft ágens” gomb, ekkor egy felugró ablakban kiválasztjuk, hogy vírust vagy vakcinát szeretnénk létrehozni.
 ![](5.3.png)
 
 A választás után a „Craftolt ágensek” -nél megjelenik a kiválasztott ágens. Az „aktuális anyagok”-ból levonásra kerül az adott ágenshez szükséges anyagmennyiség. Amennyiben nem áll rendelkezésre az ágens létrehozásához szükséges anyagmennyiség, a rendszer nem engedi az ágens létrehozását.
+
 ![](5.4.png)
 
 
