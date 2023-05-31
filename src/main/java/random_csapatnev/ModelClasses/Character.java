@@ -44,7 +44,7 @@ public class Character implements Serializable {
 	/**
 	 * Megadja, hogy a virológuson van-e kesztyű.
 	 */
-	Boolean isGloved = false;
+	public Boolean isGloved = false;
 	/**
 	 * Megadja, hogy a virológuson van-e Köpeny.
 	 */
@@ -253,5 +253,14 @@ public class Character implements Serializable {
 	}
 	public ArrayList<Agent> getKnownAgents(){
 		return this.knownAgents;
+	}
+	public boolean getIsGloved(){
+		return this.isGloved;
+	}
+	public boolean getIsCloaked(){
+		return this.isCloaked;
+	}
+	public void addGear(Gear g){
+		this.gears.add(g);
 	}
 }

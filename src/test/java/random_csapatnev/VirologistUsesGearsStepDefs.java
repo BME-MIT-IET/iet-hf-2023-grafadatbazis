@@ -14,7 +14,7 @@ class CouldHeUseGears{
 }
 
 public class VirologistUsesGearsStepDefs{
-    private Virologist virologist = new Virologist("Virologist");
+    private final Virologist virologist = new Virologist("Virologist");
     private Gear gear;
     private String actualAnswer;
     private String actualGear;
@@ -24,6 +24,7 @@ public class VirologistUsesGearsStepDefs{
         gear = new Gloves();
         actualGear = gear.getName().toString();
         virologist.addGear(gear);
+        //EZ JOL MUKODIK.
     }
 
     @Given("Virologist has a Cloak")
@@ -72,10 +73,10 @@ public class VirologistUsesGearsStepDefs{
     public void ask_whether_he_could_use(){
         virologist.equipGear(GearEnum.GLOVES);
         boolean result = false;
-        if(virologist.getActiveGears().contains(gear) && virologist.getIsGloved()){
+        if(virologist.getActiveGears().contains(gear) && virologist.isGloved){
             result = true;
         }
-        
+
         actualAnswer = CouldHeUseGears.couldHeUseGears(result);
     }
 
