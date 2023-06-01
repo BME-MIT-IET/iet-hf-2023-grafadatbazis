@@ -9,13 +9,7 @@ import static org.mockito.Mockito.verify;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-
-/*import org.mockito.Mock;
-import org.mockito.Mockito.*;
-import org.mockito.MockitoAnnotations;*/
-
 
 public class FieldTest {
 	
@@ -44,7 +38,6 @@ public class FieldTest {
 
 	@Test
 	public void isNeighbour_ReturnsTrue_WhenFieldIsNeighbour() {
-
 	    // Arrange
 	    Field field2 = new Field(1, 0);
 	    
@@ -59,7 +52,6 @@ public class FieldTest {
 	
 	@Test
 	public void isNeighbour_ReturnsFalse_WhenFieldIsNotNeighbour() {
-
 	    // Arrange
 	    Field field2 = new Field(2, 0);
 
@@ -81,7 +73,6 @@ public class FieldTest {
 	
 	@Test
 	public void isNeighbour_ReturnsFalse_WhenFieldIsSameAsNeighbour() {
-
 		// Act
         boolean isNeighbour = field.isNeighbour(field);
 
@@ -93,7 +84,8 @@ public class FieldTest {
     public void bearInteract_CallsCharacterInteract_WhenCharacterNameDoesNotStartWithB() {
     	//Arrange
     	field.characters.add(character1Mock);
-        
+    	field.characters.add(bearMock);
+
         //Act
         field.bearInteract(bearMock);
         
@@ -106,6 +98,7 @@ public class FieldTest {
     	//Arrange
     	field.characters.add(character1Mock);
         field.characters.add(character2Mock);
+    	field.characters.add(bearMock);
         
         //Act
         field.bearInteract(bearMock);
@@ -113,6 +106,39 @@ public class FieldTest {
         //Assert
         verify(bearMock, times(1)).characterInteract(character1Mock);
         verify(bearMock, times(1)).characterInteract(character2Mock);
+    }
+    
+    @Test
+    public void bearInteract_DoesNotCallCharacterInteract_WhenCharacterNameStartsWithB() {
+    	//Arrange
+    	Bear bear2 = new Bear("bear");
+    	field.characters.add(bear2);
+    	field.characters.add(bearMock);
+    	
+    	//Act
+        field.bearInteract(bearMock);
+        
+        //Assert
+        verify(bearMock, never()).characterInteract(bear2);
+    }
+    
+    @Test
+    public void bearInteract_DoesNotCallCharacterInteractOnOtherCharacters_WhenCharactersNameStartsWithB() {
+    	//Arrange
+    	Bear bear2 = new Bear("bear");
+    	Bear bear3 = new Bear("bear");
+    	Bear bear4 = new Bear("bear");
+
+    	field.characters.add(bear2);
+    	field.characters.add(bear3);
+    	field.characters.add(bear4);
+    	field.characters.add(bearMock);
+    	
+    	//Act
+        field.bearInteract(bearMock);
+
+        //Assert
+        verify(bearMock, times(0)).characterInteract(any(Bear.class));
     }
 	
 	@Test
@@ -124,7 +150,5 @@ public class FieldTest {
 	    // Assert
 	    verify(bearMock, never()).characterInteract(any(Character.class));
 	}
-
-	
 
 }
