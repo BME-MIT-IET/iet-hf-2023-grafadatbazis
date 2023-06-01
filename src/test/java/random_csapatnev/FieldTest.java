@@ -2,20 +2,27 @@ package random_csapatnev;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class FieldTest {
+	
+	private Field field;
+	
+	@Before
+    public void setup() {
+        field = new Field(0, 0);
+    }
 
 	@Test
 	public void isNeighbour() {
 	    // Arrange
-	    Field field1 = new Field(0, 0);
 	    Field field2 = new Field(1, 0);
-
-	    field1.getNeighbours().add(field2);
+	    
+	    field.getNeighbours().add(field2);
 
 	    // Act
-	    boolean isNeighbour = field1.isNeighbour(field2);
+	    boolean isNeighbour = field.isNeighbour(field2);
 
 	    // Assert
 	    assertTrue(isNeighbour);
@@ -24,11 +31,10 @@ public class FieldTest {
 	@Test
 	public void isNotNeighbour() {
 	    // Arrange
-	    Field field1 = new Field(0, 0);
 	    Field field2 = new Field(2, 0);
 
 	    // Act
-	    boolean isNeighbour = field1.isNeighbour(field2);
+	    boolean isNeighbour = field.isNeighbour(field2);
 
 	    // Assert
 	    assertFalse(isNeighbour);
@@ -36,27 +42,20 @@ public class FieldTest {
 	
 	@Test
 	public void isNotExistingFieldNeighbour() {
-	    // Arrange
-	    Field field1 = new Field(0, 0);
-	    Field nonExistingField = null;
+		 // Act
+        boolean isNeighbour = field.isNeighbour(null);
 
-	    // Act
-	    boolean isNeighbour = field1.isNeighbour(nonExistingField);
-
-	    // Assert
-	    assertFalse(isNeighbour);
+        // Assert
+        assertFalse(isNeighbour);
 	}
 	
 	@Test
 	public void isSelfNeighbour() {
-	    // Arrange
-	    Field field = new Field(0, 0);
+		 // Act
+        boolean isNeighbour = field.isNeighbour(field);
 
-	    // Act
-	    boolean isNeighbour = field.isNeighbour(field);
-
-	    // Assert
-	    assertFalse(isNeighbour);
+        // Assert
+        assertFalse(isNeighbour);
 	}
 
 }
