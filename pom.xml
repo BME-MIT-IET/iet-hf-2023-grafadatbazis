@@ -23,19 +23,18 @@
   <dependencies>
     <dependency>
 	<!-- JUnit 4.11 -->
-      <groupId>junit</groupId>
+	  <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
     
-    <!-- Mockito 1.10.19 -->
-    <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-all</artifactId>
-        <version>1.10.19</version>
-        <scope>test</scope>
-    </dependency>
+	<dependency>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-core</artifactId>
+		<version>4.4.0</version>
+		<scope>test</scope>
+	</dependency>
     
     <dependency>
       <groupId>io.cucumber</groupId>
