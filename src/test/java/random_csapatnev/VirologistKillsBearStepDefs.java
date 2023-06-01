@@ -8,7 +8,7 @@ import random_csapatnev.modelclasses.*;
 import static org.junit.Assert.assertEquals;
 
 class CouldHeKillBear{
-    static String couldHeUseAgents(boolean usageSuccess) {
+    static String couldHeKillBear(boolean usageSuccess) {
         return usageSuccess ? "Yes I could" : "No I couldn't";
     }
 }
@@ -52,7 +52,7 @@ public class VirologistKillsBearStepDefs{
         if(virologist.getCurrField().containsCharacter(bear) || otherField.containsCharacter(bear)){
             result = false;
         }
-        actualAnswer = CouldHeKillBear.couldHeUseAgents(result);
+        actualAnswer = CouldHeKillBear.couldHeKillBear(result);
     }
 
     @Then("He should answer {string} kill Bear")
