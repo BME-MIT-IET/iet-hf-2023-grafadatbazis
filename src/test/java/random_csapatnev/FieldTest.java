@@ -13,27 +13,22 @@ import org.mockito.Mock;
 
 public class FieldTest {
 	
-	private Field field;
+	private Field field;	
+    private Character character1;
+	private Character character2;
 	
 	@Mock
     private Bear bearMock;
-    
-	@Mock
-    private Character character1Mock;
-
-	@Mock
-	private Character character2Mock;
 	
 	@Before
     public void setup() {
         field = new Field(0, 0);
-        bearMock = mock(Bear.class);
-        character1Mock = mock(Character.class);
-        character2Mock = mock(Character.class);
+        
+        character1 = new Character("character");
+        character2 = new Character("character");
 
+        bearMock = mock(Bear.class);
         bearMock.name = "bear";
-        character1Mock.name = "character";
-        character2Mock.name = "virologist";
     }
 
 	@Test
@@ -83,29 +78,29 @@ public class FieldTest {
     @Test
     public void bearInteract_CallsCharacterInteract_WhenCharacterNameDoesNotStartWithB() {
     	//Arrange
-    	field.characters.add(character1Mock);
+    	field.characters.add(character1);
     	field.characters.add(bearMock);
 
         //Act
         field.bearInteract(bearMock);
         
         //Assert
-        verify(bearMock, times(1)).characterInteract(character1Mock);
+        verify(bearMock, times(1)).characterInteract(character1);
     }
     
     @Test
     public void bearInteract_CallsCharacterInteractOnMultipleCharacters_WhenCharactersNameDoesNotStartWithB() {
     	//Arrange
-    	field.characters.add(character1Mock);
-        field.characters.add(character2Mock);
+    	field.characters.add(character1);
+        field.characters.add(character2);
     	field.characters.add(bearMock);
         
         //Act
         field.bearInteract(bearMock);
         
         //Assert
-        verify(bearMock, times(1)).characterInteract(character1Mock);
-        verify(bearMock, times(1)).characterInteract(character2Mock);
+        verify(bearMock, times(1)).characterInteract(character1);
+        verify(bearMock, times(1)).characterInteract(character2);
     }
     
     @Test
@@ -146,9 +141,71 @@ public class FieldTest {
 		// Act
 		field.bearInteract(bearMock);	// Nincs karakter a mezőn
 
-
 	    // Assert
 	    verify(bearMock, never()).characterInteract(any(Character.class));
 	}
+	
+	 @Test
+	 public void moveFrom_AddsCharacterToCurrentField() {
+        // Arrange
+        Field field2 = new Field(0,1);
+        field2.characters.add(character1);
+
+        // Act
+        field.moveFrom(field2, character1);
+
+        // Assert
+        assertTrue(field.characters.contains(character1));
+     }
+	 
+	 @Test
+	 public void moveFrom_AddsMultipleCharactersToCurrentField() {
+        // Arrange
+        Field field2 = new Field(0,1);
+        field2.characters.add(character1);
+        field2.characters.add(character2);
+
+        // Act
+        field.moveFrom(field2, character1);
+        field.moveFrom(field2, character2);
+
+
+        // Assert
+        assertTrue(field.characters.contains(character1));
+        assertTrue(field.characters.contains(character2));
+     }
+	 
+	 @Test
+	 public void moveFrom_RemovesCharacterFromOtherField() {
+        // Arrange
+        Field field2 = new Field(0,1);
+        field2.characters.add(character1);
+
+        // Act
+        field.moveFrom(field2, character1);
+
+        // Assert
+        assertFalse(field2.getCharacters().contains(character1));
+     }
+	 
+	 @Test
+	 public void moveFrom_RemovesMultipleCharacterFromOtherField() {
+        // Arrange
+        Field field2 = new Field(0,1);
+        field2.characters.add(character1);
+        field2.characters.add(character2);
+
+        // Act
+        field.moveFrom(field2, character1);
+        field.moveFrom(field2, character2);
+
+        // Assert
+        assertFalse(field2.getCharacters().contains(character1));
+        assertFalse(field2.getCharacters().contains(character2));
+     }
+	 
+
+	
+	
 
 }
