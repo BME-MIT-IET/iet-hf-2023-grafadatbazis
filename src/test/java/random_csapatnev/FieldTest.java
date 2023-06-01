@@ -78,8 +78,8 @@ public class FieldTest {
     @Test
     public void bearInteract_CallsCharacterInteract_WhenCharacterNameDoesNotStartWithB() {
     	//Arrange
-    	field.characters.add(character1);
-    	field.characters.add(bearMock);
+    	field.getCharacters().add(character1);
+    	field.getCharacters().add(bearMock);
 
         //Act
         field.bearInteract(bearMock);
@@ -91,9 +91,9 @@ public class FieldTest {
     @Test
     public void bearInteract_CallsCharacterInteractOnMultipleCharacters_WhenCharactersNameDoesNotStartWithB() {
     	//Arrange
-    	field.characters.add(character1);
-        field.characters.add(character2);
-    	field.characters.add(bearMock);
+    	field.getCharacters().add(character1);
+        field.getCharacters().add(character2);
+    	field.getCharacters().add(bearMock);
         
         //Act
         field.bearInteract(bearMock);
@@ -107,8 +107,8 @@ public class FieldTest {
     public void bearInteract_DoesNotCallCharacterInteract_WhenCharacterNameStartsWithB() {
     	//Arrange
     	Bear bear2 = new Bear("bear");
-    	field.characters.add(bear2);
-    	field.characters.add(bearMock);
+    	field.getCharacters().add(bear2);
+    	field.getCharacters().add(bearMock);
     	
     	//Act
         field.bearInteract(bearMock);
@@ -124,10 +124,10 @@ public class FieldTest {
     	Bear bear3 = new Bear("bear");
     	Bear bear4 = new Bear("bear");
 
-    	field.characters.add(bear2);
-    	field.characters.add(bear3);
-    	field.characters.add(bear4);
-    	field.characters.add(bearMock);
+    	field.getCharacters().add(bear2);
+    	field.getCharacters().add(bear3);
+    	field.getCharacters().add(bear4);
+    	field.getCharacters().add(bearMock);
     	
     	//Act
         field.bearInteract(bearMock);
@@ -146,6 +146,31 @@ public class FieldTest {
 	}
 	
 	@Test
+	public void removeCharacter_RemovesCharacterFromField() {
+	    // Arrange
+	    field.getCharacters().add(character1);
+	
+	    // Act
+	    field.removeCharacter(character1);
+	
+	    // Assert
+	    assertFalse(field.getCharacters().contains(character1));
+	}
+
+	 @Test
+	 public void removeCharacter_DoesNothing_WhenCharacterNotPresent() {
+        // Arrange
+        field.getCharacters().add(character1);
+
+        // Act
+        field.removeCharacter(character2);
+
+        // Assert
+        assertTrue(field.getCharacters().contains(character1));
+	 }
+	
+	
+	@Test
 	public void moveFrom_AddsCharacterToCurrentField() {
 		// Arrange
 	    Field field2 = new Field(0,1);
@@ -155,7 +180,7 @@ public class FieldTest {
 	    field.moveFrom(field2, character1);
 	
 	    // Assert
-	    assertTrue(field.characters.contains(character1));
+	    assertTrue(field.getCharacters().contains(character1));
      }
 	 
 	 @Test
@@ -171,8 +196,8 @@ public class FieldTest {
 
 
         // Assert
-        assertTrue(field.characters.contains(character1));
-        assertTrue(field.characters.contains(character2));
+        assertTrue(field.getCharacters().contains(character1));
+        assertTrue(field.getCharacters().contains(character2));
      }
 	 
 	 @Test
@@ -205,10 +230,10 @@ public class FieldTest {
      }
 	 
 	 @Test
-	 public void moveFrom_DoesNotRemoveCharacterFromOtherFieldIfNotPresent() {
+	 public void moveFrom_DoesNotRemoveCharacterFromOtherField_WhenNotPresent() {
         // Arrange
 	    Field field2 = new Field(0,1);
-        field.characters.add(character1);
+        field.getCharacters().add(character1);
 
         // Act
         field.moveFrom(field2, character1);
@@ -218,23 +243,15 @@ public class FieldTest {
 	  }
 	 
 	 @Test
-	 public void moveFrom_DoesNotAddCharacterToOtherFieldIfNotPresent() {
+	 public void moveFrom_DoesNotAddCharacterToOtherField_WhenNotPresent() {
         // Arrange
 	    Field field2 = new Field(0,1);
-        field.characters.add(character1);
+        field.getCharacters().add(character1);
 
         // Act
         field.moveFrom(field2, character1);
 
         // Assert
-        assertFalse(field.characters.contains(character1));
+        assertFalse(field.getCharacters().contains(character1));
 	  }
-	    
-	 
-	 
-	 
-	 
-	   
-	
-
 }
