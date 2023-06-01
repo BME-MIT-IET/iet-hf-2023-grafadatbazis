@@ -145,17 +145,17 @@ public class FieldTest {
 	    verify(bearMock, never()).characterInteract(any(Character.class));
 	}
 	
-	 @Test
-	 public void moveFrom_AddsCharacterToCurrentField() {
-        // Arrange
-        Field field2 = new Field(0,1);
-        field2.characters.add(character1);
-
-        // Act
-        field.moveFrom(field2, character1);
-
-        // Assert
-        assertTrue(field.characters.contains(character1));
+	@Test
+	public void moveFrom_AddsCharacterToCurrentField() {
+		// Arrange
+	    Field field2 = new Field(0,1);
+	    field2.characters.add(character1);
+	
+	    // Act
+	    field.moveFrom(field2, character1);
+	
+	    // Assert
+	    assertTrue(field.characters.contains(character1));
      }
 	 
 	 @Test
@@ -204,8 +204,37 @@ public class FieldTest {
         assertFalse(field2.getCharacters().contains(character2));
      }
 	 
+	 @Test
+	 public void moveFrom_DoesNotRemoveCharacterFromOtherFieldIfNotPresent() {
+        // Arrange
+	    Field field2 = new Field(0,1);
+        field.characters.add(character1);
 
-	
+        // Act
+        field.moveFrom(field2, character1);
+
+        // Assert
+        assertTrue(field2.characters.contains(character1));
+	  }
+	 
+	 @Test
+	 public void moveFrom_DoesNotAddCharacterToOtherFieldIfNotPresent() {
+        // Arrange
+	    Field field2 = new Field(0,1);
+        field.characters.add(character1);
+
+        // Act
+        field.moveFrom(field2, character1);
+
+        // Assert
+        assertFalse(field.characters.contains(character1));
+	  }
+	    
+	 
+	 
+	 
+	 
+	   
 	
 
 }
