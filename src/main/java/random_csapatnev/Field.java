@@ -83,9 +83,6 @@ public class Field implements Serializable {
 	 * @param c A karakter aki mozogni kíván.
 	 */
 	public void moveFrom(Field f, Character c) {
-		if(!f.containsCharacter(c)) {
-			return;
-		}
 		this.characters.add(c);
 		f.removeCharacter(c);
 	}
