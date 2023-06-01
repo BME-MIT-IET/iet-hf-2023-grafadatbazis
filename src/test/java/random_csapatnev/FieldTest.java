@@ -233,25 +233,29 @@ public class FieldTest {
 	 public void moveFrom_DoesNotRemoveCharacterFromOtherField_WhenNotPresent() {
         // Arrange
 	    Field field2 = new Field(0,1);
+	    Field field3 = new Field(0,2);
+
         field.getCharacters().add(character1);
 
         // Act
-        field.moveFrom(field2, character1);
+        field2.moveFrom(field3, character1);
 
         // Assert
-        assertTrue(field2.characters.contains(character1));
+        assertTrue(field.getCharacters().contains(character1));
 	  }
 	 
 	 @Test
 	 public void moveFrom_DoesNotAddCharacterToOtherField_WhenNotPresent() {
         // Arrange
 	    Field field2 = new Field(0,1);
+	    Field field3 = new Field(0,2);
+
         field.getCharacters().add(character1);
 
         // Act
-        field.moveFrom(field2, character1);
+        field2.moveFrom(field3, character1);
 
         // Assert
-        assertFalse(field.getCharacters().contains(character1));
+        assertFalse(field2.getCharacters().contains(character1));
 	  }
 }
