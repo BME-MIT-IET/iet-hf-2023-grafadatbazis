@@ -229,7 +229,7 @@ public class FieldTest {
         assertFalse(field2.getCharacters().contains(character2));
      }
 	 
-	 /*@Test
+	 @Test
 	 public void moveFrom_DoesNotRemoveCharacterFromOtherField_WhenNotPresent() {
         // Arrange
 	    Field field2 = new Field(0,1);
@@ -257,5 +257,5 @@ public class FieldTest {
 
         // Assert
         assertFalse(field2.getCharacters().contains(character1));
-	  }*/
+	  }
 }
