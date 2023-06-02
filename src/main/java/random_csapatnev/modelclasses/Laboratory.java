@@ -67,6 +67,9 @@ public class Laboratory extends Field {
 	 * A laborban található genetikai kódok listája.
 	 */
 	ArrayList<Agent> agents = new ArrayList<>();
+	public ArrayList<Agent> getAgents() {
+		return agents;
+	}
 
 	/**
 	 * Felülírja a Field Interact függvényét, az átadott c karakternek megtanítja az
