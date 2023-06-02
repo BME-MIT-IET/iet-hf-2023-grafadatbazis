@@ -44,4 +44,4 @@ A projekt célja a korábban ismertetett program kódjának átvizsgálása, tes
 - [Manuális tesztek](doc/manualis_tesztek/manualistesztek.md)
 
 ### 5. feladat: BDD tesztek készítése (Cucumber)
-- [Placeholder]()
+- [Cucumber Tesztek](doc/cucumber.md)
