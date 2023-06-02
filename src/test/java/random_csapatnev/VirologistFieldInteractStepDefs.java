@@ -4,16 +4,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import random_csapatnev.modelclasses.*;
-import random_csapatnev.modelclasses.Character;
-import random_csapatnev.viewclasses.GraphicsCharacter;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
 import java.util.Map;
-
-import org.mockito.MockedStatic;
 
 class CouldHeGainStuff {
     static String couldHeGainStuff(boolean usageSuccess) {
@@ -54,10 +49,6 @@ public class VirologistFieldInteractStepDefs {
             result = true;
         }
         actualAnswer = CouldHeGainStuff.couldHeGainStuff(result);
-
-        // Not testable because in Laboratory.interact(Character c)
-        // MainFrame.Instance doesn't exists so throws an exception.
-        // Can only be tested if we add some kind of Mocking framework.
     }
 
     @When("I ask if he gained materials")
