@@ -43,7 +43,7 @@ A projekt célja a korábban ismertetett program kódjának átvizsgálása, tes
 ## Termék/felhasználó fókusz
 
 ### 4. feladat: Manuális tesztek készítése, végrehajtása, dokumentálása, exploratory testing
-- [Placeholder]()
+- [Manuális tesztek](doc/manualis_tesztek/manualistesztek.md)
 
 ### 5. feladat: BDD tesztek készítése (Cucumber)
 - [Placeholder]()

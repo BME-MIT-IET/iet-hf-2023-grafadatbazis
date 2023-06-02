@@ -38,8 +38,6 @@ public class Main implements Serializable {
 
 				MainFrame tempmf = new MainFrame((MainFrame) ois.readObject());
 				mf = tempmf;
-
-				// TODO Load grafikus bug de amúgy működik
 			} catch (Exception e1) {
 				Logger.out(java.util.logging.Level.SEVERE, e1.getMessage());
 			}

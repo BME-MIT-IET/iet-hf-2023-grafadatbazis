@@ -1,7 +1,18 @@
 package random_csapatnev;
 
+import random_csapatnev.modelclasses.Agent;
+import random_csapatnev.modelclasses.Field;
+import random_csapatnev.modelclasses.Gear;
+import random_csapatnev.modelclasses.Material;
+import random_csapatnev.viewclasses.GraphicsCharacter;
+import random_csapatnev.viewclasses.GraphicsFieldBase;
+import random_csapatnev.viewclasses.GraphicsGear;
+import random_csapatnev.viewclasses.GraphicsMaterial;
+import random_csapatnev.modelclasses.Character;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -13,33 +24,33 @@ public class Model implements Serializable {
 	int sizeM;
 
 	Field[][] fields;
-	ArrayList<Character> characters = new ArrayList<Character>();
-	ArrayList<Agent> agents = new ArrayList<Agent>();
-	ArrayList<Gear> gears = new ArrayList<Gear>();
-	ArrayList<Material> materials = new ArrayList<Material>();
+	private List<Character> characters = new ArrayList<>();
+	private List<Agent> agents = new ArrayList<>();
+	private List<Gear> gears = new ArrayList<>();
+	private List<Material> materials = new ArrayList<>();
 
-	ArrayList<GraphicsCharacter> graphicsCharacter = new ArrayList<GraphicsCharacter>();
+	private List<GraphicsCharacter> graphicsCharacter = new ArrayList<>();
 	GraphicsFieldBase[][] graphicsFields;
-	ArrayList<GraphicsGear> graphicsGear = new ArrayList<GraphicsGear>();
-	ArrayList<GraphicsMaterial> graphicsMaterial = new ArrayList<GraphicsMaterial>();
+	private List<GraphicsGear> graphicsGear = new ArrayList<>();
+	private List<GraphicsMaterial> graphicsMaterial = new ArrayList<>();
 
 	public void setFields(Field[][] input) {
 		fields = input;
 	}
 
-	public void setCharacters(ArrayList<Character> input) {
+	public void setCharacters(List<Character> input) {
 		characters = input;
 	}
 
-	public void setAgents(ArrayList<Agent> input) {
+	public void setAgents(List<Agent> input) {
 		agents = input;
 	}
 
-	public void setGears(ArrayList<Gear> input) {
+	public void setGears(List<Gear> input) {
 		gears = input;
 	}
 
-	public void setMaterials(ArrayList<Material> input) {
+	public void setMaterials(List<Material> input) {
 		materials = input;
 	}
 
@@ -52,27 +63,27 @@ public class Model implements Serializable {
 		return fields;
 	}
 
-	public ArrayList<Character> getCharacters() {
+	public List<Character> getCharacters() {
 		return characters;
 	}
 
-	public ArrayList<Agent> getAgents() {
+	public List<Agent> getAgents() {
 		return agents;
 	}
 
-	public ArrayList<Gear> getGears() {
+	public List<Gear> getGears() {
 		return gears;
 	}
 
-	public ArrayList<Material> getMaterials() {
+	public List<Material> getMaterials() {
 		return materials;
 	}
 
-	public ArrayList<GraphicsCharacter> getGraphicsCharacter() {
+	public List<GraphicsCharacter> getGraphicsCharacter() {
 		return graphicsCharacter;
 	}
 
-	public void setGraphicsCharacter(ArrayList<GraphicsCharacter> graphicsCharacter) {
+	public void setGraphicsCharacter(List<GraphicsCharacter> graphicsCharacter) {
 		this.graphicsCharacter = graphicsCharacter;
 	}
 
@@ -84,19 +95,19 @@ public class Model implements Serializable {
 		this.graphicsFields = graphicsField;
 	}
 
-	public ArrayList<GraphicsGear> getGraphicsGear() {
+	public List<GraphicsGear> getGraphicsGear() {
 		return graphicsGear;
 	}
 
-	public void setGraphicsGear(ArrayList<GraphicsGear> graphicsGear) {
+	public void setGraphicsGear(List<GraphicsGear> graphicsGear) {
 		this.graphicsGear = graphicsGear;
 	}
 
-	public ArrayList<GraphicsMaterial> getGraphicsMaterial() {
+	public List<GraphicsMaterial> getGraphicsMaterial() {
 		return graphicsMaterial;
 	}
 
-	public void setGraphicsMaterial(ArrayList<GraphicsMaterial> graphicsMaterial) {
+	public void setGraphicsMaterial(List<GraphicsMaterial> graphicsMaterial) {
 		this.graphicsMaterial = graphicsMaterial;
 	}
 }
