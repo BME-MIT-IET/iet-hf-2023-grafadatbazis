@@ -1,22 +1,25 @@
 package random_csapatnev.modelclasses;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.junit.Test;
+
+import static org.mockito.Mockito.*;
 
 public class VirologistTest {
 	private Virologist virologist;
+
 	private Field field;
 	private Field neighborField1;
 	private Field neighborField2;
+
+	//	for use function
+	private Character character;
+	private Field fieldMock;
+	private Agent agentMock;
 
 	@Before
 	public void setUp() {
@@ -29,6 +32,14 @@ public class VirologistTest {
 
 		field.getNeighbours().add(neighborField1);
 		field.getNeighbours().add(neighborField2);
+
+		character = new Character("Test Character");
+
+		fieldMock = mock(Field.class);
+		agentMock = mock(Agent.class);
+
+		character.setCurrField(field);
+		character.craftedAgents.add(agentMock);
 	}
 
 	@Test
@@ -50,7 +61,7 @@ public class VirologistTest {
 	}
 
 	@Test
-	public void move_shouldFail_WhenParalyzed() {
+	public void move_ShouldFail_WhenParalyzed() {
 		// Arrange
 		virologist.isParalyzed = true;
 
@@ -61,17 +72,45 @@ public class VirologistTest {
 		assertEquals(field, virologist.getCurrField());
 	}
 
-	/*@Test
-	public void testMoveWhenVitus() {
+	@Test
+	public void move_ShouldSucceed_WhenMoveVitus() {
 		// Arrange
 		virologist.isVitus = true;
 
 		// Act
-		virologist.move(field);
+		virologist.move(neighborField1);
 
 		// Assert
-		//assertTrue(possibleFields.contains(virologist.getCurrField()));
 		assertFalse(virologist.getCurrField().equals(field));
-	}*/
+	}
+	
+    @Test
+    public void use_shouldFail_WhenAgentIsNotCraftedByCharacter() {
+        // Arrange
+        Character otherCharacter = new Character("c");
+        otherCharacter.setCurrField(character.currField);
+        Agent otherAgent = mock(Agent.class);
+
+        // Act
+        otherCharacter.use(character, otherAgent);
+
+        // Assert
+        assertTrue(character.activeAgents.isEmpty());
+        verifyNoMoreInteractions(otherAgent);
+    }
+    
+	@Test
+	public void use_ShouldFail_WhenCharacterIsNotOnCurrentField() {
+		// Arrange
+		Character otherCharacter = new Character("Character");
+		otherCharacter.setCurrField(mock(Field.class));
+
+		// Act
+		character.use(otherCharacter, agentMock);
+
+		// Assert
+		verifyNoMoreInteractions(agentMock);
+		assertTrue(otherCharacter.activeAgents.isEmpty());
+	}
 
 }
