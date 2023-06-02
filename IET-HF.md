@@ -36,9 +36,7 @@ A projekt célja a korábban ismertetett program kódjának átvizsgálása, tes
 - [Statikus Analízis](doc/staticanalysis.md)
 
 ### 3. feladat: Unit tesztek készítése, végrehajtása, dokumentálása, kódlefedettségének mérése és javítása
-- [Placeholder]()
-
-
+- [Unit tesztek](doc/unit_tesztek/unittesztek.md)
 
 ## Termék/felhasználó fókusz
 
