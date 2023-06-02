@@ -3,6 +3,7 @@ package random_csapatnev.modelclasses;
 import random_csapatnev.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -67,7 +68,7 @@ public class Laboratory extends Field {
 	 * A laborban található genetikai kódok listája.
 	 */
 	ArrayList<Agent> agents = new ArrayList<>();
-	public ArrayList<Agent> getAgents() {
+	public List<Agent> getAgents() {
 		return agents;
 	}
 
