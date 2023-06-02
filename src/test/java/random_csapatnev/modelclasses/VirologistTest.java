@@ -1,7 +1,7 @@
 package random_csapatnev.modelclasses;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -79,7 +79,7 @@ public class VirologistTest {
 		virologist.move(neighborField1);
 
 		// Assert
-		assertFalse(virologist.getCurrField().equals(field));
+		assertNotEquals(field, virologist.getCurrField());
 	}
 	
     @Test
