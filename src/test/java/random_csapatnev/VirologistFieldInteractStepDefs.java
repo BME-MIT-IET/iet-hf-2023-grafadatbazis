@@ -22,6 +22,8 @@ class CouldHeGainStuff {
 public class VirologistFieldInteractStepDefs {
     private Virologist virologist = new Virologist("Virologist");
     private Field field;
+    private Agent agent1 = new VitusVirus();
+    private Agent agent2 = new VitusVaccine();
     private String actualAnswer;
 
     @Given("Virologist is on a Laboratory")
@@ -29,6 +31,9 @@ public class VirologistFieldInteractStepDefs {
         MainFrame.Instance = mock(MainFrame.class);
 
         field = new Laboratory(0, 0);
+        ((Laboratory)field).getAgents().clear();
+        ((Laboratory)field).getAgents().add(agent1);
+        ((Laboratory)field).getAgents().add(agent2);
         virologist.setCurrField(field);
     }
 
