@@ -18,7 +18,6 @@ public class VirologistTest {
 
 	//	for use function
 	private Character character;
-	private Field fieldMock;
 	private Agent agentMock;
 
 	@Before
@@ -35,7 +34,6 @@ public class VirologistTest {
 
 		character = new Character("Test Character");
 
-		fieldMock = mock(Field.class);
 		agentMock = mock(Agent.class);
 
 		character.setCurrField(field);
@@ -85,7 +83,7 @@ public class VirologistTest {
 	}
 	
     @Test
-    public void use_shouldFail_WhenAgentIsNotCraftedByCharacter() {
+    public void use_ShouldFail_WhenAgentIsNotCraftedByCharacter() {
         // Arrange
         Character otherCharacter = new Character("c");
         otherCharacter.setCurrField(character.currField);
