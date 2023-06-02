@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 public class FieldTest {
-	
 	private Field field;	
     private Character character1;
 	private Character character2;
@@ -22,8 +21,8 @@ public class FieldTest {
 	
 	@Before
     public void setup() {
-        field = new Field(0, 0);
-        
+		field = new Field(0, 0);
+		
         character1 = new Character("character");
         character2 = new Character("character");
 
@@ -244,8 +243,7 @@ public class FieldTest {
         assertTrue(field.getCharacters().contains(character1));
 	  }
 	 
-	 //Kommentezve hogyom egyelőre, mert ez a teszt hibát dob, következő kommitban javítom a forráskódot, hogy sikeresen fusson a teszt
-	 /*@Test
+	 @Test
 	 public void moveFrom_DoesNotAddCharacterToOtherField_WhenNotPresent() {
         // Arrange
 	    Field field2 = new Field(0,1);
@@ -258,5 +256,5 @@ public class FieldTest {
 
         // Assert
         assertFalse(field2.getCharacters().contains(character1));
-	  }*/
+	  }
 }
