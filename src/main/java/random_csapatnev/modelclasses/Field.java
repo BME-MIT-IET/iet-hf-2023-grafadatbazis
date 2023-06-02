@@ -71,7 +71,8 @@ public class Field implements Serializable {
 	}
 
 	public void bearInteract(Bear b) {
-		for (Character c : characters) {
+		ArrayList<Character> tempList = new ArrayList<>(characters);
+		for (Character c : tempList) {
 			if (!c.name.startsWith("b")) {
 				b.characterInteract(c);
 			}
