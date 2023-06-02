@@ -1,5 +1,5 @@
 Feature: Can Bear destory materials on a Warehouse
-  Testis if a Bear is able to destory the materials on a Warehouse
+  Tests if a Bear is able to destory the materials on a Warehouse
   Scenario: Bear is able to destory the materials on a Warehouse
     Given Bear is on a Warehouse
     When I ask if he could destroy the materials

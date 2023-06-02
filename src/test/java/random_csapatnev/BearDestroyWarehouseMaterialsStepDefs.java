@@ -9,13 +9,13 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
 
-class CouldHeDestoryMats{
-    static String couldHeDestoryMats(boolean success) {
+class CouldHeDestoryMaterials{
+    static String couldHeDestoryMaterials(boolean success) {
         return success ? "Yes I could" : "No I couldn't";
     }
 }
 
-public class BearDestroyWarehouseMatsStepDefs{
+public class BearDestroyWarehouseMaterialsStepDefs{
     private Bear bear = new Bear("Bear");
     private Field field = new Field(0,0);
     private Warehouse warehouse = new Warehouse(0,0);
@@ -41,7 +41,7 @@ public class BearDestroyWarehouseMatsStepDefs{
         {
             result = true;
         }
-        actualAnswer = CouldHeDestoryMats.couldHeDestoryMats(result);
+        actualAnswer = CouldHeDestoryMaterials.couldHeDestoryMaterials(result);
     }
 
     @Then("He should answer {string} destroy the materials")
