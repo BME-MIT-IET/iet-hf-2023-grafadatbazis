@@ -4,8 +4,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import random_csapatnev.modelclasses.*;
+import random_csapatnev.modelclasses.Character;
+import random_csapatnev.viewclasses.GraphicsCharacter;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
 
 class CouldHeInfectVirologist {
     static String couldHeInfectVirologist(boolean success) {
@@ -15,7 +20,7 @@ class CouldHeInfectVirologist {
 
 public class BearInfectsVirologistStepDefs {
     private Virologist virologist = new Virologist("Virologist");
-    private Bear bear = new Bear("Bear");
+    private Bear bear = new Bear("bBear");
     private Field field = new Field(0, 0);
     private Field field2 = new Field(0, 1);
     private String actualAnswer;
@@ -48,6 +53,15 @@ public class BearInfectsVirologistStepDefs {
 
     @When("I ask if he could infect Virologist")
     public void ask_whether_he_could_infect() {
+        MainFrame.Instance = mock(MainFrame.class);
+        Model m = mock(Model.class);
+        when(MainFrame.Instance.getModel()).thenReturn(m);
+        
+        ArrayList<GraphicsCharacter> gc = new ArrayList<>();
+        ArrayList<Character> c = new ArrayList<>();
+        when(m.getGraphicsCharacter()).thenReturn(gc);
+        when(m.getCharacters()).thenReturn(c);
+
         boolean result = false;
         bear.fieldInteract();
 
