@@ -4,10 +4,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import random_csapatnev.modelclasses.*;
+import random_csapatnev.modelclasses.Character;
+import random_csapatnev.viewclasses.GraphicsCharacter;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
 import java.util.Map;
+
+import org.mockito.MockedStatic;
 
 class CouldHeGainStuff {
     static String couldHeGainStuff(boolean usageSuccess) {
@@ -22,6 +28,8 @@ public class VirologistFieldInteractStepDefs {
 
     @Given("Virologist is on a Laboratory")
     public void virologist_is_on_laboratory() {
+        MainFrame.Instance = mock(MainFrame.class);
+
         field = new Laboratory(0, 0);
         virologist.setCurrField(field);
     }
@@ -40,14 +48,12 @@ public class VirologistFieldInteractStepDefs {
 
     @When("I ask if he learnt a new Agent")
     public void ask_whether_he_could_use() {
-        /*
-         * boolean result = false;
-         * virologist.fieldInteract();
-         * if(virologist.knownAgents.size()>0){
-         * result = true;
-         * }
-         * actualAnswer = CouldHeGainStuff.couldHeGainStuff(result);
-         */
+        boolean result = false;
+        virologist.fieldInteract();
+        if (virologist.getKnownAgents().size() > 0) {
+            result = true;
+        }
+        actualAnswer = CouldHeGainStuff.couldHeGainStuff(result);
 
         // Not testable because in Laboratory.interact(Character c)
         // MainFrame.Instance doesn't exists so throws an exception.
