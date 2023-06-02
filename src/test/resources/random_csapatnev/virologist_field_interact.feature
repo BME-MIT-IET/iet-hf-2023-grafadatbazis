@@ -1,10 +1,10 @@
 Feature: Does Virologist interacts with Field properly?
   Tests if a Virologist's Field interact does the proper actions.
 
-#  Scenario: Virologist interacts with Laboratory
-#    Given Virologist is on a Laboratory
-#    When I ask if he learnt a new Agent
-#    Then He should answer "Yes I gained" a new Agent
+  Scenario: Virologist interacts with Laboratory
+    Given Virologist is on a Laboratory
+    When I ask if he learnt a new Agent
+    Then He should answer "Yes I gained" a new Agent
 
   Scenario: Virologist interacts with Warehouse
     Given Virologist is on a Warehouse
