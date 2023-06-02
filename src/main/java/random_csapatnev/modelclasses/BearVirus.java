@@ -60,6 +60,8 @@ public class BearVirus extends Agent {
 			}
 
 			Bear b = new Bear(c, "b" + c.name.substring(1));
+			b.currField = c.currField;
+			c.currField.getCharacters().add(b);
 			MainFrame.Instance.getModel().getCharacters().add(b);
 			MainFrame.Instance.getModel().getGraphicsCharacter().add(new GraphicsBear(b));
 		}
