@@ -4,8 +4,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import random_csapatnev.modelclasses.*;
+import random_csapatnev.modelclasses.Character;
+import random_csapatnev.viewclasses.GraphicsCharacter;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
 
 class CouldHeKillBear{
     static String couldHeKillBear(boolean usageSuccess) {
@@ -47,6 +52,16 @@ public class VirologistKillsBearStepDefs{
 
     @When("I ask if he could kill Bear")
     public void ask_whether_he_could_kill(){
+        MainFrame.Instance = mock(MainFrame.class);
+        Model m = mock(Model.class);
+        when(MainFrame.Instance.getModel()).thenReturn(m);
+        
+        ArrayList<GraphicsCharacter> gc = new ArrayList<>();
+        ArrayList<Character> c = new ArrayList<>();
+        when(m.getGraphicsCharacter()).thenReturn(gc);
+        when(m.getCharacters()).thenReturn(c);
+
+        
         boolean result = true;
         virologist.bearInteract(bear);
         if(virologist.getCurrField().containsCharacter(bear) || otherField.containsCharacter(bear)){
