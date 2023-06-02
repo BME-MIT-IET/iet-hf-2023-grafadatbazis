@@ -1,6 +1,6 @@
 package random_csapatnev.viewclasses;
 
-import random_csapatnev.modelclasses.Virologist;;
+import random_csapatnev.modelclasses.Virologist;
 
 import java.awt.Color;
 

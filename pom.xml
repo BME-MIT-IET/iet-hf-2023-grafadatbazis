@@ -22,17 +22,36 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
+	<!-- JUnit 4.11 -->
+	  <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    
+	<dependency>
+	<!-- Mockito 4.4.0 -->
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-core</artifactId>
+		<version>4.4.0</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	<!-- Jacoco 0.8.7 -->
+  	  <groupId>org.jacoco</groupId>
+  	  <artifactId>jacoco-maven-plugin</artifactId>
+  	  <version>0.8.7</version>
+  	  <scope>test</scope>
+  	</dependency>
+    
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
       <version>7.12.0</version>
       <scope>test</scope>
     </dependency>
+    
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
@@ -99,5 +118,27 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+		<plugin>
+		    <groupId>org.jacoco</groupId>
+		    <artifactId>jacoco-maven-plugin</artifactId>
+		    <version>0.8.7</version>
+		    <executions>
+		        <execution>
+		            <id>default-prepare-agent</id>
+		            <goals>
+		                <goal>prepare-agent</goal>
+		            </goals>
+		        </execution>
+		        <execution>
+		            <id>default-report</id>
+		            <phase>prepare-package</phase>
+		            <goals>
+		                <goal>report</goal>
+		            </goals>
+		        </execution>
+		    </executions>
+		</plugin>
+	</plugins>
   </build>
 </project>
